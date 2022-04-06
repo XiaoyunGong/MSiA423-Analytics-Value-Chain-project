@@ -1,6 +1,9 @@
-# MSiA423 Template Repository
+# MSiA423 Project: Animal Crossing Villager Recommender
+Author: Xiaoyun Gong
+
 
 # Table of Contents
+* [Project charter ](#Project-charter)
 * [Directory structure ](#Directory-structure)
 * [Running the app ](#Running-the-app)
 	* [1. Initialize the database ](#1.-Initialize-the-database)
@@ -9,6 +12,27 @@
 * [Testing](#Testing)
 * [Mypy](#Mypy)
 * [Pylint](#Pylint)
+
+## Project charter
+### Vision
+Releasied in March 2020, **Animal Crossing: New Horizon** ([official website](https://animal-crossing.com/), [wikipedia](https://en.wikipedia.org/wiki/Animal_Crossing)) is a social simulation game developed by Nintendo as the fifth main entry in the Animal Crossing series. The game was a huge commercial success with 37.62 million copies sold worldwide. 
+
+In Animal Crossing, each player usually has 10 villagers on their island. These villagers have different personalitiies, color preferences, and home decor styles. These villagers interact with players all the time. When one villager chooses to leave the island, the player has the opportunity to invite another villager from a deserted island to their island. Which villager should they invite? Should they invite the first villager they meet at the deserted island?
+
+This app aims to solve these problems by building a recommender system based on players' preferences on villagers. The app will identify villagers that the player will like better.
+
+### Mission
+Users will be prompted to choose their ideal villager, and the recommender will output the top 10 villagers with similar properties. The dataset of this project is from the [**Animal Crossing Dataset**](https://www.kaggle.com/datasets/jessicali9530/animal-crossing-new-horizons-nookplaza-dataset). This dataset contains information on all 392 villagers and 9000+ items in the game. For the purpose of designing this app, the villager file will be used. Other files may need to be merged to provide properties of recommended villagers. 
+
+
+### Success criteria
+
+#### Machine learning performance metric
+
+This app will be using the k-modes algorithm. There will not be a fixed value set as the deployement threshold. Optimal k (number of clusters) will be found using silhouette and scree plot of the cost. Idealy, the silhouette score should be greater than 0.4. Other metrics can be evalutated when the app goes live. For example, the precision and recall of the recommendation provided. 
+
+### Business Metrics
+From a business perspective, the number of visits to the app and retention rate can be measured. There can also be surveys sent to users asking whether they think the recommendation is helpful. 
 
 
 
