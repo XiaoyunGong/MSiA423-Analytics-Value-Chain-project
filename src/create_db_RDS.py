@@ -1,4 +1,4 @@
-"""Creates and ingests data into a table of villagers for the PennyLane."""
+"""Creates and ingests data into a table of villagers in RDS."""
 import os
 import logging
 import sqlalchemy as sql
@@ -19,15 +19,28 @@ logger = logging.getLogger(__file__)
 Base = declarative_base()
 
 
-class Tracks(Base):
-    """Creates a data model for the database to be set up for capturing songs."""
+class Villagers(Base):
+    """Creates a data model for the database to be set up for capturing villagers."""
 
-    __tablename__ = "tracks"
+    __tablename__ = "villagers"
 
-    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
-    title = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
-    artist = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
-    album = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=True)
+    Unique_Entry_ID = sqlalchemy.Column(sqlalchemy.String(100), primary_key=True)
+    Name = sqlalchemy.Column(sqlalchemy.String(100), unique=True, nullable=False)
+    Species = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Gender = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Personality = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Hobby = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Birthday = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Catchphrase = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Favorite_Song = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Style_1 = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Style_2 = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Color_1 = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Color_2 = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Wallpaper = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Flooring = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Furniture_List = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Filename = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
 
     def __repr__(self):
         return f"<Track {self.title}>"
@@ -52,35 +65,35 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # add a record/track
-    track1 = Tracks(artist="Britney Spears", album="Circus", title="Radar")
-    session.add(track1)
+    # # add a record/track
+    # track1 = Tracks(artist="Britney Spears", album="Circus", title="Radar")
+    # session.add(track1)
+    # session.commit()
+
+    # logger.info(
+    #     "Database created with song added: Radar by Britney spears from the album, Circus"
+    # )
+    # track2 = Tracks(artist="Tayler Swift", album="Red", title="Red")
+    # session.add(track2)
+
+    # # To add multiple rows
+    # # session.add_all([track1, track2])
+
     session.commit()
-
     logger.info(
-        "Database created with song added: Radar by Britney spears from the album, Circus"
-    )
-    track2 = Tracks(artist="Tayler Swift", album="Red", title="Red")
-    session.add(track2)
-
-    # To add multiple rows
-    # session.add_all([track1, track2])
-
-    session.commit()
-    logger.info(
-        "Database created with song added: Red by Tayler Swift from the album, Red"
+        "Database created with villagers added."
     )
 
     # query records
-    track_record = (
-        session.query(Tracks.title, Tracks.album)
-        .filter_by(artist="Britney Spears")
-        .first()
-    )
-    print(track_record)
+    # track_record = (
+    #     session.query(Tracks.title, Tracks.album)
+    #     .filter_by(artist="Britney Spears")
+    #     .first()
+    # )
+    # print(track_record)
 
-    query = "SELECT * FROM tracks WHERE artist LIKE '%%Britney%%'"
-    result = session.execute(query)
-    print(result.first().items())
+    # query = "SELECT * FROM tracks WHERE artist LIKE '%%Britney%%'"
+    # result = session.execute(query)
+    # print(result.first().items())
 
     session.close()
