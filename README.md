@@ -52,6 +52,7 @@ From a business perspective, the number of visits to the app and retention rate 
 ├── data                              <- Folder that contains data used or generated. Only the external/ and sample/ subdirectories are tracked by git. 
 │   ├── external/                     <- External data sources, usually reference data,  will be synced with git
 │   ├── sample/                       <- Sample data used for code development and testing, will be synced with git
+│   ├── raw/                 	      <- Raw data used for code development and testing, will be synced with git
 │
 ├── deliverables/                     <- Any white papers, presentations, final work products that are presented or delivered to a stakeholder 
 │
@@ -61,6 +62,7 @@ From a business perspective, the number of visits to the app and retention rate 
 │   ├── Dockerfile.app                <- Dockerfile for building image to run web app
 │   ├── Dockerfile.run                <- Dockerfile for building image to execute run.py  
 │   ├── Dockerfile.test               <- Dockerfile for building image to run unit tests
+│   ├── Dockerfile.rds	              <- Dockerfile for building image to creare data schema to rds
 │
 ├── figures/                          <- Generated graphics and figures to be used in reporting, documentation, etc
 │
@@ -84,6 +86,26 @@ From a business perspective, the number of visits to the app and retention rate 
 ```
 
 ## Running the app 
+### 1. Load data into S3 and Download data from S3
+#### AWS Credentials Configuration
+To configure AWS credentials, run the following commands in terminal to load your credentials as environment variables. These credentials all users to connect to AWS S3.
+
+```bash
+export AWS_ACCESS_KEY_ID="YOUR_ACCESS_KEY_ID"
+export AWS_SECRET_ACCESS_KEY="YOUR_SECRET_ACCESS_KEY"
+```
+**Note:**
+Replace `YOUR_ACCESS_KEY_ID` and `YOUR_SECRET_ACCESS_KEY` with your own AWS credentials. 
+
+#### Load data to S3
+First, a docker image need to be built. To build the iamge, run from this directory (the root of the repe):
+
+```bash
+docker build -f dockerfiles/Dockerfile.run -t animalcrossing .
+```
+
+Then, the following command will upload the data file to S3. 
+
 
 ### 1. Initialize the database 
 #### Build the image 
