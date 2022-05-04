@@ -105,7 +105,14 @@ docker build -f dockerfiles/Dockerfile.run -t animalcrossing .
 ```
 
 Then, the following command will upload the data file to S3. 
+```base
+docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py upload_file_to_s3 
+```
 
+An optional choise is to download the dataset. The following command will download the file to a desinated location.
+```base
+docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py download_file_from_s3 --output=test/data.csv
+```
 
 ### 1. Initialize the database 
 #### Build the image 
