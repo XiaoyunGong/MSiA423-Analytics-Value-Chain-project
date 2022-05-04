@@ -109,11 +109,47 @@ Then, the following command will upload the data file to S3.
 docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py upload_file_to_s3 
 ```
 
+#### Download data from S3 (TO DO)
 An optional choise is to download the dataset. The following command will download the file to a desinated location.
 ```base
 docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py download_file_from_s3 --output=test/data.csv
 ```
+### 2. Create the Database on RDS
+#### Create a docker container
+```bash
+docker build -f dockerfiles/Dockerfile.rds -t rds .
+```
+#### AWS RDS Credentials Configuration
+To configure AWS RDS credentials, run the following commands in terminal to load your credentials as environment variables. These credentials all users to connect to AWS RDS.
+```bash
+export MYSQL_HOST="YOUR_MYSQL_HOST"
+export MYSQL_USER="YOUR_MYSQL_USER"
+export MYSQL_PASSWORD="YOUR_MYSQL_PASSWORD"
+export SQLALCHEMY_DATABASE_URI="YOUR_SQLALCHEMY_DATABASE_URI"
+```
+#### Add the database to RDS
+```bash
+docker run -it -e SQLALCHEMY_DATABASE_URI rds
+```
 
+#### Check if the database is added to RDS
+```bash
+docker run -it --rm mysql:5.7.33 mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}
+```
+(for apple M1)
+```bash
+docker run --platform linux/x86_64  -it --rm  mysql:5.7.33 mysql  -h${MYSQL_HOST}  -u${MYSQL_USER}  -p${MYSQL_PASSWORD}
+```
+
+If successfully connected, you may run the following commands:
+
+To show all the databases: `show databases`;
+To use a particular database: `use <database_name>`;
+After selecting a database, you can see all the tables in it by running: `show tables`;
+You may check the columns within a table by running: `show columns from <table_name>`;
+
+
+---------
 ### 1. Initialize the database 
 #### Build the image 
 
