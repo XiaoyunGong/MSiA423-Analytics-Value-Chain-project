@@ -22,18 +22,17 @@ In Animal Crossing, each player usually has 10 villagers on their island. These 
 This app aims to solve these problems by building a recommender system based on players' preferences on villagers. The app will identify villagers that the player will like better.
 
 ### Mission
-Users will be prompted to choose their ideal villager, and the recommender will output the top 10 villagers with similar properties. The dataset of this project is from the [**Animal Crossing Dataset**](https://www.kaggle.com/datasets/jessicali9530/animal-crossing-new-horizons-nookplaza-dataset). This dataset contains information on all 392 villagers and 9000+ items in the game. For the purpose of designing this app, the villager file will be used. Other files may need to be merged to provide properties of recommended villagers. 
+Users will be prompted to choose their ideal villager, and the recommender will output the top 10 villagers with similar properties. The dataset of this project is from the [**Animal Crossing Dataset**](https://www.kaggle.com/datasets/jessicali9530/animal-crossing-new-horizons-nookplaza-dataset). This dataset contains information on all 392 villagers and 9000+ items in the game.
 
 
 ### Success criteria
 
 #### Machine learning performance metric
 
-This app will be using the k-modes algorithm. There will not be a fixed value set as the deployement threshold. Optimal k (number of clusters) will be found using silhouette and scree plot of the cost. Idealy, the silhouette score should be greater than 0.4. Other metrics can be evalutated when the app goes live. For example, the precision and recall of the recommendation provided. 
+This app will be using the k-modes algorithm. There will not be a fixed value set as the deployement threshold. Optimal k (number of clusters) will be found using scree plot of the cost. Other metrics can be evalutated when the app goes live. For example, the precision and recall of the recommendation provided. 
 
 ### Business Metrics
 From a business perspective, the number of visits to the app and retention rate can be measured. There can also be surveys sent to users asking whether they think the recommendation is helpful. 
-
 
 
 ## Directory structure 
