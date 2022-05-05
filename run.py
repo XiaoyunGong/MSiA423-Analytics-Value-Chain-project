@@ -5,8 +5,9 @@ import logging.config
 import profile
 
 from config.flaskconfig import SQLALCHEMY_DATABASE_URI
-from src.add_animal import AnimalManager, create_db
+from src.add_animal import AnimalManager
 from src.s3 import upload_file_to_s3, download_file_from_s3
+from src.RDS import Villagers, create_db;
 
 logging.config.fileConfig('config/logging/local.conf')
 logger = logging.getLogger('penny-lane-pipeline')

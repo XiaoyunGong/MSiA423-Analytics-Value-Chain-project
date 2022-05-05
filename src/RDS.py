@@ -13,7 +13,7 @@ if engine_string is None:
 # engine_string = "mysql+pymysql://user:password@host:3306/msia423_db"
 
 # set up looging config
-logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.DEBUG)
+logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.INFO)
 logger = logging.getLogger(__file__)
 
 Base = declarative_base()
@@ -43,21 +43,17 @@ class Villagers(Base):
     Filename = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
 
     def __repr__(self):
-        return f"<Track {self.title}>"
+        return f"<villager {self.Name}>"
 
-
-if __name__ == "__main__":
-    # set up mysql connection
+def create_db(engine_string: str) -> None:
     engine = sql.create_engine(engine_string)
-
-    # test database connection
     try:
         engine.connect()
     except sqlalchemy.exc.OperationalError as e:
         logger.error("Could not connect to database!")
         logger.debug("Database URI: %s", )
         raise e
-
+    
     # create the tracks table
     Base.metadata.create_all(engine)
 
@@ -65,35 +61,61 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # # add a record/track
-    # track1 = Tracks(artist="Britney Spears", album="Circus", title="Radar")
-    # session.add(track1)
-    # session.commit()
-
-    # logger.info(
-    #     "Database created with song added: Radar by Britney spears from the album, Circus"
-    # )
-    # track2 = Tracks(artist="Tayler Swift", album="Red", title="Red")
-    # session.add(track2)
-
-    # # To add multiple rows
-    # # session.add_all([track1, track2])
-
     session.commit()
     logger.info(
         "Database created with villagers added."
     )
-
-    # query records
-    # track_record = (
-    #     session.query(Tracks.title, Tracks.album)
-    #     .filter_by(artist="Britney Spears")
-    #     .first()
-    # )
-    # print(track_record)
-
-    # query = "SELECT * FROM tracks WHERE artist LIKE '%%Britney%%'"
-    # result = session.execute(query)
-    # print(result.first().items())
-
     session.close()
+
+# if __name__ == "__main__":
+#     # set up mysql connection
+#     engine = sql.create_engine(engine_string)
+
+#     # test database connection
+#     try:
+#         engine.connect()
+#     except sqlalchemy.exc.OperationalError as e:
+#         logger.error("Could not connect to database!")
+#         logger.debug("Database URI: %s", )
+#         raise e
+
+#     # create the tracks table
+#     Base.metadata.create_all(engine)
+
+#     # create a db session
+#     Session = sessionmaker(bind=engine)
+#     session = Session()
+    
+
+#     # # add a record/track
+#     # track1 = Tracks(artist="Britney Spears", album="Circus", title="Radar")
+#     # session.add(track1)
+#     # session.commit()
+
+#     # logger.info(
+#     #     "Database created with song added: Radar by Britney spears from the album, Circus"
+#     # )
+#     # track2 = Tracks(artist="Tayler Swift", album="Red", title="Red")
+#     # session.add(track2)
+
+#     # # To add multiple rows
+#     # # session.add_all([track1, track2])
+
+#     session.commit()
+#     logger.info(
+#         "Database created with villagers added."
+#     )
+
+#     # query records
+#     # track_record = (
+#     #     session.query(Tracks.title, Tracks.album)
+#     #     .filter_by(artist="Britney Spears")
+#     #     .first()
+#     # )
+#     # print(track_record)
+
+#     # query = "SELECT * FROM tracks WHERE artist LIKE '%%Britney%%'"
+#     # result = session.execute(query)
+#     # print(result.first().items())
+
+#     session.close()

@@ -46,19 +46,19 @@ class Villagers(Base):
     def __repr__(self):
         return '<Animal Name %r>' % self.Name
         
-def create_db(engine_string: str) -> None:
-    """Create database with Tracks() data model from provided engine string.
+# def create_db(engine_string: str) -> None:
+#     """Create database with Tracks() data model from provided engine string.
 
-    Args:
-        engine_string (str): SQLAlchemy engine string specifying which database to write to.
+#     Args:
+#         engine_string (str): SQLAlchemy engine string specifying which database to write to.
 
-    Returns: None
+#     Returns: None
 
-    """
-    engine = sqlalchemy.create_engine(engine_string)
+#     """
+#     engine = sqlalchemy.create_engine(engine_string)
 
-    Base.metadata.create_all(engine)
-    logger.info("Database created.")
+#     Base.metadata.create_all(engine)
+#     logger.info("Database created.")
 
 class AnimalManager:
     """Creates a SQLAlchemy connection to the Apps table.
