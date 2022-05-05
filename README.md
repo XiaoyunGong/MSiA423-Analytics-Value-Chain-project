@@ -169,68 +169,35 @@ docker run --mount type=bind, source=-"$(pwd)",target=/app/ -e AWS_ACCESS_KEY_ID
 （Maybe? TODO)
 
 ### Remote database Connection
-
-
-### 1. Load data into S3 and Download data from S3
-#### AWS Credentials Configuration
-To configure AWS credentials, run the following commands in terminal to load your credentials as environment variables. These credentials all users to connect to AWS S3.
+As mentioned before, the database used for this project is stored in AWS RDS. The command below will connect user to the database on RDS.
 
 ```bash
-export AWS_ACCESS_KEY_ID="YOUR_ACCESS_KEY_ID"
-export AWS_SECRET_ACCESS_KEY="YOUR_SECRET_ACCESS_KEY"
+docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py create_db
 ```
 **Note:**
-Replace `YOUR_ACCESS_KEY_ID` and `YOUR_SECRET_ACCESS_KEY` with your own AWS credentials. 
+For security reasons, this database can only be accessed for users connected to the Northwetsern VPN. Besides, the RDS credential `SQLALCHEMY_DATABASE_URI` must be loaded into environment before running the command. There is no default values of the credentials for this command. 
 
-#### Load data to S3
-First, a docker image need to be built. To build the iamge, run from this directory (the root of the repe):
+**Optional: Test the connection to RDS**
 
-```bash
-docker build -f dockerfiles/Dockerfile.run -t animalcrossing .
-```
-
-Then, the following command will upload the data file to S3. 
-```base
-docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py upload_file_to_s3 
-```
-
-#### Download data from S3 (TO DO)
-An optional choise is to download the dataset. The following command will download the file to a desinated location.
-```base
-docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py download_file_from_s3 --output=test/data.csv
-```
-### 2. Create the Database on RDS
-#### Create a docker container
-```bash
-docker build -f dockerfiles/Dockerfile.rds -t rds .
-```
-#### AWS RDS Credentials Configuration
-To configure AWS RDS credentials, run the following commands in terminal to load your credentials as environment variables. These credentials all users to connect to AWS RDS.
-```bash
-export MYSQL_HOST="YOUR_MYSQL_HOST"
-export MYSQL_USER="YOUR_MYSQL_USER"
-export MYSQL_PASSWORD="YOUR_MYSQL_PASSWORD"
-export SQLALCHEMY_DATABASE_URI="YOUR_SQLALCHEMY_DATABASE_URI"
-```
-#### Add the database to RDS
-```bash
-docker run -it -e SQLALCHEMY_DATABASE_URI rds
-```
-
-#### Check if the database is added to RDS
+The following command will connect users to their RDS MySQL databases.
 ```bash
 docker run -it --rm mysql:5.7.33 mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}
 ```
-(for apple M1)
-```bash
-docker run --platform linux/x86_64  -it --rm  mysql:5.7.33 mysql  -h${MYSQL_HOST}  -u${MYSQL_USER}  -p${MYSQL_PASSWORD}
-```
+For users whose computers that have the Apple M1 Chips, the following command should be used instead.
 
-If successfully connected, you may run the following commands:
+```bash
+docker run --platform linux/x86_64  -it --rm  mysql:5.7.33 mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}
+```
+**Note:** To test the connection to RDS, the RDS credentials `MYSQL_HOST`, `MYSQL_USER`, and `MYSQL_PASSWORD` need to be loaded in the environment. 
+
+If successfully connected, the following may run the following commands:
 
 To show all the databases: `show databases`;
+
 To use a particular database: `use <database_name>`;
+
 After selecting a database, you can see all the tables in it by running: `show tables`;
+
 You may check the columns within a table by running: `show columns from <table_name>`;
 
 
