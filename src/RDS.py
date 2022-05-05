@@ -7,17 +7,10 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, MetaData
 
-engine_string = os.getenv("SQLALCHEMY_DATABASE_URI")
-if engine_string is None:
-    raise RuntimeError("SQLALCHEMY_DATABASE_URI environment variable not set; exiting")
-# engine_string = "mysql+pymysql://user:password@host:3306/msia423_db"
-
-# set up looging config
-logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.INFO)
-logger = logging.getLogger(__file__)
+# set up logger
+logger = logging.getLogger(__name__)
 
 Base = declarative_base()
-
 
 class Villagers(Base):
     """Creates a data model for the database to be set up for capturing villagers."""
@@ -46,15 +39,26 @@ class Villagers(Base):
         return f"<villager {self.Name}>"
 
 def create_db(engine_string: str) -> None:
+
+    # find SQLALCHEMY_DATABASE_URI from environment and set as engine.
+    engine_string = os.getenv("SQLALCHEMY_DATABASE_URI")
+    if engine_string is None:
+        logger.error("SQLALCHEMY_DATABASE_URI environment variable not set.")
+        raise RuntimeError("SQLALCHEMY_DATABASE_URI environment variable not set; exiting")
     engine = sql.create_engine(engine_string)
+
     try:
         engine.connect()
     except sqlalchemy.exc.OperationalError as e:
         logger.error("Could not connect to database!")
         logger.debug("Database URI: %s", )
         raise e
-    
-    # create the tracks table
+    except sqlalchemy.exe.OperationalError as e1:
+        logger.error("Can't connect to MySQL server.")
+        logger.debug("It is possible that user is not connected to NU VPN.")
+        raise e1
+
+    # create the villagers table
     Base.metadata.create_all(engine)
 
     # create a db session
@@ -62,9 +66,7 @@ def create_db(engine_string: str) -> None:
     session = Session()
 
     session.commit()
-    logger.info(
-        "Database created with villagers added."
-    )
+    logger.info("Database created with table villagers added.")
     session.close()
 
 # if __name__ == "__main__":

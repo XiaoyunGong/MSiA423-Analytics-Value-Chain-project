@@ -2,19 +2,19 @@
  stage in the model pipeline and orchestrates their execution."""
 import argparse
 import logging.config
-import profile
 
-from config.flaskconfig import SQLALCHEMY_DATABASE_URI
+# from config.flaskconfig import SQLALCHEMY_DATABASE_URI
 from src.add_animal import AnimalManager
 from src.s3 import upload_file_to_s3, download_file_from_s3
 from src.RDS import Villagers, create_db;
 
+# add configuration
 logging.config.fileConfig('config/logging/local.conf')
-logger = logging.getLogger('penny-lane-pipeline')
+
 
 if __name__ == '__main__':
 
-    # Add parsers for both creating a database and adding songs to it
+    # Add the main parser for create and/or add data to the database.
     parser = argparse.ArgumentParser(
         description="Create and/or add data to database")
     subparsers = parser.add_subparsers(dest='subparser_name')
@@ -38,8 +38,7 @@ if __name__ == '__main__':
     # Sub-parser for creating a database
     sp_create = subparsers.add_parser("create_db",
                                       description="Create database")
-    sp_create.add_argument("--engine_string", default=SQLALCHEMY_DATABASE_URI,
-                           help="SQLAlchemy connection URI for database")
+    sp_create.add_argument("--engine_string", help="SQLAlchemy connection URI for database")
 
     # Sub-parser for ingesting new data
     sp_ingest = subparsers.add_parser("ingest",
