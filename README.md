@@ -2,7 +2,7 @@
 Author: Xiaoyun Gong
 
 
-# Table of Contents
+## Table of Contents
 * [Project charter ](#Project-charter)
 * [Directory structure ](#Directory-structure)
 * [Running the app ](#Running-the-app)
@@ -22,18 +22,17 @@ In Animal Crossing, each player usually has 10 villagers on their island. These 
 This app aims to solve these problems by building a recommender system based on players' preferences on villagers. The app will identify villagers that the player will like better.
 
 ### Mission
-Users will be prompted to choose their ideal villager, and the recommender will output the top 10 villagers with similar properties. The dataset of this project is from the [**Animal Crossing Dataset**](https://www.kaggle.com/datasets/jessicali9530/animal-crossing-new-horizons-nookplaza-dataset). This dataset contains information on all 392 villagers and 9000+ items in the game. For the purpose of designing this app, the villager file will be used. Other files may need to be merged to provide properties of recommended villagers. 
+Users will be prompted to choose their ideal villager, and the recommender will output the top 10 villagers with similar properties. The dataset of this project is from the [**Animal Crossing Dataset**](https://www.kaggle.com/datasets/jessicali9530/animal-crossing-new-horizons-nookplaza-dataset). This dataset contains information on all 392 villagers and 9000+ items in the game.
 
 
 ### Success criteria
 
 #### Machine learning performance metric
 
-This app will be using the k-modes algorithm. There will not be a fixed value set as the deployement threshold. Optimal k (number of clusters) will be found using silhouette and scree plot of the cost. Idealy, the silhouette score should be greater than 0.4. Other metrics can be evalutated when the app goes live. For example, the precision and recall of the recommendation provided. 
+This app will be using the k-modes algorithm. There will not be a fixed value set as the deployement threshold. Optimal k (number of clusters) will be found using scree plot of the cost. Other metrics can be evalutated when the app goes live. For example, the precision and recall of the recommendation provided. 
 
 ### Business Metrics
 From a business perspective, the number of visits to the app and retention rate can be measured. There can also be surveys sent to users asking whether they think the recommendation is helpful. 
-
 
 
 ## Directory structure 
@@ -52,6 +51,7 @@ From a business perspective, the number of visits to the app and retention rate 
 ├── data                              <- Folder that contains data used or generated. Only the external/ and sample/ subdirectories are tracked by git. 
 │   ├── external/                     <- External data sources, usually reference data,  will be synced with git
 │   ├── sample/                       <- Sample data used for code development and testing, will be synced with git
+│   ├── raw/                 	      <- Raw data used for code development and testing, will be synced with git
 │
 ├── deliverables/                     <- Any white papers, presentations, final work products that are presented or delivered to a stakeholder 
 │
@@ -61,6 +61,7 @@ From a business perspective, the number of visits to the app and retention rate 
 │   ├── Dockerfile.app                <- Dockerfile for building image to run web app
 │   ├── Dockerfile.run                <- Dockerfile for building image to execute run.py  
 │   ├── Dockerfile.test               <- Dockerfile for building image to run unit tests
+│   ├── Dockerfile.rds	              <- Dockerfile for building image to creare data schema to rds
 │
 ├── figures/                          <- Generated graphics and figures to be used in reporting, documentation, etc
 │
@@ -83,8 +84,124 @@ From a business perspective, the number of visits to the app and retention rate 
 ├── requirements.txt                  <- Python package dependencies 
 ```
 
-## Running the app 
+## Setup
 
+### Environment Variable and Credentials
+
+#### AWS S3
+
+The data of this project is stored using AWS S3, an AWS data storage service. To be able to reproduce the data aquisition step, the user's `AWS_ACCESS_KEY_ID` and `AWS_SUCRET_ACCESS_KEY` are needed. 
+Running the commands below will load user's credentials as environment variables. 
+
+```bash
+export AWS_ACCESS_KEY_ID="YOUR_ACCESS_KEY_ID"
+export AWS_SECRET_ACCESS_KEY="YOUR_SECRET_ACCESS_KEY"
+```
+**Note:**
+Replace `YOUR_ACCESS_KEY_ID` and `YOUR_SECRET_ACCESS_KEY` with user's own AWS credentials. 
+
+#### AWS RDS
+An AWS RDS (Relational Database Service by AWS) instance is used to contain the MySQL database for this project. To be able to create database and ingest data into the remote database, `SQLALCHEMY_DATABASE_URI` needs to be loaded as an enviromental variable. The `SQLALCHEMY_DATABASE_URI`  is defined by a string with the following format:
+
+```bash
+dialect+driver://username:password@host:port/database
+```
+Running the commands below will load user's `SQLALCHEMY_DATABASE_URI` as environment variables. 
+**Note:**
+Replace `username`, `password`, `host`, `port`, and `database` with user's own RDS setups.
+
+```bash
+export SQLALCHEMY_DATABASE_URI = "YOUR_DATABASE_URI"
+```
+
+To be able to enter the interactive session for the remote mysql database, the some connection credentials are needed. The following commands will load the credentials as environment variables.
+```bash
+export MYSQL_USER="YOUR_SQL_USER_NAME"
+export MYSQL_PASSWORD="YOUR_SQL_PASSWORD"
+export MYSQL_HOST="YOUR_SQL_HOST"
+export MYSQL_PORT="YOUR_SQL_PORT"
+export MYSQL_DATABASE="YOUR_DATABASE_NAME"
+```
+
+### Docker images
+
+(TODO: Write descriptions of each docker image.)
+
+```bash
+docker build -f dockerfiles/Dockerfile.run -t animalcrossing .
+```
+
+## Data Source
+The dataset used for this app comes from Kaggle. To download the data, users can go to this [**Animal Crossing dataset website**](https://www.kaggle.com/datasets/jessicali9530/animal-crossing-new-horizons-nookplaza-dataset) and click the Download button at the top of the page. Note that users will need to register a Kaggle account in order to download dataset if user do not have one. Because the dataset is relatively small, a copy was saved in `data/raw/villagers.csv`. Another copy is uploaded to S3. The following command will upload the data form `data/raw/villagers.csv` (or any local location) to the user's S3 bucket.
+
+```base
+docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py upload_file_to_s3 
+```
+The current default for the local path to the data is `data/raw/villagers.csv`, and the S3 path to the data is `s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv`. If the user needs to upload the data from another local location or upload the data to another destination in S3, the following command can address that.
+
+```base
+docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py upload_file_to_s3 --local_path=<YOUR_LOCAL_PATH> --s3_path=<YOUR_S3_PATH>
+```
+
+**Note:**
+To run these commands, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` need to be loaded as environment variables, and the docker image `animalcrossing` needs to be built.
+
+## Model Pipeline
+### Download raw data from S3
+```bash
+docker run --mount type=bind, source=-"$(pwd)",target=/app/ -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py download_file_from_s3
+```
+The current default for the local path to the data is `data/raw/villagers.csv`, and the S3 path to the data is `s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv`. If the user needs to download the data to another local location or download the data from another destination in S3, the following command can address that.
+
+```bash
+docker run --mount type=bind, source=-"$(pwd)",target=/app/ -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py download_file_from_s3 --local_path=<YOUR_LOCAL_PATH> --s3_path=<YOUR_S3_PATH>
+```
+
+### Preprocess the data
+(TODO)
+### Train model
+(TODO)
+### Generate recommendation results
+(TODO)
+
+## Database storing
+### Local database configuration
+（Maybe? TODO)
+
+### Remote database Connection
+As mentioned before, the database used for this project is stored in AWS RDS. The command below will connect user to the database on RDS.
+
+```bash
+docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py create_db
+```
+**Note:**
+For security reasons, this database can only be accessed for users connected to the Northwetsern VPN. Besides, the RDS credential `SQLALCHEMY_DATABASE_URI` must be loaded into environment before running the command. There is no default values of the credentials for this command. 
+
+**Optional: Test the connection to RDS**
+
+The following command will connect users to their RDS MySQL databases.
+```bash
+docker run -it --rm mysql:5.7.33 mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}
+```
+For users whose computers that have the Apple M1 Chips, the following command should be used instead.
+
+```bash
+docker run --platform linux/x86_64  -it --rm  mysql:5.7.33 mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}
+```
+**Note:** To test the connection to RDS, the RDS credentials `MYSQL_HOST`, `MYSQL_USER`, and `MYSQL_PASSWORD` need to be loaded in the environment. 
+
+If successfully connected, the following may run the following commands:
+
+To show all the databases: `show databases`;
+
+To use a particular database: `use <database_name>`;
+
+After selecting a database, you can see all the tables in it by running: `show tables`;
+
+You may check the columns within a table by running: `show columns from <table_name>`;
+
+
+---------
 ### 1. Initialize the database 
 #### Build the image 
 
