@@ -12,6 +12,7 @@ import sqlalchemy
 import sqlalchemy.orm
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 
@@ -144,6 +145,36 @@ class AnimalManager:
         except sqlalchemy.exc.OperationalError:
             logger.error('Failed to connect to server. '
                          'Please check if you are connected to Northwestern VPN')
+    
+    def ingest_from_csv(self, input_path: str) -> None:
+        """
+        Add all the data in a csv file into the database
+        Args:
+            input_path: the path of the csv file
+        Returns: None
+        """
+
+        session = self.session
+        # Make the dataframe to a list of dictionaries to pass the data into the Pokemon class easily
+        data_list = pd.read_csv(input_path).to_dict(orient='records')
+
+        persist_list = []
+        for data in data_list:
+            persist_list.append(Villagers(**data))
+
+        try:
+            session.add_all(persist_list)
+            session.commit()
+        except sqlalchemy.exc.OperationalError:
+            my_message = ('You might have connection error. Have you configured \n'
+                          'SQLALCHEMY_DATABASE_URI variable correctly and connect to Northwestern VPN?')
+            logger.error(f"{my_message} \n The original error message is: ", exc_info=True)
+        except sqlalchemy.exc.IntegrityError:
+            my_message = ('Have you already inserted the same record into the database before? \n'
+                          'This database does not allow duplicate in the input-recommendation pair')
+            logger.error(f"{my_message} \n The original error message is: ", exc_info=True)
+        else:
+            logger.info(f'{len(persist_list)} records were added to the table')
         
 
 

@@ -149,7 +149,7 @@ To run these commands, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` need to b
 ## Model Pipeline
 ### Download raw data from S3
 ```bash
-docker run --mount type=bind, source=-"$(pwd)",target=/app/ -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py download_file_from_s3
+docker run --mount type=bind,source=-"$(pwd)",target=/app/ -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py download_file_from_s3
 ```
 The current default for the local path to the data is `data/raw/villagers.csv`, and the S3 path to the data is `s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv`. If the user needs to download the data to another local location or download the data from another destination in S3, the following command can address that.
 

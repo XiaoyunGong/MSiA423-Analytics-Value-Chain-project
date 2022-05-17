@@ -10,7 +10,7 @@ from src.RDS import Villagers, create_db;
 
 # add configuration
 logging.config.fileConfig('config/logging/local.conf')
-
+from config.flaskconfig import SQLALCHEMY_DATABASE_URI
 
 if __name__ == '__main__':
 
@@ -61,8 +61,9 @@ if __name__ == '__main__':
     sp_ingest.add_argument("--Furniture_List", help="The list of furniture(IDs) in the animal's house")
     sp_ingest.add_argument("--Filename", help="The Filename of the animal")   
     sp_ingest.add_argument("--engine_string",
-                           default='sqlite:///data/tracks.db',
+                           default=SQLALCHEMY_DATABASE_URI,
                            help="SQLAlchemy connection URI for database")
+    sp_ingest.add_argument("--input_path", default="data/raw/villagers.csv", help="Name of villagers to be added")
 
     args = parser.parse_args()
     sp_used = args.subparser_name
@@ -71,14 +72,7 @@ if __name__ == '__main__':
         create_db(args.engine_string)
     elif sp_used == 'ingest':
         am = AnimalManager(engine_string=args.engine_string)
-        am.add_application(args.Unique_Entry_ID, args.Name, args.Species,
-                           args.Gender, args.Personality, args.Hobby,
-                           args.Birthday, args.Catchphrase,
-                           args.Favorite_Song, args.Style_1,
-                           args.Style_2, args.Color_1,
-                           args.Color_2, args.Wallpaper,
-                           args.Flooring, args.Furniture_List,
-                           args.Filename)
+        am.ingest_from_csv(input_path=args.input_path)
         am.close()
     elif sp_used == 'upload_file_to_s3':
         upload_file_to_s3(args.local_path, args.s3_path)
