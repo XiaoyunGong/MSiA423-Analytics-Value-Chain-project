@@ -4,9 +4,9 @@ import argparse
 import logging.config
 
 # from config.flaskconfig import SQLALCHEMY_DATABASE_URI
-from src.add_animal import AnimalManager
+from src.animal_manager import AnimalManager, Villagers, create_db
 from src.s3 import upload_file_to_s3, download_file_from_s3
-from src.RDS import Villagers, create_db;
+#from src.RDS import create_db;
 
 # add configuration
 logging.config.fileConfig('config/logging/local.conf')
@@ -27,13 +27,16 @@ if __name__ == '__main__':
     sp_upload.add_argument('--local_path', default='data/raw/villagers.csv',
                            help="local path to the data")
     
-    # Sub-parser for downloading data from s3
+    # Sub-parser for downloading data from s3 (optional)
     sp_download = subparsers.add_parser("download_file_from_s3", help="Download raw data from s3")
     sp_download.add_argument('--s3_path',
                            default='s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv',
                            help="S3 data path to the data")
     sp_download.add_argument('--local_path', default='data/download/villagers.csv',
                            help="local path to the data")
+
+    # Sub-parser for preprocess the data
+    sp_preprocess = subparsers.add_parser("preprocess", help="preprocess the raw data for modeling")
 
     # Sub-parser for creating a database
     sp_create = subparsers.add_parser("create_db",
@@ -43,23 +46,23 @@ if __name__ == '__main__':
     # Sub-parser for ingesting new data
     sp_ingest = subparsers.add_parser("ingest",
                                       description="Add data to database")
-    sp_ingest.add_argument("--Unique_Entry_ID", help="ID of the new animal")
-    sp_ingest.add_argument("--Name", help="Name of the animal")
-    sp_ingest.add_argument("--Species", help="Species of the animal")
-    sp_ingest.add_argument("--Gender", help="Gender of the animal")
-    sp_ingest.add_argument("--Personality", help="Personality of the animal")
-    sp_ingest.add_argument("--Hobby", help="Hobby of the animal")
-    sp_ingest.add_argument("--Birthday", help="Birthday of the animal")
-    sp_ingest.add_argument("--Catchphrase", help="Catchphrase of the animal")
-    sp_ingest.add_argument("--Favorite_Song", help="Favorate song of the animal")
-    sp_ingest.add_argument("--Style_1", help="The first favorite style of the animal")
-    sp_ingest.add_argument("--Style_2", help="The second favorite style of the animal")
-    sp_ingest.add_argument("--Color_1", help="The first favorite color of the animal")
-    sp_ingest.add_argument("--Color_2", help="The second favorite color of the animal")
-    sp_ingest.add_argument("--Wallpaper", help="The wallpaper of the animal's house")
-    sp_ingest.add_argument("--Flooring", help="The wallpaper of the animal's house")
-    sp_ingest.add_argument("--Furniture_List", help="The list of furniture(IDs) in the animal's house")
-    sp_ingest.add_argument("--Filename", help="The Filename of the animal")   
+    # sp_ingest.add_argument("--Unique_Entry_ID", help="ID of the new animal")
+    # sp_ingest.add_argument("--Name", help="Name of the animal")
+    # sp_ingest.add_argument("--Species", help="Species of the animal")
+    # sp_ingest.add_argument("--Gender", help="Gender of the animal")
+    # sp_ingest.add_argument("--Personality", help="Personality of the animal")
+    # sp_ingest.add_argument("--Hobby", help="Hobby of the animal")
+    # sp_ingest.add_argument("--Birthday", help="Birthday of the animal")
+    # sp_ingest.add_argument("--Catchphrase", help="Catchphrase of the animal")
+    # sp_ingest.add_argument("--Favorite_Song", help="Favorate song of the animal")
+    # sp_ingest.add_argument("--Style_1", help="The first favorite style of the animal")
+    # sp_ingest.add_argument("--Style_2", help="The second favorite style of the animal")
+    # sp_ingest.add_argument("--Color_1", help="The first favorite color of the animal")
+    # sp_ingest.add_argument("--Color_2", help="The second favorite color of the animal")
+    # sp_ingest.add_argument("--Wallpaper", help="The wallpaper of the animal's house")
+    # sp_ingest.add_argument("--Flooring", help="The wallpaper of the animal's house")
+    # sp_ingest.add_argument("--Furniture_List", help="The list of furniture(IDs) in the animal's house")
+    # sp_ingest.add_argument("--Filename", help="The Filename of the animal")   
     sp_ingest.add_argument("--engine_string",
                            default=SQLALCHEMY_DATABASE_URI,
                            help="SQLAlchemy connection URI for database")

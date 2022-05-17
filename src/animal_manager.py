@@ -1,6 +1,7 @@
 """Creates, ingests data into, and enables querying of a table of
  songs for the PennyLane app to query from and display results to the user."""
 # mypy: plugins = sqlmypy, plugins = flasksqlamypy
+import os
 import argparse
 import logging.config
 import sqlite3
@@ -8,6 +9,7 @@ import sqlite3
 import typing
 
 import flask
+import sqlalchemy as sql
 import sqlalchemy
 import sqlalchemy.orm
 from flask_sqlalchemy import SQLAlchemy
@@ -46,20 +48,38 @@ class Villagers(Base):
     #     return f'<Track {self.Name}>'
     def __repr__(self):
         return '<Animal Name %r>' % self.Name
-        
-# def create_db(engine_string: str) -> None:
-#     """Create database with Tracks() data model from provided engine string.
 
-#     Args:
-#         engine_string (str): SQLAlchemy engine string specifying which database to write to.
+def create_db(engine_string: str) -> None:
 
-#     Returns: None
+    # find SQLALCHEMY_DATABASE_URI from environment and set as engine.
+    engine_string = os.getenv("SQLALCHEMY_DATABASE_URI")
+    if engine_string is None:
+        logger.error("SQLALCHEMY_DATABASE_URI environment variable not set.")
+        raise RuntimeError("SQLALCHEMY_DATABASE_URI environment variable not set; exiting")
+    engine = sql.create_engine(engine_string)
 
-#     """
-#     engine = sqlalchemy.create_engine(engine_string)
+    try:
+        engine.connect()
+    except sqlalchemy.exc.OperationalError as e:
+        logger.error("Could not connect to database!")
+        logger.debug("Database URI: %s", )
+        raise e
+    except sqlalchemy.exe.OperationalError as e1:
+        logger.error("Can't connect to MySQL server.")
+        logger.debug("It is possible that user is not connected to NU VPN.")
+        raise e1
 
-#     Base.metadata.create_all(engine)
-#     logger.info("Database created.")
+    # create the villagers table
+    Base.metadata.create_all(engine)
+
+    # create a db session
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    session.commit()
+    logger.info("Database created with table villagers added.")
+    session.close()
+
 
 class AnimalManager:
     """Creates a SQLAlchemy connection to the Apps table.
@@ -82,6 +102,36 @@ class AnimalManager:
         else:
             raise ValueError(
                 "Need either an engine string or a Flask app to initialize")
+
+    def ingest_from_csv(self, input_path: str) -> None:
+        """
+        Add all the data in a csv file into the database
+        Args:
+            input_path: the path of the csv file
+        Returns: None
+        """
+
+        session = self.session
+        # Make the dataframe to a list of dictionaries to pass the data into the Pokemon class easily
+        data_list = pd.read_csv(input_path).to_dict(orient='records')
+
+        persist_list = []
+        for data in data_list:
+            persist_list.append(Villagers(**data))
+
+        try:
+            session.add_all(persist_list)
+            session.commit()
+        except sqlalchemy.exc.OperationalError:
+            my_message = ('You might have connection error. Have you configured \n'
+                          'SQLALCHEMY_DATABASE_URI variable correctly and connect to Northwestern VPN?')
+            logger.error(f"{my_message} \n The original error message is: ", exc_info=True)
+        except sqlalchemy.exc.IntegrityError:
+            my_message = ('Have you already inserted the same record into the database before? \n'
+                          'This database does not allow duplicate in the input-recommendation pair')
+            logger.error(f"{my_message} \n The original error message is: ", exc_info=True)
+        else:
+            logger.info(f'{len(persist_list)} records were added to the table')
 
     def close(self) -> None:
         """Closes SQLAlchemy session
@@ -145,81 +195,3 @@ class AnimalManager:
         except sqlalchemy.exc.OperationalError:
             logger.error('Failed to connect to server. '
                          'Please check if you are connected to Northwestern VPN')
-    
-    def ingest_from_csv(self, input_path: str) -> None:
-        """
-        Add all the data in a csv file into the database
-        Args:
-            input_path: the path of the csv file
-        Returns: None
-        """
-
-        session = self.session
-        # Make the dataframe to a list of dictionaries to pass the data into the Pokemon class easily
-        data_list = pd.read_csv(input_path).to_dict(orient='records')
-
-        persist_list = []
-        for data in data_list:
-            persist_list.append(Villagers(**data))
-
-        try:
-            session.add_all(persist_list)
-            session.commit()
-        except sqlalchemy.exc.OperationalError:
-            my_message = ('You might have connection error. Have you configured \n'
-                          'SQLALCHEMY_DATABASE_URI variable correctly and connect to Northwestern VPN?')
-            logger.error(f"{my_message} \n The original error message is: ", exc_info=True)
-        except sqlalchemy.exc.IntegrityError:
-            my_message = ('Have you already inserted the same record into the database before? \n'
-                          'This database does not allow duplicate in the input-recommendation pair')
-            logger.error(f"{my_message} \n The original error message is: ", exc_info=True)
-        else:
-            logger.info(f'{len(persist_list)} records were added to the table')
-        
-
-
-# def create_db(engine_string: str) -> None:
-#     """Create database with Tracks() data model from provided engine string.
-
-#     Args:
-#         engine_string (str): SQLAlchemy engine string specifying which database
-#             to write to
-
-#     Returns: None
-
-#     """
-#     engine = sqlalchemy.create_engine(engine_string)
-
-#     Base.metadata.create_all(engine)
-#     logger.info("Database created.")
-
-
-# def add_animal_f(args: argparse.Namespace) -> None:
-#     """Parse command line arguments and add animal to database.
-
-#     Args:
-#         args (:obj:`argparse.Namespace`): object containing the following
-#             fields:
-
-#             - args.title (str): Title of song to add to database
-#             - args.artist (str): Artist of song to add to database
-#             - args.album (str): Album of song to add to database
-#             - args.engine_string (str): SQLAlchemy engine string specifying
-#               which database to write to
-
-#     Returns:
-#         None
-#     """
-#     App_manager = TrackManager(engine_string=args.engine_string)
-#     try:
-#         App_manager.add_App(args.title, args.artist, args.album)
-#     except sqlite3.OperationalError as e:
-#         logger.error(
-#             "Error page returned. Not able to add song to local sqlite "
-#             "database: %s. Is it the right path? Error: %s ",
-#             args.engine_string, e)
-#     except sqlalchemy.exc.OperationalError as e:
-#         logger.error(
-#             "Error page returned. Not able to add song to MySQL database.  "
-#             "Please check engine string and VPN. Error: %s ", e)
-#     App_manager.close()
