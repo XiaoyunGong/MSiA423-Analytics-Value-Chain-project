@@ -4,19 +4,26 @@ import argparse
 import logging.config
 
 # from config.flaskconfig import SQLALCHEMY_DATABASE_URI
+import yaml
 from src.animal_manager import AnimalManager, Villagers, create_db
 from src.s3 import upload_file_to_s3, download_file_from_s3
+from src.preprocess import load_dataset, feature_engineering, save_df
 #from src.RDS import create_db;
 
 # add configuration
 logging.config.fileConfig('config/logging/local.conf')
 from config.flaskconfig import SQLALCHEMY_DATABASE_URI
+logger = logging.getLogger(__name__)
 
 if __name__ == '__main__':
 
     # Add the main parser for create and/or add data to the database.
     parser = argparse.ArgumentParser(
         description="Create and/or add data to database")
+    # parser.add_argument('--config',
+    #                     default='config/model_config.yaml',
+    #                     help='Path to configuration file')
+
     subparsers = parser.add_subparsers(dest='subparser_name')
 
     # Sub-parser for uploading data to s3
@@ -37,6 +44,9 @@ if __name__ == '__main__':
 
     # Sub-parser for preprocess the data
     sp_preprocess = subparsers.add_parser("preprocess", help="preprocess the raw data for modeling")
+    sp_preprocess.add_argument('--config',
+                        default='config/model_config.yaml',
+                        help='Path to configuration file')
 
     # Sub-parser for creating a database
     sp_create = subparsers.add_parser("create_db",
@@ -69,6 +79,11 @@ if __name__ == '__main__':
     sp_ingest.add_argument("--input_path", default="data/raw/villagers.csv", help="Name of villagers to be added")
 
     args = parser.parse_args()
+    with open(args.config, "r") as f:
+        config = yaml.load(f, Loader=yaml.FullLoader)
+
+    logger.info("Configuration file loaded from %s" % args.config)
+
     sp_used = args.subparser_name
 
     if sp_used == 'create_db':
@@ -81,5 +96,9 @@ if __name__ == '__main__':
         upload_file_to_s3(args.local_path, args.s3_path)
     elif sp_used == 'download_file_from_s3':
         download_file_from_s3(args.local_path, args.s3_path)
+    elif sp_used == 'preprocess':
+        data = load_dataset(**config['preprocess']['load_dataset'])
+        data_cleaned = feature_engineering(data, **config['preprocess']['feature_engineering'])
+        save_df(data_cleaned, **config['preprocess']['save_df'])
     else:
         parser.print_help()

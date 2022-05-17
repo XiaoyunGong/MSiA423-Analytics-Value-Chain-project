@@ -1,0 +1,33 @@
+preprocess:
+  load_dataset:
+    filename: data/raw/villagers.csv
+    features: ['Name', 'Species', 'Gender', 'Personality', 'Hobby', 'Birthday', 'Style_1', 'Style_2', 'Color_1', 'Color_2']
+  feature_engineering:
+    grouping_dict: {"ground_large" : 
+                    ['Pig', 'Gorilla', 'Anteater', 'Bull',  'Horse', 'Kangaroo', 'Wolf','Elephant', 'Sheep', 'Deer', 'Tiger', 'Bear', 'Hippo', 'Lion', 'Rhino', 'Cow', 'Goat'],
+                    "ground_small" : 
+                    ['Squirrel', 'Koala', 'Mouse', 'Cat',  'Hamster', 'Penguin',  'Chicken','Cub', 'Dog',  'Ostrich', 'Rabbit', 'Monkey'],
+                    "other": ['Alligator', 'Duck', 'Frog', 'Octopus', 'Bird', 'Eagle']}
+  save_df: 
+    output_path: data/interim/clean.csv
+
+model:
+  get_a_mod_list_and_dict:
+    cluster_range: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    seed: 10
+  cluster_selection_plot:
+    cluster_range: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    output_path: figures/cluster_selection.png
+  save_model:
+    best_num: '6'
+    output_path: models/kmeans.joblib
+recommend:
+  append_cluster_and_name:
+    scale_path: data/interim/data_scale.csv
+    model_path: models/kmeans.joblib
+  generate_recommendation:
+    features: ['sp_attack', 'sp_defense', 'hp', 'attack', 'defense', 'speed']
+    num_clusters: 6
+    k: 10
+    output_path: data/final/results.csv
+    display_features: ['name', 'type1', 'type2', 'abilities', 'generation']

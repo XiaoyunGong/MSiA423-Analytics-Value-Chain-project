@@ -167,7 +167,14 @@ docker run --mount type=bind, source="$(pwd)",target=/app/ \
 ```
 
 ### Preprocess the data
-(TODO)
+The command below will allow users to preprocess the data. The preprocessed dataframe is stored in `data/interim/clean.csv` by default.
+
+```bash
+docker run --mount type=bind,source="$(pwd)",target=/app/ \   
+            animalcrossing run.py preprocess \
+			--config=config/model_config.yaml
+```
+
 ### Train model
 (TODO)
 ### Generate recommendation results

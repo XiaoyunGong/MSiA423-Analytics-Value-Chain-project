@@ -12,6 +12,7 @@ import flask
 import sqlalchemy as sql
 import sqlalchemy
 import sqlalchemy.orm
+from sqlalchemy.orm import sessionmaker
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 import pandas as pd
