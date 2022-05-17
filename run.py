@@ -30,9 +30,9 @@ if __name__ == '__main__':
     # Sub-parser for downloading data from s3
     sp_download = subparsers.add_parser("download_file_from_s3", help="Download raw data from s3")
     sp_download.add_argument('--s3_path',
-                           default='s3://2022-msia423-gong-xiaoyun/data/villagers.csv',
+                           default='s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv',
                            help="S3 data path to the data")
-    sp_download.add_argument('--local_path', default='data/raw/villagers.csv',
+    sp_download.add_argument('--local_path', default='data/download/villagers.csv',
                            help="local path to the data")
 
     # Sub-parser for creating a database
