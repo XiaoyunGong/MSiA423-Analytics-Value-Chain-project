@@ -170,26 +170,40 @@ docker run --mount type=bind, source="$(pwd)",target=/app/ \
 The command below will allow users to preprocess the data. The preprocessed dataframe is stored in `data/interim/clean.csv` by default.
 
 ```bash
-docker run --mount type=bind,source="$(pwd)",target=/app/ \   
-            animalcrossing run.py preprocess \
-			--config=config/model_config.yaml
+docker run --mount type=bind,source="$(pwd)",target=/app/ animalcrossing run.py preprocess --config=config/model_config.yaml
 ```
 
 ### Train model
-(TODO)
+The command below will train the kmodes model. A cost by number of cluster plot is generated and saved in `figures/cost_plot_kmodes.png`.
+
+**Note:** This will take a little bit. 
+```bash
+docker run --mount type=bind,source="$(pwd)",target=/app/ animalcrossing run.py train --config=config/model_config.yaml
+```
 ### Generate recommendation results
-(TODO)
+```bash
+docker run --mount type=bind,source="$(pwd)",target=/app/ animalcrossing run.py recommendation --config=config/model_config.yaml
+```
 
 ## Database storing
 ### Local database configuration
 （Maybe? TODO)
 
 ### Remote database Connection
-As mentioned before, the database used for this project is stored in AWS RDS. The command below will connect user to the database on RDS.
+As mentioned before, the database used for this project is stored in AWS RDS. The command below will connect user to the database on RDS, and load the raw data (**villagers**) and the recommendation data (**recommendations**) to RDS.
 
 ```bash
 docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py create_db
 ```
+
+```bash
+docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py ingest_raw 
+```
+
+```bash
+docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py ingest_rec
+```
+
 **Note:**
 For security reasons, this database can only be accessed for users connected to the Northwetsern VPN. Besides, the RDS credential `SQLALCHEMY_DATABASE_URI` must be loaded into environment before running the command. There is no default values of the credentials for this command. 
 

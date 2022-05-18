@@ -5,7 +5,8 @@ import logging.config
 
 # from config.flaskconfig import SQLALCHEMY_DATABASE_URI
 import yaml
-from src.animal_manager import AnimalManager, Villagers, create_db
+from src.animal_manager import AnimalManager, RecommendationManager, create_db
+from src.modeling import kmodes_modeling, recommendation
 from src.s3 import upload_file_to_s3, download_file_from_s3
 from src.preprocess import load_dataset, feature_engineering, save_df
 #from src.RDS import create_db;
@@ -48,14 +49,26 @@ if __name__ == '__main__':
                         default='config/model_config.yaml',
                         help='Path to configuration file')
 
+    # Sub-parser for training
+    sp_train = subparsers.add_parser("train", help="train the model")
+    sp_train.add_argument('--config',
+                        default='config/model_config.yaml',
+                        help='Path to configuration file')
+
+    # Sub-parser for generating the recommendation result
+    sp_recommendation = subparsers.add_parser("recommendation", help="generate the recommendation result")
+    sp_recommendation.add_argument('--config',
+                        default='config/model_config.yaml',
+                        help='Path to configuration file')
+    
     # Sub-parser for creating a database
     sp_create = subparsers.add_parser("create_db",
                                       description="Create database")
     sp_create.add_argument("--engine_string", help="SQLAlchemy connection URI for database")
 
-    # Sub-parser for ingesting new data
-    sp_ingest = subparsers.add_parser("ingest",
-                                      description="Add data to database")
+    # Sub-parser for ingesting raw data
+    sp_ingest_raw = subparsers.add_parser("ingest_raw",
+                                      description="Add raw data to database")
     # sp_ingest.add_argument("--Unique_Entry_ID", help="ID of the new animal")
     # sp_ingest.add_argument("--Name", help="Name of the animal")
     # sp_ingest.add_argument("--Species", help="Species of the animal")
@@ -73,22 +86,30 @@ if __name__ == '__main__':
     # sp_ingest.add_argument("--Flooring", help="The wallpaper of the animal's house")
     # sp_ingest.add_argument("--Furniture_List", help="The list of furniture(IDs) in the animal's house")
     # sp_ingest.add_argument("--Filename", help="The Filename of the animal")   
-    sp_ingest.add_argument("--engine_string",
+    sp_ingest_raw.add_argument("--engine_string",
                            default=SQLALCHEMY_DATABASE_URI,
                            help="SQLAlchemy connection URI for database")
-    sp_ingest.add_argument("--input_path", default="data/raw/villagers.csv", help="Name of villagers to be added")
+    sp_ingest_raw.add_argument("--input_path", default="data/raw/villagers.csv", help="Raw datt ingestion.")
+
+    # sub-parser for ingesting recommendation data
+    sp_ingest_rec = subparsers.add_parser("ingest_rec",
+                                      description="Add data to database")
+    sp_ingest_rec.add_argument("--engine_string",
+                           default=SQLALCHEMY_DATABASE_URI,
+                           help="SQLAlchemy connection URI for database")
+    sp_ingest_rec.add_argument("--input_path", default="data/final/recommendation.csv", help="Recommendation table ingestion.")
+
+    # with open(args.config, "r") as f:
+    #     config = yaml.load(f, Loader=yaml.FullLoader)
+
+    # logger.info("Configuration file loaded from %s" % args.config)
 
     args = parser.parse_args()
-    with open(args.config, "r") as f:
-        config = yaml.load(f, Loader=yaml.FullLoader)
-
-    logger.info("Configuration file loaded from %s" % args.config)
-
     sp_used = args.subparser_name
 
     if sp_used == 'create_db':
         create_db(args.engine_string)
-    elif sp_used == 'ingest':
+    elif sp_used == 'ingest_raw':
         am = AnimalManager(engine_string=args.engine_string)
         am.ingest_from_csv(input_path=args.input_path)
         am.close()
@@ -97,8 +118,25 @@ if __name__ == '__main__':
     elif sp_used == 'download_file_from_s3':
         download_file_from_s3(args.local_path, args.s3_path)
     elif sp_used == 'preprocess':
+        with open(args.config, "r") as f:
+            config = yaml.load(f, Loader=yaml.FullLoader)
+            logger.info("Configuration file loaded from %s" % args.config)
         data = load_dataset(**config['preprocess']['load_dataset'])
         data_cleaned = feature_engineering(data, **config['preprocess']['feature_engineering'])
         save_df(data_cleaned, **config['preprocess']['save_df'])
+    elif sp_used =='train':
+        with open(args.config, "r") as f:
+            config = yaml.load(f, Loader=yaml.FullLoader)
+            logger.info("Configuration file loaded from %s" % args.config)
+        kmodes_modeling(**config['modeling']['kmodes_modeling'])
+    elif sp_used == 'recommendation':
+        with open(args.config, "r") as f:
+            config = yaml.load(f, Loader=yaml.FullLoader)
+            logger.info("Configuration file loaded from %s" % args.config)
+        recommendation(**config['modeling']['recommendation'])
+    elif sp_used == 'ingest_rec':
+        am = RecommendationManager(engine_string=args.engine_string)
+        am.ingest_from_csv_rec(input_path=args.input_path)
+        am.close()
     else:
         parser.print_help()

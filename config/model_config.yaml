@@ -11,16 +11,24 @@ preprocess:
   save_df: 
     output_path: data/interim/clean.csv
 
-model:
-  get_a_mod_list_and_dict:
-    cluster_range: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    seed: 10
-  cluster_selection_plot:
-    cluster_range: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    output_path: figures/cluster_selection.png
-  save_model:
-    best_num: '6'
-    output_path: models/kmeans.joblib
+modeling:
+  kmodes_modeling:
+    filename: data/interim/clean.csv
+    k_start: 1
+    k_end: 30
+    init: random
+    n_init: 12
+    random_state: 42
+    pngpath: figures/cost_plot_kmodes.png
+
+  recommendation:
+    filename: data/interim/clean.csv
+    n_cluster: 15
+    init: random
+    n_init: 12
+    random_state: 42
+    recommendation_path: data/final/recommendation.csv
+
 recommend:
   append_cluster_and_name:
     scale_path: data/interim/data_scale.csv

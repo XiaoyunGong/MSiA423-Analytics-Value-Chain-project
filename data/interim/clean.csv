@@ -1,0 +1,392 @@
+Name,Species,Gender,Personality,Hobby,Birthday,Style_1,Style_2,Color_1,Color_2
+Admiral,other,Male,Cranky,Nature,Jan,Cool,Cool,Black,Blue
+Agent S,ground_small,Female,Peppy,Fitness,Jul,Active,Simple,Blue,Black
+Agnes,ground_large,Female,Big Sister,Play,Apr,Simple,Elegant,Pink,White
+Al,ground_large,Male,Lazy,Fitness,Oct,Active,Active,Red,White
+Alfonso,other,Male,Lazy,Play,Jun,Simple,Simple,Red,Blue
+Alice,ground_small,Female,Normal,Education,Aug,Cute,Cute,Red,Pink
+Alli,other,Female,Snooty,Fashion,Nov,Gorgeous,Elegant,Yellow,Brown
+Amelia,other,Female,Snooty,Music,Nov,Cool,Elegant,Black,White
+Anabelle,ground_large,Female,Peppy,Fashion,Feb,Cute,Simple,Green,Blue
+Anchovy,other,Male,Lazy,Play,Mar,Simple,Simple,Colorful,Orange
+Angus,ground_large,Male,Cranky,Fitness,Apr,Cool,Cool,Red,Black
+Anicotti,ground_small,Female,Peppy,Fashion,Feb,Simple,Elegant,Red,Pink
+Ankha,ground_small,Female,Snooty,Nature,Sep,Gorgeous,Simple,Colorful,Brown
+Annalisa,ground_large,Female,Normal,Nature,Feb,Elegant,Gorgeous,Red,Pink
+Annalise,ground_large,Female,Snooty,Fashion,Dec,Elegant,Active,Blue,Purple
+Antonio,ground_large,Male,Jock,Fitness,Oct,Simple,Simple,Light blue,Blue
+Apollo,other,Male,Cranky,Music,Jul,Cool,Simple,Black,Black
+Apple,ground_small,Female,Peppy,Play,Sep,Cute,Simple,Colorful,Red
+Astrid,ground_large,Female,Snooty,Music,Sep,Cool,Active,Black,Colorful
+Audie,ground_large,Female,Peppy,Fitness,Aug,Cute,Active,Green,White
+Aurora,ground_small,Female,Normal,Education,Jan,Cute,Elegant,Pink,Red
+Ava,ground_small,Female,Normal,Music,Apr,Elegant,Cute,Red,Gray
+Avery,other,Male,Cranky,Music,Feb,Simple,Gorgeous,Orange,Brown
+Axel,ground_large,Male,Jock,Fitness,Mar,Active,Simple,Green,White
+Baabara,ground_large,Female,Snooty,Fashion,Mar,Gorgeous,Elegant,Purple,Blue
+Bam,ground_large,Male,Jock,Play,Nov,Active,Simple,Green,Brown
+Bangle,ground_large,Female,Peppy,Fashion,Aug,Gorgeous,Cute,Yellow,Green
+Barold,ground_small,Male,Lazy,Play,Mar,Simple,Cool,Yellow,Black
+Bea,ground_small,Female,Normal,Nature,Oct,Simple,Cool,Light blue,Green
+Beardo,ground_large,Male,Smug,Education,Sep,Elegant,Elegant,Brown,Blue
+Beau,ground_large,Male,Lazy,Nature,Apr,Simple,Cute,Beige,Orange
+Becky,ground_small,Female,Snooty,Music,Dec,Gorgeous,Elegant,Purple,Pink
+Bella,ground_small,Female,Peppy,Music,Dec,Cool,Active,Black,Purple
+Benedict,ground_small,Male,Lazy,Play,Oct,Simple,Simple,Blue,Purple
+Benjamin,ground_small,Male,Lazy,Nature,Aug,Simple,Simple,Red,White
+Bertha,ground_large,Female,Normal,Education,Apr,Cute,Elegant,Pink,White
+Bettina,ground_small,Female,Normal,Education,Jun,Simple,Elegant,White,Red
+Bianca,ground_large,Female,Peppy,Play,Dec,Cute,Cute,Pink,Orange
+Biff,ground_large,Male,Jock,Fitness,Mar,Gorgeous,Active,Black,Blue
+Big Top,ground_large,Male,Lazy,Play,Oct,Simple,Active,Green,Green
+Bill,other,Male,Jock,Play,Feb,Active,Active,Blue,Purple
+Billy,ground_large,Male,Jock,Play,Mar,Simple,Active,Blue,Purple
+Biskit,ground_small,Male,Lazy,Play,May,Gorgeous,Simple,Purple,Colorful
+Bitty,ground_large,Female,Snooty,Education,Oct,Cute,Elegant,Pink,Orange
+Blaire,ground_small,Female,Snooty,Fashion,Jul,Gorgeous,Elegant,Orange,Brown
+Blanche,ground_small,Female,Snooty,Nature,Dec,Elegant,Gorgeous,Black,Brown
+Bluebear,ground_small,Female,Peppy,Fashion,Jun,Cute,Simple,White,Blue
+Bob,ground_small,Male,Lazy,Play,Jan,Simple,Cute,Colorful,Red
+Bonbon,ground_small,Female,Peppy,Play,Mar,Cute,Elegant,Light blue,Yellow
+Bones,ground_small,Male,Lazy,Play,Aug,Simple,Cute,Beige,Brown
+Boomer,ground_small,Male,Lazy,Fitness,Feb,Simple,Cool,Brown,Beige
+Boone,ground_large,Male,Jock,Fitness,Sep,Elegant,Cool,Colorful,Red
+Boots,other,Male,Jock,Play,Aug,Gorgeous,Active,Colorful,Purple
+Boris,ground_large,Male,Cranky,Nature,Nov,Cool,Gorgeous,Purple,Black
+Boyd,ground_large,Male,Cranky,Fitness,Oct,Simple,Cool,Red,Black
+Bree,ground_small,Female,Snooty,Fashion,Jul,Elegant,Gorgeous,Black,Blue
+Broccolo,ground_small,Male,Lazy,Play,Jun,Simple,Cute,Colorful,Yellow
+Broffina,ground_small,Female,Snooty,Music,Oct,Gorgeous,Elegant,Black,Red
+Bruce,ground_large,Male,Cranky,Nature,May,Cool,Simple,Black,Red
+Bubbles,ground_large,Female,Peppy,Fashion,Sep,Active,Cute,Purple,Pink
+Buck,ground_large,Male,Jock,Fitness,Apr,Active,Simple,Gray,Brown
+Bud,ground_large,Male,Jock,Fitness,Aug,Active,Simple,Green,Yellow
+Bunnie,ground_small,Female,Peppy,Fashion,May,Cute,Cute,Green,Pink
+Butch,ground_small,Male,Cranky,Music,Nov,Cool,Simple,Blue,Gray
+Buzz,other,Male,Cranky,Nature,Dec,Simple,Active,Yellow,Red
+Cally,ground_small,Female,Normal,Nature,Sep,Cute,Elegant,Red,Green
+Camofrog,other,Male,Cranky,Music,Jun,Cool,Active,Blue,White
+Canberra,ground_small,Female,Big Sister,Play,May,Active,Cool,Green,Light blue
+Candi,ground_small,Female,Peppy,Play,Apr,Simple,Cute,Light blue,Yellow
+Carmen,ground_small,Female,Peppy,Fashion,Jan,Elegant,Cute,Green,Beige
+Caroline,ground_small,Female,Normal,Music,Jul,Cute,Gorgeous,Colorful,White
+Carrie,ground_large,Female,Normal,Nature,Dec,Cute,Cute,Red,Colorful
+Cashmere,ground_large,Female,Snooty,Fashion,Apr,Gorgeous,Elegant,Purple,Beige
+Celia,other,Female,Normal,Nature,Mar,Elegant,Cute,Pink,Green
+Cesar,ground_large,Male,Cranky,Fitness,Sep,Cool,Elegant,Blue,Light blue
+Chadder,ground_small,Male,Smug,Fitness,Dec,Elegant,Gorgeous,Black,Gray
+Charlise,ground_large,Female,Big Sister,Fitness,Apr,Active,Cute,Red,Orange
+Cheri,ground_small,Female,Peppy,Fashion,Mar,Simple,Cute,Yellow,Light blue
+Cherry,ground_small,Female,Big Sister,Music,May,Cool,Elegant,Black,Purple
+Chester,ground_small,Male,Lazy,Play,Aug,Simple,Simple,Yellow,Green
+Chevre,ground_large,Female,Normal,Education,Mar,Cute,Elegant,Red,Pink
+Chief,ground_large,Male,Cranky,Music,Dec,Cool,Simple,White,Gray
+Chops,ground_large,Male,Smug,Education,Oct,Gorgeous,Elegant,Red,Green
+Chow,ground_large,Male,Cranky,Fitness,Jul,Cool,Gorgeous,Black,White
+Chrissy,ground_small,Female,Peppy,Fashion,Aug,Cute,Cute,Pink,White
+Claude,ground_small,Male,Lazy,Nature,Dec,Simple,Simple,Black,Colorful
+Claudia,ground_large,Female,Snooty,Music,Nov,Gorgeous,Elegant,Purple,White
+Clay,ground_small,Male,Lazy,Nature,Oct,Elegant,Simple,Beige,Brown
+Cleo,ground_large,Female,Snooty,Education,Feb,Cute,Elegant,Light blue,White
+Clyde,ground_large,Male,Lazy,Play,May,Simple,Cute,Green,White
+Coach,ground_large,Male,Jock,Fitness,Apr,Active,Active,Blue,Red
+Cobb,ground_large,Male,Jock,Education,Oct,Simple,Active,White,Blue
+Coco,ground_small,Female,Normal,Education,Mar,Simple,Cute,Beige,Green
+Cole,ground_small,Male,Lazy,Nature,Aug,Simple,Cute,Orange,Colorful
+Colton,ground_large,Male,Smug,Nature,May,Gorgeous,Elegant,Blue,Red
+Cookie,ground_small,Female,Peppy,Fashion,Jun,Cute,Cute,Green,Light blue
+Cousteau,other,Male,Jock,Fitness,Dec,Elegant,Gorgeous,Green,Red
+Cranston,ground_small,Male,Lazy,Nature,Sep,Simple,Cool,Beige,Brown
+Croque,other,Male,Cranky,Nature,Jul,Elegant,Cool,Red,Orange
+Cube,ground_small,Male,Lazy,Play,Jan,Simple,Cute,Yellow,Colorful
+Curlos,ground_large,Male,Smug,Nature,May,Active,Gorgeous,Red,Green
+Curly,ground_large,Male,Jock,Fitness,Jul,Simple,Active,Yellow,Colorful
+Curt,ground_large,Male,Cranky,Nature,Jul,Cool,Cool,Blue,White
+Cyd,ground_large,Male,Cranky,Music,Jun,Cool,Active,Black,Yellow
+Cyrano,ground_large,Male,Cranky,Education,Mar,Cool,Active,Yellow,Beige
+Daisy,ground_small,Female,Normal,Education,Nov,Simple,Cute,Colorful,Blue
+Deena,other,Female,Normal,Education,Jun,Simple,Cute,Colorful,Blue
+Deirdre,ground_large,Female,Big Sister,Play,May,Simple,Simple,Orange,Orange
+Del,other,Male,Cranky,Fitness,May,Cool,Simple,Blue,White
+Deli,ground_small,Male,Lazy,Nature,May,Gorgeous,Elegant,Purple,Brown
+Derwin,other,Male,Lazy,Play,May,Simple,Elegant,Yellow,Beige
+Diana,ground_large,Female,Snooty,Education,Jan,Elegant,Gorgeous,Purple,Pink
+Diva,other,Female,Big Sister,Fitness,Oct,Gorgeous,Elegant,Purple,Light blue
+Dizzy,ground_large,Male,Lazy,Play,Jul,Simple,Simple,Yellow,Blue
+Dobie,ground_large,Male,Cranky,Nature,Feb,Simple,Cool,Brown,Beige
+Doc,ground_small,Male,Lazy,Education,Mar,Simple,Elegant,Gray,Beige
+Dom,ground_large,Male,Jock,Play,Mar,Active,Cute,Red,Colorful
+Dora,ground_small,Female,Normal,Education,Feb,Simple,Elegant,Blue,Light blue
+Dotty,ground_small,Female,Peppy,Fashion,Mar,Simple,Cute,Blue,Black
+Drago,other,Male,Lazy,Nature,Feb,Elegant,Gorgeous,Orange,Red
+Drake,other,Male,Lazy,Play,Jun,Cool,Simple,Brown,Red
+Drift,other,Male,Jock,Fitness,Oct,Simple,Active,Orange,Red
+Ed,ground_large,Male,Smug,Nature,Sep,Gorgeous,Elegant,Black,Gray
+Egbert,ground_small,Male,Lazy,Play,Oct,Simple,Simple,Beige,Brown
+Elise,ground_small,Female,Snooty,Fashion,Mar,Elegant,Gorgeous,Purple,Red
+Ellie,ground_large,Female,Normal,Nature,May,Simple,Cute,Gray,Pink
+Elmer,ground_large,Male,Lazy,Play,Oct,Simple,Cool,Blue,White
+Eloise,ground_large,Female,Snooty,Fashion,Dec,Elegant,Simple,Green,Orange
+Elvis,ground_large,Male,Cranky,Education,Jul,Gorgeous,Elegant,Red,Black
+Erik,ground_large,Male,Lazy,Nature,Jul,Simple,Simple,Beige,Red
+Eugene,ground_small,Male,Smug,Music,Oct,Cool,Gorgeous,Black,Gray
+Eunice,ground_large,Female,Normal,Fashion,Apr,Simple,Elegant,Beige,Orange
+Fang,ground_large,Male,Cranky,Education,Dec,Simple,Cool,White,Light blue
+Fauna,ground_large,Female,Normal,Nature,Mar,Simple,Cute,Beige,White
+Felicity,ground_small,Female,Peppy,Fashion,Mar,Cute,Cute,Yellow,Orange
+Filbert,ground_small,Male,Lazy,Nature,Jun,Simple,Cute,Blue,White
+Flip,ground_small,Male,Jock,Music,Nov,Active,Simple,Blue,Yellow
+Flo,ground_small,Female,Big Sister,Music,Sep,Cool,Gorgeous,Red,Purple
+Flora,ground_small,Female,Peppy,Play,Feb,Cute,Active,Colorful,Pink
+Flurry,ground_small,Female,Normal,Nature,Jan,Elegant,Cute,Red,Pink
+Francine,ground_small,Female,Snooty,Fashion,Jan,Elegant,Gorgeous,Blue,Black
+Frank,other,Male,Cranky,Education,Jul,Gorgeous,Cool,Brown,Yellow
+Freckles,other,Female,Peppy,Fashion,Feb,Simple,Cute,Green,Colorful
+Freya,ground_large,Female,Snooty,Fashion,Dec,Elegant,Cool,Green,Blue
+Friga,ground_small,Female,Snooty,Fashion,Oct,Elegant,Gorgeous,Pink,Black
+Frita,ground_large,Female,Big Sister,Music,Jul,Active,Cute,Yellow,Red
+Frobert,other,Male,Jock,Fitness,Feb,Active,Simple,Blue,Colorful
+Fuchsia,ground_large,Female,Big Sister,Music,Sep,Cool,Cool,Pink,Pink
+Gabi,ground_small,Female,Peppy,Fashion,Dec,Cute,Gorgeous,Brown,Red
+Gala,ground_large,Female,Normal,Education,Mar,Cute,Elegant,Pink,White
+Gaston,ground_small,Male,Cranky,Education,Oct,Simple,Gorgeous,Brown,Orange
+Gayle,other,Female,Normal,Nature,May,Cute,Cute,Pink,White
+Genji,ground_small,Male,Jock,Fitness,Jan,Elegant,Simple,Green,Purple
+Gigi,other,Female,Snooty,Fashion,Aug,Gorgeous,Elegant,Black,White
+Gladys,ground_small,Female,Normal,Education,Jan,Elegant,Cute,Green,Pink
+Gloria,other,Female,Snooty,Fashion,Aug,Gorgeous,Elegant,Black,Gray
+Goldie,ground_small,Female,Normal,Nature,Dec,Simple,Cute,Yellow,Orange
+Gonzo,ground_small,Male,Cranky,Nature,Oct,Simple,Cool,Black,Green
+Goose,ground_small,Male,Jock,Fitness,Oct,Simple,Active,Blue,White
+Graham,ground_small,Male,Smug,Education,Jun,Simple,Cool,Green,Orange
+Greta,ground_small,Female,Snooty,Education,Sep,Elegant,Simple,Pink,Purple
+Grizzly,ground_large,Male,Cranky,Education,Jul,Cool,Simple,Red,Black
+Groucho,ground_large,Male,Cranky,Music,Oct,Cool,Simple,Black,Gray
+Gruff,ground_large,Male,Cranky,Music,Aug,Cool,Gorgeous,Purple,Black
+Gwen,ground_small,Female,Snooty,Fashion,Jan,Gorgeous,Elegant,Green,White
+Hamlet,ground_small,Male,Jock,Play,May,Simple,Active,Purple,Blue
+Hamphrey,ground_small,Male,Cranky,Nature,Feb,Cool,Simple,Gray,Beige
+Hans,ground_large,Male,Smug,Fitness,Dec,Elegant,Gorgeous,Gray,Blue
+Harry,ground_large,Male,Cranky,Education,Jan,Cool,Simple,Green,Orange
+Hazel,ground_small,Female,Big Sister,Play,Aug,Active,Cute,Red,Yellow
+Henry,other,Male,Smug,Music,Sep,Cool,Simple,Light blue,Blue
+Hippeux,ground_large,Male,Smug,Education,Oct,Elegant,Gorgeous,Brown,Green
+Hopkins,ground_small,Male,Lazy,Nature,Mar,Simple,Active,Blue,Yellow
+Hopper,ground_small,Male,Cranky,Music,Apr,Cool,Simple,Yellow,Red
+Hornsby,ground_large,Male,Lazy,Nature,Mar,Simple,Simple,Green,Brown
+Huck,other,Male,Smug,Fitness,Jul,Simple,Cool,Green,Yellow
+Hugh,ground_large,Male,Lazy,Play,Dec,Simple,Active,Beige,Yellow
+Iggly,ground_small,Male,Jock,Fitness,Nov,Active,Simple,Red,Blue
+Ike,ground_large,Male,Cranky,Nature,May,Cool,Cool,Green,Blue
+Jacob,other,Male,Lazy,Nature,Aug,Simple,Simple,Green,Red
+Jacques,other,Male,Smug,Music,Jun,Cool,Simple,Green,Black
+Jambette,other,Female,Normal,Fashion,Oct,Cool,Cool,Brown,Brown
+Jay,other,Male,Jock,Fitness,Jul,Active,Active,Blue,Light blue
+Jeremiah,other,Male,Lazy,Play,Jul,Simple,Simple,Orange,Yellow
+Jitters,other,Male,Jock,Fitness,Feb,Active,Active,Yellow,Orange
+Joey,other,Male,Lazy,Play,Jan,Simple,Simple,Green,Blue
+Judy,ground_small,Female,Snooty,Music,Mar,Cute,Elegant,Pink,White
+Julia,ground_small,Female,Snooty,Education,Jul,Elegant,Gorgeous,Purple,Red
+Julian,ground_large,Male,Smug,Music,Mar,Gorgeous,Cool,Purple,Blue
+June,ground_small,Female,Normal,Nature,May,Cute,Simple,White,Red
+Kabuki,ground_small,Male,Cranky,Music,Nov,Simple,Simple,Purple,Red
+Katt,ground_small,Female,Big Sister,Music,Apr,Cool,Cool,Purple,Black
+Keaton,other,Male,Smug,Music,Jun,Gorgeous,Cool,Blue,White
+Ken,ground_small,Male,Smug,Education,Dec,Cool,Simple,Purple,Blue
+Ketchup,other,Female,Peppy,Play,Jul,Cute,Cute,Light blue,White
+Kevin,ground_large,Male,Jock,Play,Apr,Active,Simple,Black,Red
+Kid Cat,ground_small,Male,Jock,Fitness,Aug,Active,Simple,Red,Red
+Kidd,ground_large,Male,Smug,Education,Jun,Elegant,Cool,Gray,White
+Kiki,ground_small,Female,Normal,Education,Oct,Simple,Simple,Brown,Beige
+Kitt,ground_large,Female,Normal,Education,Oct,Elegant,Simple,Purple,Red
+Kitty,ground_small,Female,Snooty,Fashion,Feb,Elegant,Gorgeous,Green,Gray
+Klaus,ground_large,Male,Smug,Education,Mar,Simple,Simple,Gray,White
+Knox,ground_small,Male,Cranky,Education,Nov,Elegant,Gorgeous,Brown,Red
+Kody,ground_small,Male,Jock,Fitness,Sep,Active,Simple,Colorful,White
+Kyle,ground_large,Male,Smug,Music,Dec,Gorgeous,Cool,Black,White
+Leonardo,ground_large,Male,Jock,Fitness,May,Active,Gorgeous,Red,Blue
+Leopold,ground_large,Male,Smug,Education,Aug,Elegant,Gorgeous,Purple,Green
+Lily,other,Female,Normal,Education,Feb,Cute,Simple,White,Yellow
+Limberg,ground_small,Male,Cranky,Education,Oct,Simple,Cool,Green,Blue
+Lionel,ground_large,Male,Smug,Music,Jul,Gorgeous,Active,Green,Gray
+Lobo,ground_large,Male,Cranky,Education,Nov,Cool,Active,Black,Beige
+Lolly,ground_small,Female,Normal,Music,Mar,Simple,Simple,Gray,Pink
+Lopez,ground_large,Male,Smug,Education,Aug,Gorgeous,Gorgeous,Gray,Gray
+Louie,ground_large,Male,Jock,Fitness,Mar,Active,Simple,Gray,Red
+Lucha,other,Male,Smug,Fitness,Dec,Active,Cool,Black,Gray
+Lucky,ground_small,Male,Lazy,Play,Nov,Simple,Simple,Beige,White
+Lucy,ground_large,Female,Normal,Music,Jun,Cute,Elegant,Pink,Red
+Lyman,ground_small,Male,Jock,Play,Oct,Simple,Active,Light blue,Yellow
+Mac,ground_small,Male,Jock,Fitness,Nov,Active,Cool,Red,Black
+Maddie,ground_small,Female,Peppy,Play,Jan,Simple,Cute,Purple,Pink
+Maelle,other,Female,Snooty,Fashion,Apr,Cool,Simple,Pink,White
+Maggie,ground_large,Female,Normal,Nature,Sep,Cute,Elegant,Green,Yellow
+Mallary,other,Female,Snooty,Fashion,Nov,Cool,Gorgeous,Blue,White
+Maple,ground_small,Female,Normal,Education,Jun,Simple,Cute,Beige,Green
+Marcel,ground_small,Male,Lazy,Play,Dec,Simple,Cool,Green,Blue
+Marcie,ground_large,Female,Normal,Nature,May,Cute,Elegant,Pink,Beige
+Margie,ground_large,Female,Normal,Education,Jan,Elegant,Cute,Pink,Red
+Marina,other,Female,Normal,Music,Jun,Cute,Cute,Pink,Red
+Marshal,ground_small,Male,Smug,Music,Sep,Elegant,Cool,Light blue,Blue
+Mathilda,ground_large,Female,Snooty,Fitness,Nov,Cool,Gorgeous,White,Red
+Megan,ground_large,Female,Normal,Nature,Mar,Cute,Simple,Yellow,Light blue
+Melba,ground_small,Female,Normal,Education,Apr,Cute,Cute,White,Green
+Merengue,ground_large,Female,Normal,Nature,Mar,Cute,Simple,White,Red
+Merry,ground_small,Female,Peppy,Fashion,Jun,Cute,Cute,Pink,Light blue
+Midge,other,Female,Normal,Education,Mar,Cute,Simple,Pink,Pink
+Mint,ground_small,Female,Snooty,Fashion,May,Gorgeous,Cute,Pink,Purple
+Mira,ground_small,Female,Big Sister,Fitness,Jul,Active,Cool,Red,Yellow
+Miranda,other,Female,Snooty,Fashion,Apr,Elegant,Gorgeous,Blue,Purple
+Mitzi,ground_small,Female,Normal,Education,Sep,Simple,Simple,Brown,Beige
+Moe,ground_small,Male,Lazy,Play,Jan,Active,Simple,Black,Gray
+Molly,other,Female,Normal,Nature,Mar,Cute,Simple,Yellow,Pink
+Monique,ground_small,Female,Snooty,Fashion,Sep,Gorgeous,Elegant,Purple,Pink
+Monty,ground_small,Male,Cranky,Education,Dec,Cool,Cool,Yellow,Gray
+Moose,ground_small,Male,Jock,Fitness,Sep,Cool,Gorgeous,Purple,Red
+Mott,ground_large,Male,Jock,Fitness,Jul,Active,Elegant,Blue,Green
+Muffy,ground_large,Female,Big Sister,Music,Feb,Gorgeous,Elegant,Black,Purple
+Murphy,ground_small,Male,Cranky,Education,Dec,Simple,Cool,Blue,White
+Nan,ground_large,Female,Normal,Nature,Aug,Simple,Elegant,Orange,Yellow
+Nana,ground_small,Female,Normal,Education,Aug,Cute,Cute,Pink,White
+Naomi,ground_large,Female,Snooty,Fashion,Feb,Elegant,Gorgeous,Colorful,Purple
+Nate,ground_large,Male,Lazy,Play,Aug,Simple,Simple,White,Green
+Nibbles,ground_small,Female,Peppy,Fashion,Jul,Cute,Active,Red,Yellow
+Norma,ground_large,Female,Normal,Nature,Sep,Cute,Simple,White,Light blue
+O'Hare,ground_small,Male,Smug,Nature,Jul,Active,Cool,Blue,Light blue
+Octavian,other,Male,Cranky,Play,Sep,Cool,Simple,Black,White
+Olaf,ground_large,Male,Smug,Education,May,Elegant,Gorgeous,Red,Black
+Olive,ground_small,Female,Normal,Nature,Jul,Simple,Simple,Brown,Yellow
+Olivia,ground_small,Female,Snooty,Music,Feb,Cool,Elegant,White,Black
+Opal,ground_large,Female,Snooty,Fashion,Jan,Elegant,Cool,Black,Orange
+Ozzie,ground_small,Male,Lazy,Play,May,Simple,Cute,Yellow,Orange
+Pancetti,ground_large,Female,Snooty,Music,Nov,Cute,Gorgeous,Red,Yellow
+Pango,ground_large,Female,Peppy,Fashion,Nov,Elegant,Cool,Orange,Purple
+Paolo,ground_large,Male,Lazy,Nature,May,Simple,Elegant,Gray,Light blue
+Papi,ground_large,Male,Lazy,Nature,Jan,Simple,Simple,Orange,Light blue
+Pashmina,ground_large,Female,Big Sister,Music,Dec,Cool,Elegant,Red,Colorful
+Pate,other,Female,Peppy,Fashion,Feb,Simple,Cute,Yellow,White
+Patty,ground_large,Female,Peppy,Fashion,May,Simple,Cute,Orange,Red
+Paula,ground_large,Female,Big Sister,Fitness,Mar,Cute,Active,Orange,Green
+Peaches,ground_large,Female,Normal,Education,Nov,Cute,Simple,Colorful,Light blue
+Peanut,ground_small,Female,Peppy,Fashion,Jun,Cute,Cute,Red,Colorful
+Pecan,ground_small,Female,Snooty,Fashion,Sep,Elegant,Gorgeous,Purple,Beige
+Peck,other,Male,Jock,Play,Jul,Simple,Active,Beige,Red
+Peewee,ground_large,Male,Cranky,Fitness,Sep,Active,Cool,Orange,Blue
+Peggy,ground_large,Female,Peppy,Fashion,May,Cute,Active,Blue,Red
+Pekoe,ground_small,Female,Normal,Nature,May,Elegant,Cute,Red,Beige
+Penelope,ground_small,Female,Peppy,Fashion,Feb,Cute,Gorgeous,Pink,Red
+Phil,ground_small,Male,Smug,Music,Nov,Elegant,Cool,Green,Red
+Phoebe,ground_small,Female,Big Sister,Fitness,Apr,Gorgeous,Cool,Black,Red
+Pierce,other,Male,Jock,Fitness,Jan,Elegant,Active,Orange,Yellow
+Pietro,ground_large,Male,Smug,Music,Apr,Gorgeous,Simple,Colorful,Red
+Pinky,ground_large,Female,Peppy,Fashion,Sep,Cute,Simple,Red,Pink
+Piper,other,Female,Peppy,Play,Apr,Elegant,Gorgeous,Black,White
+Pippy,ground_small,Female,Peppy,Fashion,Jun,Cute,Simple,Green,Brown
+Plucky,ground_small,Female,Big Sister,Play,Oct,Cool,Simple,Light blue,Yellow
+Pompom,other,Female,Peppy,Music,Feb,Cute,Simple,Pink,Light blue
+Poncho,ground_small,Male,Jock,Fitness,Jan,Simple,Simple,Orange,Yellow
+Poppy,ground_small,Female,Normal,Education,Aug,Cute,Elegant,Green,Yellow
+Portia,ground_small,Female,Snooty,Fashion,Oct,Elegant,Gorgeous,Purple,Black
+Prince,other,Male,Lazy,Play,Jul,Simple,Active,Yellow,White
+Puck,ground_small,Male,Lazy,Fitness,Feb,Active,Simple,Blue,Red
+Puddles,other,Female,Peppy,Fashion,Jan,Cute,Gorgeous,Green,Pink
+Pudge,ground_small,Male,Lazy,Play,Jun,Simple,Simple,Green,Blue
+Punchy,ground_small,Male,Lazy,Play,Apr,Simple,Simple,Blue,Light blue
+Purrl,ground_small,Female,Snooty,Fashion,May,Cool,Elegant,Gray,Blue
+Queenie,ground_small,Female,Snooty,Fashion,Nov,Gorgeous,Elegant,Black,Gray
+Quillson,other,Male,Smug,Music,Dec,Elegant,Cool,Beige,Orange
+Raddle,other,Male,Lazy,Nature,Jun,Elegant,Simple,White,Gray
+Rasher,ground_large,Male,Cranky,Music,Apr,Cool,Simple,Blue,Black
+Raymond,ground_small,Male,Smug,Nature,Oct,Elegant,Cool,Black,Gray
+Renée,ground_large,Female,Big Sister,Music,May,Cool,Active,Purple,Yellow
+Reneigh,ground_large,Female,Big Sister,Play,Jun,Cool,Gorgeous,Black,Purple
+Rex,ground_large,Male,Lazy,Nature,Jul,Simple,Cute,Blue,Light blue
+Rhonda,ground_large,Female,Normal,Music,Jan,Elegant,Gorgeous,Purple,Black
+Ribbot,other,Male,Jock,Fitness,Feb,Simple,Active,Blue,Light blue
+Ricky,ground_small,Male,Cranky,Education,Sep,Cool,Simple,Blue,Red
+Rizzo,ground_small,Male,Cranky,Education,Jan,Simple,Cool,Black,Gray
+Roald,ground_small,Male,Jock,Fitness,Jan,Active,Simple,Red,Yellow
+Robin,other,Female,Snooty,Fashion,Dec,Elegant,Cool,Light blue,Purple
+Rocco,ground_large,Male,Cranky,Education,Aug,Simple,Cool,Yellow,Black
+Rocket,ground_large,Female,Big Sister,Fitness,Apr,Active,Cool,Pink,Red
+Rod,ground_small,Male,Jock,Fitness,Aug,Active,Cool,Blue,Light blue
+Rodeo,ground_large,Male,Lazy,Fitness,Oct,Simple,Cool,Black,Red
+Rodney,ground_small,Male,Smug,Music,Nov,Gorgeous,Cool,Pink,Colorful
+Rolf,ground_large,Male,Cranky,Fitness,Aug,Cool,Active,Blue,Black
+Rooney,ground_large,Male,Cranky,Fitness,Dec,Active,Active,Gray,Black
+Rory,ground_large,Male,Jock,Music,Aug,Simple,Active,Blue,Red
+Roscoe,ground_large,Male,Cranky,Music,Jun,Cool,Gorgeous,Black,Gray
+Rosie,ground_small,Female,Peppy,Music,Feb,Cute,Cute,Pink,Red
+Rowan,ground_large,Male,Jock,Fitness,Aug,Active,Simple,Light blue,Gray
+Ruby,ground_small,Female,Peppy,Nature,Dec,Cute,Active,Light blue,Pink
+Rudy,ground_small,Male,Jock,Play,Dec,Active,Simple,Yellow,Beige
+Sally,ground_small,Female,Normal,Music,Jun,Simple,Elegant,White,Beige
+Samson,ground_small,Male,Jock,Fitness,Jul,Simple,Active,Red,Yellow
+Sandy,ground_small,Female,Normal,Nature,Oct,Simple,Cool,Light blue,White
+Savannah,ground_large,Female,Normal,Music,Jan,Cool,Simple,Light blue,Blue
+Scoot,other,Male,Jock,Fitness,Jun,Active,Simple,Beige,Blue
+Shari,ground_small,Female,Big Sister,Music,Apr,Cute,Active,Light blue,Yellow
+Sheldon,ground_small,Male,Jock,Play,Feb,Active,Cool,Green,Yellow
+Shep,ground_small,Male,Smug,Education,Nov,Simple,Cool,Light blue,Blue
+Sherb,ground_large,Male,Lazy,Nature,Jan,Simple,Cute,Gray,Blue
+Simon,ground_small,Male,Lazy,Play,Jan,Simple,Active,Red,Colorful
+Skye,ground_large,Female,Normal,Music,Mar,Cute,Cute,Blue,White
+Sly,other,Male,Jock,Play,Nov,Cool,Simple,Brown,Green
+Snake,ground_small,Male,Jock,Fitness,Nov,Active,Simple,Black,Blue
+Snooty,ground_large,Female,Snooty,Education,Oct,Simple,Simple,Green,Yellow
+Soleil,ground_small,Female,Snooty,Education,Aug,Cool,Gorgeous,Red,Yellow
+Sparro,other,Male,Jock,Play,Nov,Active,Simple,Green,Gray
+Spike,ground_large,Male,Cranky,Nature,Jun,Cool,Gorgeous,Black,Gray
+Spork,ground_large,Male,Lazy,Play,Sep,Simple,Active,Green,Colorful
+Sprinkle,ground_small,Female,Peppy,Play,Feb,Cute,Elegant,Light blue,White
+Sprocket,ground_small,Male,Jock,Music,Dec,Simple,Active,Orange,Green
+Static,ground_small,Male,Cranky,Music,Jul,Cool,Active,Black,Yellow
+Stella,ground_large,Female,Normal,Nature,Apr,Simple,Simple,Yellow,Beige
+Sterling,other,Male,Jock,Fitness,Dec,Simple,Elegant,Blue,Red
+Stinky,ground_small,Male,Jock,Fitness,Aug,Active,Simple,Red,Blue
+Stitches,ground_small,Male,Lazy,Play,Feb,Simple,Cute,Colorful,White
+Stu,ground_large,Male,Lazy,Nature,Apr,Simple,Simple,Brown,Beige
+Sydney,ground_small,Female,Normal,Music,Jun,Cute,Simple,Beige,Yellow
+Sylvana,ground_small,Female,Normal,Nature,Oct,Cute,Simple,Green,Purple
+Sylvia,ground_large,Female,Big Sister,Music,May,Simple,Gorgeous,Yellow,Green
+T-Bone,ground_large,Male,Cranky,Education,May,Cool,Simple,Blue,Black
+Tabby,ground_small,Female,Peppy,Music,Aug,Active,Cool,Black,Gray
+Tad,other,Male,Jock,Play,Aug,Active,Simple,Yellow,Colorful
+Tammi,ground_small,Female,Peppy,Fashion,Apr,Cute,Active,Purple,Green
+Tammy,ground_small,Female,Big Sister,Play,Jun,Cool,Active,Red,Purple
+Tangy,ground_small,Female,Peppy,Music,Jun,Simple,Cute,Green,Yellow
+Tank,ground_large,Male,Jock,Fitness,May,Active,Simple,Red,Green
+Tasha,ground_small,Female,Snooty,Fitness,Nov,Elegant,Gorgeous,Beige,Gray
+Teddy,ground_large,Male,Jock,Fitness,Sep,Simple,Simple,Yellow,Orange
+Tex,ground_small,Male,Smug,Music,Oct,Cool,Elegant,Black,Gray
+Tia,ground_large,Female,Normal,Nature,Nov,Cute,Elegant,Black,White
+Tiffany,ground_small,Female,Snooty,Fashion,Jan,Gorgeous,Cool,Black,Red
+Timbra,ground_large,Female,Snooty,Education,Oct,Elegant,Gorgeous,Green,Brown
+Tipper,ground_large,Female,Snooty,Fashion,Aug,Gorgeous,Cute,Colorful,Pink
+Tom,ground_small,Male,Cranky,Education,Dec,Cool,Simple,Black,Gray
+Truffles,ground_large,Female,Peppy,Fashion,Jul,Cute,Gorgeous,Green,Red
+Tucker,ground_large,Male,Lazy,Nature,Sep,Active,Simple,Yellow,Orange
+Tutu,ground_large,Female,Peppy,Fashion,Sep,Cute,Simple,Pink,Red
+Twiggy,other,Female,Peppy,Fashion,Jul,Simple,Cute,Pink,Blue
+Tybalt,ground_large,Male,Jock,Play,Aug,Active,Simple,Blue,Purple
+Ursala,ground_large,Female,Big Sister,Music,Jan,Simple,Cute,Red,Orange
+Velma,ground_large,Female,Snooty,Education,Jan,Elegant,Gorgeous,Light blue,Purple
+Vesta,ground_large,Female,Normal,Fashion,Apr,Simple,Cute,Orange,Red
+Vic,ground_large,Male,Cranky,Fitness,Dec,Cool,Active,Light blue,Blue
+Victoria,ground_large,Female,Peppy,Fitness,Jul,Active,Simple,Yellow,Orange
+Violet,ground_large,Female,Snooty,Fitness,Sep,Gorgeous,Cool,Purple,Pink
+Vivian,ground_large,Female,Snooty,Education,Jan,Gorgeous,Elegant,Gray,Purple
+Vladimir,ground_small,Male,Cranky,Play,Aug,Simple,Cool,Yellow,Colorful
+Wade,ground_small,Male,Lazy,Nature,Oct,Simple,Gorgeous,Light blue,Blue
+Walker,ground_small,Male,Lazy,Play,Jun,Simple,Simple,Orange,Red
+Walt,ground_large,Male,Cranky,Fitness,Apr,Cool,Cool,Black,Gray
+Wart Jr.,other,Male,Cranky,Education,Aug,Simple,Simple,Blue,Purple
+Weber,other,Male,Lazy,Nature,Jun,Cool,Simple,Blue,Black
+Wendy,ground_large,Female,Peppy,Fashion,Aug,Cool,Gorgeous,Red,Green
+Whitney,ground_large,Female,Snooty,Fashion,Sep,Elegant,Cool,Blue,Light blue
+Willow,ground_large,Female,Snooty,Fashion,Nov,Cute,Gorgeous,White,Pink
+Winnie,ground_large,Female,Peppy,Fashion,Jan,Cool,Simple,White,Gray
+Wolfgang,ground_large,Male,Cranky,Education,Nov,Cool,Active,Black,Green
+Yuka,ground_small,Female,Snooty,Fashion,Jul,Cool,Elegant,Orange,Yellow
+Zell,ground_large,Male,Smug,Music,Jun,Cool,Gorgeous,Purple,Gray
+Zucker,other,Male,Lazy,Nature,Mar,Simple,Cute,Blue,Yellow

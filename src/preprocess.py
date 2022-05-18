@@ -20,9 +20,10 @@ def load_dataset(filename: str, features: List) -> pd.DataFrame:
         logging.info("The dataset path %s is loaded and it has %i columns.", filename, df.shape[1])
     except FileNotFoundError:
         logger.error("Cannot find %s", filename)
+
     df_use = df[features]
     logger.info(f'The shape of the data with useful features only is {df_use.shape}')
-    return df
+    return df_use
 
 def feature_engineering(df: pd.DataFrame, grouping_dict: Dict) -> pd.DataFrame:
     """This function will regroup the animal species column using the grouping dictionary
