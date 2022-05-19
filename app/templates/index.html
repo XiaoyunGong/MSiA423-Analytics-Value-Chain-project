@@ -7,37 +7,22 @@
 
 <body>
     <h3>
-         <a href = "{{ url_for('index') }}">Penny Lane Music Recommender</a>
+         <a href = "{{ url_for('index') }}">Animal Crossing Villagers Recommender ٩( ๑^ ꇴ^)۶</a>
     </h3>
 
-    <hr/>
-    <table>
-         <thead>
-            <tr>
-               <th>Title</th>
-               <th>Artist</th>
-               <th>Album</th>
-            </tr>
-         </thead>
+    <p>٩(●ᴗ●)۶ Welcome to the Animal Crossing Villagers Recommendation System! ٩(●ᴗ●)۶ </p>
 
-         <tbody>
-            {% for track in tracks %}
-               <tr>
-                   <td>{{ track.title }}</td>
-                   <td>{{ track.artist }}</td>
-                   <td>{{ track.album }}</td>
-               </tr>
-            {% endfor %}
-         </tbody>
-      </table>
-      <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
-      <dl>
-        <input type=text size=15 name=title placeholder="Title">
-        <input type=text size=15 name=artist placeholder="Artist">
-        <input type=text size=15 name=album placeholder="Album">
-        <input type=submit value=Add>
-      </dl>
-    </form>
+    <p style="margin-top: 50px;"> Type your favorite villager below (≧◡≦)</p>
+    <p style="margin-top: 20px;"> The system will suggest the 10 most similar villagers to you (⌒‿⌒)</p>
+    <div class="center">
+      <form action="/" method=post>
+        <dl>
+          <input class="form-control form-control-lg" type="text" name='Name' placeholder="Villager's Name">
+          <input type=submit value="Search" class="btn btn-primary">
+        </dl>
+      </form>
+  </div>
+    
 
 </body>
 </html>

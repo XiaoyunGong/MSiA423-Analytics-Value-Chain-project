@@ -29,13 +29,4 @@ modeling:
     random_state: 42
     recommendation_path: data/final/recommendation.csv
 
-recommend:
-  append_cluster_and_name:
-    scale_path: data/interim/data_scale.csv
-    model_path: models/kmeans.joblib
-  generate_recommendation:
-    features: ['sp_attack', 'sp_defense', 'hp', 'attack', 'defense', 'speed']
-    num_clusters: 6
-    k: 10
-    output_path: data/final/results.csv
-    display_features: ['name', 'type1', 'type2', 'abilities', 'generation']
+

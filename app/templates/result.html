@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>pokemon</title>
+</head>
+
+<body>
+    <h3>
+         Recommended Villagers for {{ user_input }}
+    </h3>
+
+    <form action="/" method=post>
+      <dl>
+        <input type=text size=15 name='Name' placeholder="Villager's Name">
+        <input type=submit value="Search" class="btn btn-primary">
+      </dl>
+    </form>
+
+    <hr/>
+    <table class="table table-hover">
+         <thead>
+            <tr>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Gender</th>
+                <th>Personality</th>
+                <th>Hobby</th>
+                <th>Birthday</th>
+                <th>#1 favorate style</th>
+                <th>#2 favorate style</th>
+                <th>#1 favorate color</th>
+                <th>#2 favorate color</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for rec in recommendations %}
+               <tr>
+                   <td> {{ rec.Name }} </a> </td>
+                   <td>{{ rec.Species }}</td>
+                   <td>{{ rec.Personality}}</td>
+                   <td>{{ rec.Hobby }}</td>
+                   <td>{{ rec.Birthday }}</td>
+                   <td>{{ rec.Style_1}}</td>
+                   <td>{{ rec.Style_2 }}</td>
+                   <td>{{ rec.Color_1 }}</td>
+                   <td>{{ rec.Color_2 }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+</body>
+</html>
