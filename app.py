@@ -53,16 +53,15 @@ def data():
     if request.method == 'POST':
         user_input = request.form.to_dict()['Name']
         try:
-            recommendations = recommendation_manager.session.query(Recommendations).filter_by(Name=user_input).limit(
+            recommendations = recommendation_manager.session.query(Recommendations).filter_by(Name_villager=user_input).limit(
                 app.config["MAX_ROWS_SHOW"]).all()
             if len(recommendations) == 0:
                 return render_template('not_found.html', user_input=user_input)
-            return render_template('result.html', Recommendations=recommendation, user_input=user_input)
+            return render_template('result.html', recommendations=recommendations, user_input=user_input)
         except sqlalchemy.exc.OperationalError:
             traceback.print_exc()
-            logger.warning("Not able to display pokemons, error page returned")
+            logger.warning("Not able to display villagers, error page returned")
             return render_template('error.html')
-
 
 if __name__ == '__main__':
     app.run(debug=app.config["DEBUG"], port=app.config["PORT"],

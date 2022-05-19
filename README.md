@@ -230,7 +230,13 @@ After selecting a database, you can see all the tables in it by running: `show t
 
 You may check the columns within a table by running: `show columns from <table_name>`;
 
-
+## Lauch the App
+```bash
+docker build -f dockerfiles/Dockerfile.app -t animalcrossingapp .
+```
+```bash
+docker run -e SQLALCHEMY_DATABASE_URI --name test-app --mount type=bind,source="$(pwd)"/data,target=/app/data/ -p 5001:5000 animalcrossingapp
+```
 ---------
 ### 1. Initialize the database 
 #### Build the image 

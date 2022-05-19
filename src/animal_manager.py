@@ -53,8 +53,8 @@ class Recommendations(Base):
     """Creates a data model for the database to be set up for capturing villagers."""
 
     __tablename__ = "recommendations"
-    Cluster = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
-    Name = sqlalchemy.Column(sqlalchemy.String(100), unique=True, nullable=False, primary_key=True)
+    Name_villager = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Name = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
     Species = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
     Gender = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
     Personality = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
@@ -64,6 +64,7 @@ class Recommendations(Base):
     Style_2 = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
     Color_1 = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
     Color_2 = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
+    Unique_id = sqlalchemy.Column(sqlalchemy.String(100), primary_key=True)
 
     def __repr__(self):
         return '<Animal Name %r>' % self.Name

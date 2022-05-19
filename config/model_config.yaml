@@ -27,6 +27,7 @@ modeling:
     init: random
     n_init: 12
     random_state: 42
+    drop_list: ['Cluster', 'Species_villager', 'Gender_villager', 'Personality_villager', 'Hobby_villager', 'Birthday_villager', 'Style_1_villager', 'Style_2_villager', 'Color_1_villager', 'Color_2_villager']
     recommendation_path: data/final/recommendation.csv
 
 

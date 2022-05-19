@@ -1,4 +1,5 @@
 import logging
+from typing import List
 
 import pandas as pd
 import numpy as np
@@ -38,6 +39,7 @@ def recommendation(filename: str,
                 init: str,
                 n_init: int,
                 random_state: int,
+                drop_list: List,
                 recommendation_path: str) -> None:
     try:
         df = pd.read_csv(filename)
@@ -49,5 +51,13 @@ def recommendation(filename: str,
     clusters = kmode.fit_predict(df)
     logger.debug('Kmode modeling finished!')
     df.insert(0, "Cluster", clusters, True)
-    df.to_csv(recommendation_path, index = False)
+    joined = df.merge(df, how='outer', on='Cluster', 
+                      suffixes = ['_villager', ''])
+    joined.drop(columns=drop_list, inplace=True)
+    joined = joined[joined.Name_villager!=joined.Name]
+
+    index_str = [str(x) for x in np.arange(0,joined.shape[0])]
+    joined['Unique_id'] = index_str
+
+    joined.to_csv(recommendation_path, index = False)
     logger.info("The table with clustering information is written to %s", recommendation_path)
