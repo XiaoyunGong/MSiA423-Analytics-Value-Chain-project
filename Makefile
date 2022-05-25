@@ -22,3 +22,13 @@ data/interim/clean.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py preprocess --config=config/model_config.yaml
 
 preprocess: data/interim/clean.csv
+
+models/kmodes.joblib:
+	docker run --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py train --config=config/model_config.yaml --model_path=models/kmodes.joblib
+
+train: models/kmodes.joblib
+
+data/final/recommendation.csv:
+	docker run --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py recommendation --config=config/model_config.yaml
+
+recommendation: data/final/recommendation.csv

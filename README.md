@@ -179,7 +179,7 @@ make download-from-S3 LOCAL_DOWNLOAD_PATH=<YOUR_LOCAL_DOWNLOAD_PATH> S3_PATH=<YO
 The command below will allow users to preprocess the data. The preprocessed dataframe is stored in `data/interim/clean.csv` by default.
 
 ```bash
-docker run --mount type=bind,source="$(pwd)",target=/app/ animalcrossing run.py preprocess --config=config/model_config.yaml
+make preprocess
 ```
 
 ### Train model
@@ -187,11 +187,11 @@ The command below will train the kmodes model. A cost by number of cluster plot 
 
 **Note:** This will take a little bit. 
 ```bash
-docker run --mount type=bind,source="$(pwd)",target=/app/ animalcrossing run.py train --config=config/model_config.yaml
+make train
 ```
 ### Generate recommendation results
 ```bash
-docker run --mount type=bind,source="$(pwd)",target=/app/ animalcrossing run.py recommendation --config=config/model_config.yaml
+make recommendation
 ```
 
 ## Database storing

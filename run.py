@@ -51,12 +51,24 @@ if __name__ == "__main__":
 
     # Sub-parser for training
     sp_train = subparsers.add_parser("train", help="train the model")
+    sp_train.add_argument("--clean_path", default="data/interim/clean.csv",
+                          help="the input path for the cleaned data.")
+    sp_train.add_argument("--png_path", default="figures/cost_plot_kmodes.png",
+                          help="the output path for the cost plot.")
+    sp_train.add_argument("--model_path", default="models/kmodes.joblib", 
+                          help="the output path for the final model.")
     sp_train.add_argument("--config",
                         default="config/model_config.yaml",
                         help="Path to configuration file")
 
     # Sub-parser for generating the recommendation result
     sp_recommendation = subparsers.add_parser("recommendation", help="generate the recommendation result")
+    sp_recommendation.add_argument("--clean_path", default="data/interim/clean.csv",
+                          help="the input path for the cleaned data.")
+    sp_recommendation.add_argument("--model_path", default="models/kmodes.joblib", 
+                          help="the input path for the final model.")
+    sp_recommendation.add_argument("--rec_path", default="data/final/recommendation.csv", 
+                          help="the output path for the recommendation.")                     
     sp_recommendation.add_argument("--config",
                         default="config/model_config.yaml",
                         help="Path to configuration file")
@@ -99,6 +111,24 @@ if __name__ == "__main__":
         data_cleaned = feature_engineering(data, **config["preprocess"]["feature_engineering"])
         save_df(data_cleaned, output_path=args.clean_path)
 
+    elif sp_used == "train":
+        with open(args.config, "r") as f:
+            config = yaml.load(f, Loader=yaml.FullLoader)
+            logger.info("Configuration file loaded from %s" % args.config)
+        kmodes_modeling(**config["modeling"]["kmodes_modeling"],
+                        filename=args.clean_path,
+                        pngpath=args.png_path,
+                        model_path=args.model_path)
+    
+    elif sp_used == "recommendation":
+        with open(args.config, "r") as f:
+            config = yaml.load(f, Loader=yaml.FullLoader)
+            logger.info("Configuration file loaded from %s" % args.config)
+        recommendation(**config["modeling"]["recommendation"],
+                       filename=args.clean_path,
+                       model_path=args.model_path,
+                       recommendation_path=args.rec_path)
+
     elif sp_used == "create_db":
         create_db(args.engine_string)
 
@@ -108,16 +138,6 @@ if __name__ == "__main__":
         am.close()
 
 
-    elif sp_used =="train":
-        with open(args.config, "r") as f:
-            config = yaml.load(f, Loader=yaml.FullLoader)
-            logger.info("Configuration file loaded from %s" % args.config)
-        kmodes_modeling(**config["modeling"]["kmodes_modeling"])
-    elif sp_used == "recommendation":
-        with open(args.config, "r") as f:
-            config = yaml.load(f, Loader=yaml.FullLoader)
-            logger.info("Configuration file loaded from %s" % args.config)
-        recommendation(**config["modeling"]["recommendation"])
     elif sp_used == "ingest_rec":
         am = RecommendationManager(engine_string=args.engine_string)
         am.ingest_from_csv_rec(input_path=args.input_path)
