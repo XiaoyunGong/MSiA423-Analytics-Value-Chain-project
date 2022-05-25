@@ -125,22 +125,38 @@ export MYSQL_DATABASE="YOUR_DATABASE_NAME"
 
 ### Docker images
 
-(TODO: Write descriptions of each docker image.)
+There are three(?) docker images used in this project. The first one is for the steps before launching the app, the second one is for the app, and the third one is for testing.
+
+#### Create the docker image for `run.py`
 
 ```bash
-docker build -f dockerfiles/Dockerfile.run -t animalcrossing .
+make image-run
 ```
+
+#### Create the docker image for `app.py`
+
+```bash
+make image-app
+```
+
+#### Create the docker image for testing
+
+(HERE, TODO)
 
 ## Data Source
+
+After setting up environment variables and docker images, the first step is to get the data.
+
 The dataset used for this app comes from Kaggle. To download the data, users can go to this [**Animal Crossing dataset website**](https://www.kaggle.com/datasets/jessicali9530/animal-crossing-new-horizons-nookplaza-dataset) and click the Download button at the top of the page. Note that users will need to register a Kaggle account in order to download dataset if user do not have one. Because the dataset is relatively small, a copy was saved in `data/raw/villagers.csv`. Another copy is uploaded to S3. The following command will upload the data form `data/raw/villagers.csv` (or any local location) to the user's S3 bucket.
 
-```base
-docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py upload_file_to_s3 
+```bash
+make upload-to-S3
 ```
+
 The current default for the local path to the data is `data/raw/villagers.csv`, and the S3 path to the data is `s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv`. If the user needs to upload the data from another local location or upload the data to another destination in S3, the following command can address that.
 
-```base
-docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py upload_file_to_s3 --local_path=<YOUR_LOCAL_PATH> --s3_path=<YOUR_S3_PATH>
+```bash
+make upload-to-S3 LOCAL_PATH=<YOUR_LOCAL_PATH> S3_PATH=<YOUR_S3_PATH>
 ```
 
 **Note:**
@@ -148,22 +164,15 @@ To run these commands, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` need to b
 
 ## Model Pipeline
 ### Download raw data from S3
-Run the following command to download the data from S3. 
+Although stored in local in `data\raw\villagers.csv`, data can be downloaded from S3. The following command will download the data.
 ```bash
-docker run --mount type=bind,source="$(pwd)",target=/app/ \
-		-e AWS_ACCESS_KEY_ID \
-		-e AWS_SECRET_ACCESS_KEY \
-		animalcrossing run.py download_file_from_s3
+make download-from-S3
 ```
 
 The current default for the local path to the data is `data/download/villagers.csv`, and the S3 path to the data is `s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv`. If the user needs to download the data to another local location or download the data from another destination in S3, the following command can address that.
 
 ```bash
-docker run --mount type=bind, source="$(pwd)",target=/app/ \
-		   -e AWS_ACCESS_KEY_ID \
-		   -e AWS_SECRET_ACCESS_KEY \ 
-		   animalcrossing run.py download_file_from_s3 \
-		   --local_path=<YOUR_LOCAL_PATH> --s3_path=<YOUR_S3_PATH>
+make download-from-S3 LOCAL_DOWNLOAD_PATH=<YOUR_LOCAL_DOWNLOAD_PATH> S3_PATH=<YOUR_S3_PATH>
 ```
 
 ### Preprocess the data
@@ -236,6 +245,13 @@ docker build -f dockerfiles/Dockerfile.app -t animalcrossingapp .
 ```
 ```bash
 docker run -e SQLALCHEMY_DATABASE_URI --name test-app --mount type=bind,source="$(pwd)"/data,target=/app/data/ -p 5001:5000 animalcrossingapp
+```
+### ECS
+```bash
+docker build --platform linux/x86_64 -f dockerfiles/Dockerfile.app -t msia423-flask . 
+```
+```bash
+docker run -e SQLALCHEMY_DATABASE_URI --name test-app --mount type=bind,source="$(pwd)"/data,target=/app/data/ -p 5001:5000 msia423-flask
 ```
 ---------
 ### 1. Initialize the database 

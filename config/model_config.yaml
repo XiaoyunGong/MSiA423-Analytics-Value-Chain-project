@@ -1,15 +1,28 @@
 preprocess:
   load_dataset:
-    filename: data/raw/villagers.csv
-    features: ['Name', 'Species', 'Gender', 'Personality', 'Hobby', 'Birthday', 'Style_1', 'Style_2', 'Color_1', 'Color_2']
+    features: 
+      - Name 
+      - Species
+      - Gender
+      - Personality
+      - Hobby 
+      - Birthday
+      - Style_1
+      - Style_2
+      - Color_1
+      - Color_2
   feature_engineering:
+    grouping_column: Species
     grouping_dict: {"ground_large" : 
                     ['Pig', 'Gorilla', 'Anteater', 'Bull',  'Horse', 'Kangaroo', 'Wolf','Elephant', 'Sheep', 'Deer', 'Tiger', 'Bear', 'Hippo', 'Lion', 'Rhino', 'Cow', 'Goat'],
                     "ground_small" : 
                     ['Squirrel', 'Koala', 'Mouse', 'Cat',  'Hamster', 'Penguin',  'Chicken','Cub', 'Dog',  'Ostrich', 'Rabbit', 'Monkey'],
                     "other": ['Alligator', 'Duck', 'Frog', 'Octopus', 'Bird', 'Eagle']}
-  save_df: 
-    output_path: data/interim/clean.csv
+    grouping_new_name: Species_group
+    trim_column: Birthday
+    trim_by: -3
+    trim_new_name: Birthday_month
+    index_column: Name
 
 modeling:
   kmodes_modeling:

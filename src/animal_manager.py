@@ -3,7 +3,6 @@
 # mypy: plugins = sqlmypy, plugins = flasksqlamypy
 import os
 import logging.config
-#from tkinter.ttk import Style
 import typing
 
 import flask
