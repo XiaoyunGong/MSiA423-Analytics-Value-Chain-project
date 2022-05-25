@@ -20,13 +20,12 @@ modeling:
     n_init: 12
     random_state: 42
     pngpath: figures/cost_plot_kmodes.png
+    model_path: models/kmodes.joblib
+    n_cluster: 15
 
   recommendation:
     filename: data/interim/clean.csv
-    n_cluster: 15
-    init: random
-    n_init: 12
-    random_state: 42
+    model_path: models/kmodes.joblib
     drop_list: ['Cluster', 'Species_villager', 'Gender_villager', 'Personality_villager', 'Hobby_villager', 'Birthday_villager', 'Style_1_villager', 'Style_2_villager', 'Color_1_villager', 'Color_2_villager']
     recommendation_path: data/final/recommendation.csv
 

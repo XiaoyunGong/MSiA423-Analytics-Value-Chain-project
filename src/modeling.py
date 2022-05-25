@@ -1,6 +1,6 @@
 import logging
 from typing import List
-
+import joblib
 import pandas as pd
 import numpy as np
 from kmodes.kmodes import KModes
@@ -14,7 +14,9 @@ def kmodes_modeling(filename: str,
                     init: str,
                     n_init: int,
                     random_state: int,
-                    pngpath: str) -> None:
+                    pngpath: str,
+                    model_path: str,
+                    n_cluster:str) -> None:
     try:
         df = pd.read_csv(filename)
         logging.info("The dataset path %s is loaded and it has %i columns.", filename, df.shape[1])
@@ -33,21 +35,19 @@ def kmodes_modeling(filename: str,
     plt.ylabel('Cost')
     plt.title('Elbow Method For Optimal k')
     plt.savefig(pngpath)
+    final_model = kmode = KModes(n_clusters=n_cluster, init = init, n_init = n_init, random_state=random_state)
+    joblib.dump(final_model, model_path)
 
 def recommendation(filename: str,
-                n_cluster: int,
-                init: str,
-                n_init: int,
-                random_state: int,
                 drop_list: List,
+                model_path: str,
                 recommendation_path: str) -> None:
     try:
         df = pd.read_csv(filename)
-        logging.info("The dataset path %s is loaded and it has %i columns.", filename, df.shape[1])
+        logger.info("The dataset path %s is loaded and it has %i columns.", filename, df.shape[1])
     except FileNotFoundError:
         logger.error("Cannot find %s", filename)
-    logger.info("Creating a kmode model for %i clusters.", n_cluster)
-    kmode = KModes(n_clusters=n_cluster, init = init, n_init = n_init, random_state=random_state)
+    kmode = joblib.load(model_path)
     clusters = kmode.fit_predict(df)
     logger.debug('Kmode modeling finished!')
     df.insert(0, "Cluster", clusters, True)
