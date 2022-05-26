@@ -3,13 +3,11 @@
 import argparse
 import logging.config
 
-# from config.flaskconfig import SQLALCHEMY_DATABASE_URI
 import yaml
 from src.animal_manager import AnimalManager, RecommendationManager, create_db
 from src.modeling import kmodes_modeling, recommendation
 from src.s3 import upload_file_to_s3, download_file_from_s3
 from src.preprocess import load_dataset, feature_engineering, save_df
-#from src.RDS import create_db;
 from config.flaskconfig import SQLALCHEMY_DATABASE_URI
 
 # add configuration

@@ -206,7 +206,7 @@ make model-all
 ```
 The final result is going to be saved in `data/final/recommendations.csv`. 
 
-**Instead**, the use can also run it step by step (see below).
+**Instead**, the user can also run it step by step (see below).
 
 ### Create the recommendation results step by step
 
