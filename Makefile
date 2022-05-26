@@ -53,7 +53,7 @@ launch:
 rm:
 	docker rm test-app
 
-relauch: rm launch
+relaunch: rm launch
 
 ecs-push:
 	docker push 008395313216.dkr.ecr.us-east-1.amazonaws.com/msia423-flask:latest
