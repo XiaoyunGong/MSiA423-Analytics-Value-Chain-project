@@ -26,15 +26,15 @@ data/interim/clean.csv:
 
 preprocess: data/interim/clean.csv
 
-models/kmodes.joblib:
+models/kmodes.joblib figures/cost_plot_kmodes.png &:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py train --config=config/model_config.yaml --model_path=models/kmodes.joblib
 
-train: models/kmodes.joblib
+train: models/kmodes.joblib figures/cost_plot_kmodes.png
 
 data/final/recommendation.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py recommendation --config=config/model_config.yaml
 
-recommendation: data/final/recommendation.csv
+recommendation: data/final/recommendation.csv data/final/recommendation.csv models/kmodes.joblib figures/cost_plot_kmodes.png 
 
 model-all: preprocess train recommendation
 
@@ -57,3 +57,5 @@ relaunch: rm launch
 
 ecs-push:
 	docker push 008395313216.dkr.ecr.us-east-1.amazonaws.com/msia423-flask:latest
+ecs-login:
+	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 008395313216.dkr.ecr.us-east-1.amazonaws.com

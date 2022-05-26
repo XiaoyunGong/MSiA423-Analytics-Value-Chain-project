@@ -61,7 +61,7 @@ def kmodes_modeling(filename: str,
     plt.xlabel("No. of clusters")
     plt.ylabel("Cost")
     plt.title("Elbow Method For Optimal k")
-    plt.savefig(pngpath)
+    plt.savefig(pngpath, transparent=True)
 
     # save the final model
     final_model = kmode = KModes(n_clusters=final_n_cluster, init = init, n_init = n_init, random_state=random_state)
