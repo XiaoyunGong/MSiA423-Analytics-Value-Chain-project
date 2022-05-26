@@ -1,13 +1,11 @@
 import logging.config
-import sqlite3
 import traceback
 
 import sqlalchemy.exc
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 
 # For setting up the Flask-SQLAlchemy database session
 from src.animal_manager import RecommendationManager, Recommendations
-from src.modeling import recommendation
 
 # Initialize the Flask application
 app = Flask(__name__, template_folder="app/templates",

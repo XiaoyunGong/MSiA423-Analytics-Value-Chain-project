@@ -195,22 +195,20 @@ make recommendation
 ```
 
 ## Database storing
-### Local database configuration
-（Maybe? TODO)
 
 ### Remote database Connection
 As mentioned before, the database used for this project is stored in AWS RDS. The command below will connect user to the database on RDS, and load the raw data (**villagers**) and the recommendation data (**recommendations**) to RDS.
 
 ```bash
-docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py create_db
+make create_db
 ```
 
 ```bash
-docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py ingest_raw 
+make ingest_raw
 ```
 
 ```bash
-docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py ingest_rec
+make ingest_rec
 ```
 
 **Note:**
@@ -239,20 +237,32 @@ After selecting a database, you can see all the tables in it by running: `show t
 
 You may check the columns within a table by running: `show columns from <table_name>`;
 
-## Lauch the App
+## Launch the App
+### Launch the App locally
+
 ```bash
-docker build -f dockerfiles/Dockerfile.app -t animalcrossingapp .
+make image-app
 ```
 ```bash
-docker run -e SQLALCHEMY_DATABASE_URI --name test-app --mount type=bind,source="$(pwd)"/data,target=/app/data/ -p 5001:5000 animalcrossingapp
+make launch
 ```
-### ECS
+The web app is available at `http://127.0.0.1:5001/`.
+
+(for developing: if need to relauch, run)
 ```bash
-docker build --platform linux/x86_64 -f dockerfiles/Dockerfile.app -t msia423-flask . 
+make relaunch
 ```
+
+### Launch the app via AWS ECS
 ```bash
-docker run -e SQLALCHEMY_DATABASE_URI --name test-app --mount type=bind,source="$(pwd)"/data,target=/app/data/ -p 5001:5000 msia423-flask
+make image-app-ecs
 ```
+
+```bash
+make ecs-push
+```
+
+The web app is available at `http://msia423-1454829810.us-east-1.elb.amazonaws.com/`.
 ---------
 ### 1. Initialize the database 
 #### Build the image 

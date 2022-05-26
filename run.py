@@ -137,7 +137,6 @@ if __name__ == "__main__":
         am.ingest_from_csv(input_path=args.input_path)
         am.close()
 
-
     elif sp_used == "ingest_rec":
         am = RecommendationManager(engine_string=args.engine_string)
         am.ingest_from_csv_rec(input_path=args.input_path)
