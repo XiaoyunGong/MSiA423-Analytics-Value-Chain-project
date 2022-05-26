@@ -1,0 +1,55 @@
+preprocess:
+  load_dataset:
+    features: 
+      - Name 
+      - Species
+      - Gender
+      - Personality
+      - Hobby 
+      - Birthday
+      - Style_1
+      - Style_2
+      - Color_1
+      - Color_2
+  feature_engineering:
+    grouping_column: Species
+    grouping_dict: {"ground_large" : 
+                    ['Pig', 'Gorilla', 'Anteater', 'Bull',  'Horse', 'Kangaroo', 'Wolf','Elephant', 'Sheep', 'Deer', 'Tiger', 'Bear', 'Hippo', 'Lion', 'Rhino', 'Cow', 'Goat'],
+                    "ground_small" : 
+                    ['Squirrel', 'Koala', 'Mouse', 'Cat',  'Hamster', 'Penguin',  'Chicken','Cub', 'Dog',  'Ostrich', 'Rabbit', 'Monkey'],
+                    "other": ['Alligator', 'Duck', 'Frog', 'Octopus', 'Bird', 'Eagle']}
+    grouping_new_name: Species_group
+    trim_column: Birthday
+    trim_by: -3
+    trim_new_name: Birthday_month
+    index_column: Name
+
+modeling:
+  kmodes_modeling:
+    feature_not_used:
+      - Birthday
+      - Species
+      - Name
+    k_start: 1
+    k_end: 30
+    init: random
+    n_init: 12
+    random_state: 42
+    final_n_cluster: 15
+
+  recommendation:
+    drop_list:
+      - Cluster
+      - Species_villager
+      - Gender_villager
+      - Personality_villager
+      - Hobby_villager
+      - Birthday_villager
+      - Style_1_villager
+      - Style_2_villager
+      - Color_1_villager
+      - Color_2_villager
+      - Species_group_villager
+      - Birthday_month_villager
+      - Species_group
+      - Birthday_month

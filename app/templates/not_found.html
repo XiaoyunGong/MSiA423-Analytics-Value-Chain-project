@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="static/basic.css" rel="stylesheet">
+</head>
+
+<body>
+    <h3>
+         Recommendation for your next villager
+    </h3>
+
+    <form action="/" method=post>
+      <dl>
+        <input type=text size=15 name=Name placeholder="Villager's Name">
+        <input type=submit value="Search" class="btn btn-primary">
+      </dl>
+    </form>
+    <p>Your input {{ user_input }} is not in the database. Try again. ╮（╯▽╰）╭</p>
+</body>

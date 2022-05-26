@@ -29,6 +29,9 @@ data/*
 !data/sample/
 !data/external/
 !data/raw/
+!data/final/
+!data/interim
+!data/download
 
 # credentials
 *.profile

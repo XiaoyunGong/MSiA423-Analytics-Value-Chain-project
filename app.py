@@ -1,12 +1,11 @@
 import logging.config
-import sqlite3
 import traceback
 
 import sqlalchemy.exc
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 
 # For setting up the Flask-SQLAlchemy database session
-from src.add_songs import Tracks, TrackManager
+from src.animal_manager import RecommendationManager, Recommendations
 
 # Initialize the Flask application
 app = Flask(__name__, template_folder="app/templates",
@@ -29,8 +28,9 @@ logger.debug(
     , app.config["PORT"])
 
 # Initialize the database session
-track_manager = TrackManager(app)
-
+recommendation_manager = RecommendationManager(app)
+#logger.info('The database dialect is %s', app.config['SQLALCHEMY_DATABASE_URI'].split(':')[0])
+logger.info('The database dialect is %s', app.config['SQLALCHEMY_DATABASE_URI'])
 
 @app.route('/')
 def index():
@@ -43,58 +43,23 @@ def index():
         Rendered html template
 
     """
-
-    try:
-        tracks = track_manager.session.query(Tracks).limit(
-            app.config["MAX_ROWS_SHOW"]).all()
-        logger.debug("Index page accessed")
-        return render_template('index.html', tracks=tracks)
-    except sqlite3.OperationalError as e:
-        logger.error(
-            "Error page returned. Not able to query local sqlite database: %s."
-            " Error: %s ",
-            app.config['SQLALCHEMY_DATABASE_URI'], e)
-        return render_template('error.html')
-    except sqlalchemy.exc.OperationalError as e:
-        logger.error(
-            "Error page returned. Not able to query MySQL database: %s. "
-            "Error: %s ",
-            app.config['SQLALCHEMY_DATABASE_URI'], e)
-        return render_template('error.html')
-    except:
-        traceback.print_exc()
-        logger.error("Not able to display tracks, error page returned")
-        return render_template('error.html')
+    return render_template('index.html')
 
 
-@app.route('/add', methods=['POST'])
-def add_entry():
-    """View that process a POST with new song input
-
-    Returns:
-        redirect to index page
-    """
-
-    try:
-        track_manager.add_track(artist=request.form['artist'],
-                                album=request.form['album'],
-                                title=request.form['title'])
-        logger.info("New song added: %s by %s", request.form['title'],
-                    request.form['artist'])
-        return redirect(url_for('index'))
-    except sqlite3.OperationalError as e:
-        logger.error(
-            "Error page returned. Not able to add song to local sqlite "
-            "database: %s. Error: %s ",
-            app.config['SQLALCHEMY_DATABASE_URI'], e)
-        return render_template('error.html')
-    except sqlalchemy.exc.OperationalError as e:
-        logger.error(
-            "Error page returned. Not able to add song to MySQL database: %s. "
-            "Error: %s ",
-            app.config['SQLALCHEMY_DATABASE_URI'], e)
-        return render_template('error.html')
-
+@app.route('/', methods=['POST'])
+def data():
+    if request.method == 'POST':
+        user_input = request.form.to_dict()['Name']
+        try:
+            recommendations = recommendation_manager.session.query(Recommendations).filter_by(Name_villager=user_input).limit(
+                app.config["MAX_ROWS_SHOW"]).all()
+            if len(recommendations) == 0:
+                return render_template('not_found.html', user_input=user_input)
+            return render_template('result.html', recommendations=recommendations, user_input=user_input)
+        except sqlalchemy.exc.OperationalError:
+            traceback.print_exc()
+            logger.warning("Not able to display villagers, error page returned")
+            return render_template('error.html')
 
 if __name__ == '__main__':
     app.run(debug=app.config["DEBUG"], port=app.config["PORT"],
