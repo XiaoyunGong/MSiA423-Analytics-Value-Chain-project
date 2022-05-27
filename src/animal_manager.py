@@ -1,22 +1,18 @@
 """Creates, ingests data into, and enables querying of a table of
  songs for the PennyLane app to query from and display results to the user."""
 # mypy: plugins = sqlmypy, plugins = flasksqlamypy
-import os
-import logging.config
+
+import logging
 import typing
 
-import flask
-import sqlalchemy as sql
-import sqlalchemy
-import sqlalchemy.orm
-from sqlalchemy.orm import sessionmaker
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.ext.declarative import declarative_base
 import pandas as pd
+import flask
+import sqlalchemy
+from sqlalchemy.ext.declarative import declarative_base
+from flask_sqlalchemy import SQLAlchemy
 
 logger = logging.getLogger(__name__)
 
-#Base: typing.Any = declarative_base()
 Base = declarative_base()
 
 class Villagers(Base):
@@ -96,7 +92,6 @@ class AnimalManager:
         """
 
         session = self.session
-        # Make the dataframe to a list of dictionaries to pass the data into the Pokemon class easily
         data_list = pd.read_csv(input_path).to_dict(orient='records')
 
         persist_list = []
@@ -125,60 +120,23 @@ class AnimalManager:
         """
         self.session.close()
 
-    # def add_animal(
-    #     self,
-    #     Unique_Entry_ID: str,
-    #     Name: str,
-    #     Species: str,
-    #     Gender: str,
-    #     Personality: str,
-    #     Hobby: str,
-    #     Birthday: str,
-    #     Catchphrase: str,
-    #     Favorite_Song: str,
-    #     Style_1: str,
-    #     Style_2: str,
-    #     Color_1: str,
-    #     Color_2: str,
-    #     Wallpaper: str,
-    #     Flooring: str,
-    #     Furniture_List: str,
-    #     Filename: str) -> None:
-    #     """Seeds an existing database with additional animal.
-
-    #     Args:
-    #         !!! TO DO !!!!
-
-    #     Returns:
-    #         None
-    #     """
-    #     try:
-    #         session = self.session
-    #         animal = Villagers(
-    #             Unique_Entry_ID=Unique_Entry_ID,
-    #             Name=Name,
-    #             Species=Species,
-    #             Gender=Gender,
-    #             Personality=Personality,
-    #             Hobby=Hobby,
-    #             Birthday=Birthday,
-    #             Catchphrase=Catchphrase,
-    #             Favorite_Song=Favorite_Song,
-    #             Style_1=Style_1,
-    #             Style_2=Style_2,
-    #             Color_1=Color_1,
-    #             Color_2=Color_2,
-    #             Wallpaper=Wallpaper,
-    #             Flooring=Flooring,
-    #             Furniture_List=Furniture_List,
-    #             Filename=Filename
-    #             )
-    #         session.add(animal)
-    #         session.commit()
-    #         logger.info("New animal %s added to the database", Name)
-    #     except sqlalchemy.exc.OperationalError:
-    #         logger.error('Failed to connect to server. '
-    #                      'Please check if you are connected to Northwestern VPN')
+def create_db(engine_string: str) -> None:
+    """Create database from provided engine string
+    Args:
+        engine_string (str): Engine string
+    Returns: None
+    """
+    engine = sqlalchemy.create_engine(engine_string)
+    logger.debug("the engine_str is %s", engine_string)
+    try:
+        Base.metadata.create_all(engine)
+    except sqlalchemy.exc.OperationalError as e:
+        my_message = ('You might have connection error. Have you configured \n'
+                      'SQLALCHEMY_DATABASE_URI variable correctly and connect to Northwestern VPN?')
+        logger.error(f'The original error is: {e}')
+        logger.error(f"{my_message}")
+    else:
+        logger.info("Database created.")
 
 class RecommendationManager:
     """Creates a SQLAlchemy connection to the Apps table.
@@ -211,7 +169,7 @@ class RecommendationManager:
         """
 
         session = self.session
-        # Make the dataframe to a list of dictionaries to pass the data into the Pokemon class easily
+
         data_list = pd.read_csv(input_path).to_dict(orient='records')
 
         persist_list = []
@@ -240,33 +198,36 @@ class RecommendationManager:
         """
         self.session.close()
 
-def create_db(engine_string: str) -> None:
+# def create_db(engine_string: str) -> None:
 
-    # find SQLALCHEMY_DATABASE_URI from environment and set as engine.
-    engine_string = os.getenv("SQLALCHEMY_DATABASE_URI")
-    if engine_string is None:
-        logger.error("SQLALCHEMY_DATABASE_URI environment variable not set.")
-        raise RuntimeError("SQLALCHEMY_DATABASE_URI environment variable not set; exiting")
-    engine = sql.create_engine(engine_string)
+#     # find SQLALCHEMY_DATABASE_URI from environment and set as engine.
+#     engine_string = os.getenv("SQLALCHEMY_DATABASE_URI")
+#     logger.debug("The engine string is set to be %s", SQLALCHEMY_DATABASE_URI)
+#     if engine_string is None:
+#         logger.error("SQLALCHEMY_DATABASE_URI environment variable not set.")
+#         raise RuntimeError("SQLALCHEMY_DATABASE_URI environment variable not set; exiting")
+#     engine = sql.create_engine(engine_string)
 
-    try:
-        engine.connect()
-    except sqlalchemy.exc.OperationalError as e:
-        logger.error("Could not connect to database!")
-        logger.debug("Database URI: %s", )
-        raise e
-    except sqlalchemy.exe.OperationalError as e1:
-        logger.error("Can't connect to MySQL server.")
-        logger.debug("It is possible that user is not connected to NU VPN.")
-        raise e1
+#     try:
+#         engine.connect()
+#     except sqlalchemy.exc.OperationalError as e:
+#         logger.error("Could not connect to database!")
+#         logger.debug("Database URI: %s", )
+#         raise e
+#     except sqlalchemy.exe.OperationalError as e1:
+#         logger.error("Can't connect to MySQL server.")
+#         logger.debug("It is possible that user is not connected to NU VPN.")
+#         raise e1
 
-    # create the villagers table
-    Base.metadata.create_all(engine)
+#     # create the villagers table
+#     Base.metadata.create_all(engine)
 
-    # create a db session
-    Session = sessionmaker(bind=engine)
-    session = Session()
+#     # create a db session
+#     Session = sessionmaker(bind=engine)
+#     session = Session()
 
-    session.commit()
-    logger.info("Database created with table villagers and recommendation added.")
-    session.close()
+#     session.commit()
+#     logger.info("Database created with table villagers and recommendation added.")
+#     session.close()
+
+

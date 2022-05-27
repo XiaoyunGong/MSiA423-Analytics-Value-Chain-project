@@ -1,7 +1,15 @@
-EXAMPLE_PATH=data/
 S3_PATH = s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv
-LOCAL_PATH = data/raw/villagers.csv
-LOCAL_DOWNLOAD_PATH = data/download/villagers.csv
+LOCAL_PATH = data/external/villagers.csv
+LOCAL_DOWNLOAD_PATH = data/raw/villagers.csv
+
+# for developing: clean up everything for make
+cleanup:
+	rm data/raw/villagers.csv
+	rm data/final/recommendation.csv
+	rm data/interim/clean.csv
+	rm figures/cost_plot_kmodes.png
+	rm models/kmodes.joblib
+	rm data/animalcrossing.db
 
 # docker images
 image-run:
@@ -13,7 +21,6 @@ image-app:
 image-app-ecs:
 	docker build --platform linux/x86_64 -f dockerfiles/Dockerfile.app -t msia423-flask . 
 
-# upload to and download from S3
 upload-to-S3:
 	docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py upload_file_to_s3 --local_path=${LOCAL_PATH} --s3_path=${S3_PATH}
 
@@ -21,9 +28,9 @@ data/download/villagers.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py download_file_from_s3 \
 	--s3_path=${S3_PATH} --local_path=${LOCAL_DOWNLOAD_PATH}
 
+# modeling (start from downloading data)
 download-from-S3: data/download/villagers.csv
 
-# modeling
 data/interim/clean.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py preprocess --config=config/model_config.yaml
 
@@ -39,24 +46,20 @@ data/final/recommendation.csv:
 
 recommendation: data/final/recommendation.csv data/final/recommendation.csv models/kmodes.joblib figures/cost_plot_kmodes.png 
 
-model-all: preprocess train recommendation
-
-remove-all:
-	rm data/interim/clean.csv
-	rm models/kmodes.joblib
-	rm figures/cost_plot_kmodes.png
-	rm data/final/recommendation.csv
+model-all: download-from-S3 preprocess train recommendation
 
 # to RDS (run only once)
 create_db:
-	docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py create_db
+	docker run -e SQLALCHEMY_DATABASE_URI --mount type=bind,source="$(shell pwd)"/data,target=/app/data/ animalcrossing run.py create_db
 
 ingest_raw:
-	docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py ingest_raw
+	docker run -e SQLALCHEMY_DATABASE_URI --mount type=bind,source="$(shell pwd)"/data,target=/app/data/ animalcrossing run.py ingest_raw
 
 ingest_rec:
-	docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py ingest_rec
+	docker run -e SQLALCHEMY_DATABASE_URI --mount type=bind,source="$(shell pwd)"/data,target=/app/data/ animalcrossing run.py ingest_rec
 
+check:
+	docker run --platform linux/x86_64  -it --rm  mysql:5.7.33 mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}
 # launch the app locally
 launch:
 	docker run -e SQLALCHEMY_DATABASE_URI --name test-app --mount type=bind,source="$(shell pwd)"/data,target=/app/data/ -p 5001:5000 animalcrossingapp

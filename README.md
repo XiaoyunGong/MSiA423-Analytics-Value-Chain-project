@@ -22,9 +22,9 @@ Author: Xiaoyun Gong
 			- [Create the docker image for testing](#create-the-docker-image-for-testing)
 	- [Data Source](#data-source)
 	- [Model Pipeline](#model-pipeline)
-		- [Download raw data from S3](#download-raw-data-from-s3)
 		- [Run everything as a pipeline](#run-everything-as-a-pipeline)
 		- [Create the recommendation results step by step](#create-the-recommendation-results-step-by-step)
+			- [Download raw data from S3](#download-raw-data-from-s3)
 			- [Preprocess the data](#preprocess-the-data)
 			- [Train model](#train-model)
 			- [Generate recommendation results](#generate-recommendation-results)
@@ -170,7 +170,7 @@ make image-app
 
 After setting up environment variables and docker images, the first step is to get the data.
 
-The dataset used for this app comes from Kaggle. To download the data, users can go to this [**Animal Crossing dataset website**](https://www.kaggle.com/datasets/jessicali9530/animal-crossing-new-horizons-nookplaza-dataset) and click the Download button at the top of the page. Note that users will need to register a Kaggle account in order to download dataset if user do not have one. Because the dataset is relatively small, a copy was saved in `data/raw/villagers.csv`. Another copy is uploaded to S3. The following command will upload the data form `data/raw/villagers.csv` (or any local location) to the user's S3 bucket.
+The dataset used for this app comes from Kaggle. To download the data, users can go to this [**Animal Crossing dataset website**](https://www.kaggle.com/datasets/jessicali9530/animal-crossing-new-horizons-nookplaza-dataset) and click the Download button at the top of the page. Note that users will need to register a Kaggle account in order to download dataset if user do not have one. Because the dataset is relatively small, a copy was saved in `data/external/villagers.csv`. Another copy is uploaded to S3. The following command will upload the data form `data/external/villagers.csv` (or any local location) to the user's S3 bucket.
 
 ```bash
 make upload-to-S3
@@ -186,18 +186,6 @@ make upload-to-S3 LOCAL_PATH=<YOUR_LOCAL_PATH> S3_PATH=<YOUR_S3_PATH>
 To run these commands, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` need to be loaded as environment variables, and the docker image `animalcrossing` needs to be built.
 
 ## Model Pipeline
-### Download raw data from S3
-Although stored in local in `data\raw\villagers.csv`, data can be downloaded from S3. The following command will download the data.
-```bash
-make download-from-S3
-```
-
-The current default for the local path to the data is `data/download/villagers.csv`, and the S3 path to the data is `s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv`. If the user needs to download the data to another local location or download the data from another destination in S3, the following command can address that.
-
-```bash
-make download-from-S3 LOCAL_DOWNLOAD_PATH=<YOUR_LOCAL_DOWNLOAD_PATH> S3_PATH=<YOUR_S3_PATH>
-```
-
 ### Run everything as a pipeline
 If user want to create everything in one command, the user can use the command below. This command will take the raw data, preprocess it, train the model, and generate the recommendation results.
 
@@ -205,10 +193,20 @@ If user want to create everything in one command, the user can use the command b
 make model-all
 ```
 The final result is going to be saved in `data/final/recommendations.csv`. 
-
 **Instead**, the user can also run it step by step (see below).
-
 ### Create the recommendation results step by step
+
+#### Download raw data from S3
+Although stored in local in `data\external\villagers.csv`, data can be downloaded from S3. The following command will download the data to `data/raw/villagers.csv` (by default).
+```bash
+make download-from-S3
+```
+
+The current default for the local path to the data is `data/raw/villagers.csv`, and the S3 path to the data is `s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv`. If the user needs to download the data to another local location or download the data from another destination in S3, the following command can address that.
+
+```bash
+make download-from-S3 LOCAL_DOWNLOAD_PATH=<YOUR_LOCAL_DOWNLOAD_PATH> S3_PATH=<YOUR_S3_PATH>
+```
 
 #### Preprocess the data
 With the data in a local folder, now user can start to preprocess the data. The command below will allow users to preprocess the data. This function read in data from `data/raw/villagers.csv` and the preprocessed dataframe is stored in `data/interim/clean.csv` by default.

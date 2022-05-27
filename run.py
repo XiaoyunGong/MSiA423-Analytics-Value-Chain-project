@@ -24,7 +24,7 @@ if __name__ == "__main__":
     # Sub-parser for uploading data to s3
     sp_upload = subparsers.add_parser("upload_file_to_s3", help="Upload raw data to s3")
     sp_upload.add_argument("--s3_path",
-                           default="s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv",
+                           default="s3://2022-msia423-gong-xiaoyun/data/external/villagers.csv",
                            help="S3 data path to the data")
     sp_upload.add_argument("--local_path", default="data/raw/villagers.csv",
                            help="local path to the data")
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     # Sub-parser for creating a database
     sp_create = subparsers.add_parser("create_db",
                                       description="Create database")
-    sp_create.add_argument("--engine_string", help="SQLAlchemy connection URI for database")
+    sp_create.add_argument("--engine_string", default=SQLALCHEMY_DATABASE_URI, help="SQLAlchemy connection URI for database")
 
     # Sub-parser for ingesting raw data
     sp_ingest_raw = subparsers.add_parser("ingest_raw",
