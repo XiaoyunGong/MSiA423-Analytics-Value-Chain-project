@@ -1,11 +1,12 @@
 """Configures the subparsers for receiving command line arguments for each
  stage in the model pipeline and orchestrates their execution."""
 import argparse
+from fileinput import filename
 import logging.config
 
 import yaml
 from src.animal_manager import AnimalManager, RecommendationManager, create_db
-from src.modeling import kmodes_modeling, recommendation
+from src.modeling import form_final_model, kmodes_modeling, recommendation
 from src.s3 import upload_file_to_s3, download_file_from_s3
 from src.preprocess import drop_cols, load_dataset, feature_engineering, save_df
 from config.flaskconfig import SQLALCHEMY_DATABASE_URI
@@ -53,6 +54,10 @@ if __name__ == "__main__":
                           help="the input path for the cleaned data.")
     sp_train.add_argument("--png_path", default="figures/cost_plot_kmodes.png",
                           help="the output path for the cost plot.")
+    sp_train.add_argument("--result_path", default="deliverables/kmodes_result.csv",
+                          help="the output path for the kmode results.")
+    sp_train.add_argument("--df_model_path", default="data/interim/for_model.csv",
+                          help="the output path for the csv for model uses.")
     sp_train.add_argument("--model_path", default="models/kmodes.joblib", 
                           help="the output path for the final model.")
     sp_train.add_argument("--config",
@@ -61,6 +66,8 @@ if __name__ == "__main__":
 
     # Sub-parser for generating the recommendation result
     sp_recommendation = subparsers.add_parser("recommendation", help="generate the recommendation result")
+    sp_recommendation.add_argument("--df_model_path", default="data/interim/for_model.csv",
+                          help="the input path for the data used for modeling.")
     sp_recommendation.add_argument("--clean_path", default="data/interim/clean.csv",
                           help="the input path for the cleaned data.")
     sp_recommendation.add_argument("--model_path", default="models/kmodes.joblib", 
@@ -117,14 +124,19 @@ if __name__ == "__main__":
         kmodes_modeling(**config["modeling"]["kmodes_modeling"],
                         filename=args.clean_path,
                         pngpath=args.png_path,
-                        model_path=args.model_path)
+                        df_model_path=args.df_model_path,
+                        result_path = args.result_path
+                        )
+        form_final_model(**config["modeling"]["form_final_model"],
+                         model_path=args.model_path)
     
     elif sp_used == "recommendation":
         with open(args.config, "r") as f:
             config = yaml.load(f, Loader=yaml.FullLoader)
             logger.info("Configuration file loaded from %s" % args.config)
         recommendation(**config["modeling"]["recommendation"],
-                       filename=args.clean_path,
+                       filename_model=args.df_model_path,
+                       filename_clean=args.clean_path,
                        model_path=args.model_path,
                        recommendation_path=args.rec_path)
 

@@ -34,7 +34,11 @@ modeling:
     init: random
     n_init: 12
     random_state: 42
+  form_final_model:
     final_n_cluster: 10
+    init: random
+    n_init: 12
+    random_state: 42
 
   recommendation:
     drop_list:

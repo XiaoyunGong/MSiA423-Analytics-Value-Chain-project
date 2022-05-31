@@ -9,6 +9,8 @@ cleanup:
 	rm data/interim/clean.csv
 	rm figures/cost_plot_kmodes.png
 	rm models/kmodes.joblib
+	rm data/interim/for_model.csv
+	rm deliverables/kmodes_result.csv
 	rm data/animalcrossing.db
 
 # docker images
@@ -36,10 +38,10 @@ data/interim/clean.csv:
 
 preprocess: data/interim/clean.csv
 
-models/kmodes.joblib figures/cost_plot_kmodes.png &:
+models/kmodes.joblib figures/cost_plot_kmodes.png data/interim/for_model.csv deliverables/kmodes_result.csv &:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py train --config=config/model_config.yaml --model_path=models/kmodes.joblib
 
-train: models/kmodes.joblib figures/cost_plot_kmodes.png
+train: models/kmodes.joblib figures/cost_plot_kmodes.png data/interim/for_model.csv deliverables/kmodes_result.csv
 
 data/final/recommendation.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py recommendation --config=config/model_config.yaml
