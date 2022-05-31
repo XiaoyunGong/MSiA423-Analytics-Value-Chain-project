@@ -19,7 +19,7 @@ def test_drop_cols():
     df_in = pd.DataFrame(df_in_values, index=df_in_index, columns=df_in_col)
 
     features = ["Name", "col1"]
-    
+
     # define df_true
     df_true_values = [["g1", 2],
                     ["g2", 4],
@@ -47,6 +47,6 @@ def test_drop_cols_no_col():
     df_in = pd.DataFrame(df_in_values, index=df_in_index, columns=df_in_col)
 
     features = ["Name", "wrongcol"]
-    
+
     with pytest.raises(KeyError):
         src.preprocess.drop_cols(df_in, features)

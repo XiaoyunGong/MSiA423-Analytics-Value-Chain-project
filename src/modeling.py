@@ -39,9 +39,9 @@ def kmodes_modeling(filename: str,
     except FileNotFoundError:
         logger.error("Cannot find %s", filename)
         sys.exit(1)
-    
+
     # drop the features that are not used
-    df = df_all.drop(columns = feature_not_used)
+    df = df_all.drop(columns = feature_not_used) # pylint: disable=no-member
     logger.info("Columns used for kmodes clustering are %s", str(df.columns.values.tolist()))
 
     # save this df_model for further use.
@@ -50,8 +50,8 @@ def kmodes_modeling(filename: str,
     # start the training process
     logger.debug("Kmodes training starts")
     cost = []
-    K = range(k_start, k_end)
-    for num_clusters in list(K):
+    k = range(k_start, k_end)
+    for num_clusters in list(k):
         logger.debug("running n_cluster = %i", num_clusters)
         kmode = KModes(n_clusters = num_clusters, init = init, n_init = n_init, random_state=random_state)
         kmode.fit_predict(df)
@@ -60,14 +60,14 @@ def kmodes_modeling(filename: str,
 
     # plot the cost vs cluster plot
     logger.info("Finished the training process. Saving a plot to %s", pngpath)
-    plt.plot(K, cost, "bx-")
+    plt.plot(k, cost, "bx-")
     plt.xlabel("No. of clusters")
     plt.ylabel("Cost")
     plt.title("Elbow Method For Optimal k")
     plt.savefig(pngpath, transparent=True)
 
     # save the result kmodes K and cost table
-    result_table = pd.DataFrame({"K": K, "cost": cost})
+    result_table = pd.DataFrame({"K": k, "cost": cost})
     result_table.to_csv(result_path, index=False)
 
 def form_final_model(final_n_cluster: int,

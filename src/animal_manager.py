@@ -39,7 +39,7 @@ class Villagers(Base):
     Filename = sqlalchemy.Column(sqlalchemy.String(100), unique=False, nullable=False)
 
     def __repr__(self):
-        return '<Animal Name %r>' % self.Name
+        return "<Animal Name %r>" % self.Name
 
 class Recommendations(Base):
     """Creates a data model for the database to be set up for capturing villagers."""
@@ -59,7 +59,7 @@ class Recommendations(Base):
     Unique_id = sqlalchemy.Column(sqlalchemy.String(100), primary_key=True)
 
     def __repr__(self):
-        return '<Animal Name %r>' % self.Name
+        return "<Animal Name %r>" % self.Name
 
 class AnimalManager:
     """Creates a SQLAlchemy connection to the Apps table.
@@ -92,7 +92,7 @@ class AnimalManager:
         """
 
         session = self.session
-        data_list = pd.read_csv(input_path).to_dict(orient='records')
+        data_list = pd.read_csv(input_path).to_dict(orient="records")
 
         persist_list = []
         for data in data_list:
@@ -102,15 +102,13 @@ class AnimalManager:
             session.add_all(persist_list)
             session.commit()
         except sqlalchemy.exc.OperationalError:
-            my_message = ('You might have connection error. Have you configured \n'
-                          'SQLALCHEMY_DATABASE_URI variable correctly and connect to Northwestern VPN?')
-            logger.error(f"{my_message} \n The original error message is: ", exc_info=True)
+            logger.error("You might need to check your NU vpn connection.\n"
+                         "The original error message is: ", exc_info=True)
         except sqlalchemy.exc.IntegrityError:
-            my_message = ('Have you already inserted the same record into the database before? \n'
-                          'This database does not allow duplicate in the input-recommendation pair')
-            logger.error(f"{my_message} \n The original error message is: ", exc_info=True)
+            logger.error("There are probably duplicates in your database.\n"
+                         "The original error message is: ", exc_info=True)
         else:
-            logger.info('%i records from %s were added to the table',len(persist_list), input_path)
+            logger.info("%i records from %s were added to the table",len(persist_list), input_path)
 
     def close(self) -> None:
         """Closes SQLAlchemy session
@@ -131,10 +129,9 @@ def create_db(engine_string: str) -> None:
     try:
         Base.metadata.create_all(engine)
     except sqlalchemy.exc.OperationalError as e:
-        my_message = ('You might have connection error. Have you configured \n'
-                      'SQLALCHEMY_DATABASE_URI variable correctly and connect to Northwestern VPN?')
-        logger.error(f'The original error is: {e}')
-        logger.error(f"{my_message}")
+        logger.error("There is a connection error. \n"
+                     "Possible cause is missing enviroment variable or VPN connection.The original error is: %s",
+                     str(e))
     else:
         logger.info("Database created.")
 
@@ -170,7 +167,7 @@ class RecommendationManager:
 
         session = self.session
 
-        data_list = pd.read_csv(input_path).to_dict(orient='records')
+        data_list = pd.read_csv(input_path).to_dict(orient="records")
 
         persist_list = []
         for data in data_list:
@@ -179,16 +176,15 @@ class RecommendationManager:
         try:
             session.add_all(persist_list)
             session.commit()
-        except sqlalchemy.exc.OperationalError:
-            my_message = ('You might have connection error. Have you configured \n'
-                          'SQLALCHEMY_DATABASE_URI variable correctly and connect to Northwestern VPN?')
-            logger.error(f"{my_message} \n The original error message is: ", exc_info=True)
+        except sqlalchemy.exc.OperationalError as e:
+            logger.error("There is a connection error. \n"
+                         "Possible cause is missing enviroment variable or VPN connection.The original error is:%s",
+                         str(e))
         except sqlalchemy.exc.IntegrityError:
-            my_message = ('Have you already inserted the same record into the database before? \n'
-                          'This database does not allow duplicate in the input-recommendation pair')
-            logger.error(f"{my_message} \n The original error message is: ", exc_info=True)
+            logger.error("There are probably duplicates in your database. The original error message is: ",
+                         exc_info=True)
         else:
-            logger.info('%i records from %s were added to the table',len(persist_list), input_path)
+            logger.info("%i records from %s were added to the table", len(persist_list), input_path)
 
     def close(self) -> None:
         """Closes SQLAlchemy session

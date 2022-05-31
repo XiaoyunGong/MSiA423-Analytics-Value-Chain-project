@@ -64,7 +64,7 @@ def test_trimming():
     df_in_index = [0, 1, 2, 3]
     df_in_col = ["Date", "col1", "col2"]
     df_in = pd.DataFrame(df_in_values, index=df_in_index, columns=df_in_col)
-    # define trim column, new column name, and trim by 
+    # define trim column, new column name, and trim by
     trim_column = "Date"
     trim_new_name = "new_col_name"
     trim_by = -3
@@ -93,7 +93,7 @@ def test_trimming_no_col():
     df_in_index = [0, 1, 2, 3]
     df_in_col = ["Date", "col1", "col2"]
     df_in = pd.DataFrame(df_in_values, index=df_in_index, columns=df_in_col)
-    # define trim column, new column name, and trim by 
+    # define trim column, new column name, and trim by
     trim_column = "wrong_col"
     trim_new_name = "new_col_name"
     trim_by = -3

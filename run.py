@@ -1,9 +1,7 @@
 """Configures the subparsers for receiving command line arguments for each
  stage in the model pipeline and orchestrates their execution."""
 import argparse
-from fileinput import filename
 import logging.config
-
 import yaml
 from src.animal_manager import AnimalManager, RecommendationManager, create_db
 from src.modeling import form_final_model, kmodes_modeling, recommendation
@@ -11,7 +9,7 @@ from src.s3 import upload_file_to_s3, download_file_from_s3
 from src.preprocess import drop_cols, load_dataset, feature_engineering, save_df
 from config.flaskconfig import SQLALCHEMY_DATABASE_URI
 
-# add configuration
+# add logging configuration
 logging.config.fileConfig("config/logging/local.conf")
 logger = logging.getLogger("run.py")
 
@@ -29,12 +27,12 @@ if __name__ == "__main__":
                            help="S3 data path to the data")
     sp_upload.add_argument("--local_path", default="data/raw/villagers.csv",
                            help="local path to the data")
-    
+
     # Sub-parser for downloading data from s3 (optional)
     sp_download = subparsers.add_parser("download_file_from_s3", help="Download raw data from s3")
     sp_download.add_argument("--s3_path",
-                           default="s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv",
-                           help="S3 data path to the data")
+                             default="s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv",
+                             help="S3 data path to the data")
     sp_download.add_argument("--local_path", default="data/download/villagers.csv",
                            help="local path to the data")
 
@@ -58,11 +56,11 @@ if __name__ == "__main__":
                           help="the output path for the kmode results.")
     sp_train.add_argument("--df_model_path", default="data/interim/for_model.csv",
                           help="the output path for the csv for model uses.")
-    sp_train.add_argument("--model_path", default="models/kmodes.joblib", 
+    sp_train.add_argument("--model_path", default="models/kmodes.joblib",
                           help="the output path for the final model.")
     sp_train.add_argument("--config",
-                        default="config/model_config.yaml",
-                        help="Path to configuration file")
+                          default="config/model_config.yaml",
+                          help="Path to configuration file")
 
     # Sub-parser for generating the recommendation result
     sp_recommendation = subparsers.add_parser("recommendation", help="generate the recommendation result")
@@ -70,18 +68,19 @@ if __name__ == "__main__":
                           help="the input path for the data used for modeling.")
     sp_recommendation.add_argument("--clean_path", default="data/interim/clean.csv",
                           help="the input path for the cleaned data.")
-    sp_recommendation.add_argument("--model_path", default="models/kmodes.joblib", 
+    sp_recommendation.add_argument("--model_path", default="models/kmodes.joblib",
                           help="the input path for the final model.")
-    sp_recommendation.add_argument("--rec_path", default="data/final/recommendation.csv", 
-                          help="the output path for the recommendation.")                     
+    sp_recommendation.add_argument("--rec_path", default="data/final/recommendation.csv",
+                          help="the output path for the recommendation.")
     sp_recommendation.add_argument("--config",
                         default="config/model_config.yaml",
                         help="Path to configuration file")
-    
+
     # Sub-parser for creating a database
     sp_create = subparsers.add_parser("create_db",
                                       description="Create database")
-    sp_create.add_argument("--engine_string", default=SQLALCHEMY_DATABASE_URI, help="SQLAlchemy connection URI for database")
+    sp_create.add_argument("--engine_string", default=SQLALCHEMY_DATABASE_URI,
+                           help="SQLAlchemy connection URI for database")
 
     # Sub-parser for ingesting raw data
     sp_ingest_raw = subparsers.add_parser("ingest_raw",
@@ -95,9 +94,10 @@ if __name__ == "__main__":
     sp_ingest_rec = subparsers.add_parser("ingest_rec",
                                       description="Add data to database")
     sp_ingest_rec.add_argument("--engine_string",
-                           default=SQLALCHEMY_DATABASE_URI,
-                           help="SQLAlchemy connection URI for database")
-    sp_ingest_rec.add_argument("--input_path", default="data/final/recommendation.csv", help="Recommendation table ingestion.")
+                               default=SQLALCHEMY_DATABASE_URI,
+                               help="SQLAlchemy connection URI for database")
+    sp_ingest_rec.add_argument("--input_path", default="data/final/recommendation.csv",
+                               help="Recommendation table ingestion.")
 
     args = parser.parse_args()
     sp_used = args.subparser_name
@@ -111,7 +111,7 @@ if __name__ == "__main__":
     elif sp_used == "preprocess":
         with open(args.config, "r") as f:
             config = yaml.load(f, Loader=yaml.FullLoader)
-            logger.info("Configuration file loaded from %s" % args.config)
+            logger.info("Configuration file loaded from %s", args.config)
         data = load_dataset(filename=args.raw_path)
         data_dropped = drop_cols(data, **config["preprocess"]["drop_cols"])
         data_cleaned = feature_engineering(data_dropped, **config["preprocess"]["feature_engineering"])
@@ -120,7 +120,7 @@ if __name__ == "__main__":
     elif sp_used == "train":
         with open(args.config, "r") as f:
             config = yaml.load(f, Loader=yaml.FullLoader)
-            logger.info("Configuration file loaded from %s" % args.config)
+            logger.info("Configuration file loaded from %s", args.config)
         kmodes_modeling(**config["modeling"]["kmodes_modeling"],
                         filename=args.clean_path,
                         pngpath=args.png_path,
@@ -129,11 +129,11 @@ if __name__ == "__main__":
                         )
         form_final_model(**config["modeling"]["form_final_model"],
                          model_path=args.model_path)
-    
+
     elif sp_used == "recommendation":
         with open(args.config, "r") as f:
             config = yaml.load(f, Loader=yaml.FullLoader)
-            logger.info("Configuration file loaded from %s" % args.config)
+            logger.info("Configuration file loaded from %s", args.config)
         recommendation(**config["modeling"]["recommendation"],
                        filename_model=args.df_model_path,
                        filename_clean=args.clean_path,

@@ -19,7 +19,7 @@ def load_dataset(filename: str) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: The dataframe with only useful features
-    """ 
+    """
     try:
         df = pd.read_csv(filename)
         logger.info("The dataset path %s is loaded and it has %i columns.", filename, df.shape[1])
@@ -45,7 +45,7 @@ def drop_cols(df:pd.DataFrame, features:List) -> pd.DataFrame:
     else:
         logger.error("Some columns in the columns input is not in the dataset. Check again!")
         raise KeyError("Some columns in the columns input is not in the dataset. Check again!")
-   
+
     logger.info("The shape of the data with useful features only is %s", str(df_use.shape))
     return df_use
 
@@ -68,7 +68,7 @@ def feature_engineering(df: pd.DataFrame,
         trim_column (str): The column to trim
         trim_by (int): The number to trim the trim_column by
         trim_new_name (str): The name for the new column after trimming
-        index_column (str): The new index column 
+        index_column (str): The new index column
 
     Returns:
         pd.DataFrame: a df after feature enginnering
@@ -84,8 +84,8 @@ def feature_engineering(df: pd.DataFrame,
                   grouping_column = grouping_column,
                   grouping_new_name = grouping_new_name)
 
-    logger.info("Animals are re-grouped into %i groups (%s).", 
-                len(grouping_dict.keys()), 
+    logger.info("Animals are re-grouped into %i groups (%s).",
+                len(grouping_dict.keys()),
                 str(grouping_dict.keys()))
 
     # get the last three characters of the birthday column and save it as birthday_month

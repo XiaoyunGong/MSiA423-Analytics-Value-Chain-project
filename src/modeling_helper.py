@@ -1,10 +1,9 @@
 """
 This module includes functions called in the modeling module.
 """
-
+import logging
 from typing import List
 import numpy as np
-import logging
 import pandas as pd
 
 logger = logging.getLogger(__name__)
@@ -30,14 +29,14 @@ def create_rec_table(df: pd.DataFrame,
     df_nrows = df.shape[0]
     cluster_length = len(clusters)
 
-    if df_nrows == cluster_length:      
+    if df_nrows == cluster_length:
         df.insert(0, "Cluster", clusters, True)
     else:
         logger.error("nrow of df doesn't match with the lenth of the clutersing result.")
         raise ValueError("nrow of the df doesn't match length of the array.")
 
     # perform merging
-    joined = df.merge(df, how="outer", on="Cluster", 
+    joined = df.merge(df, how="outer", on="Cluster",
                     suffixes = ["_villager", ""])
     joined.drop(columns=drop_list, inplace=True)
     joined = joined[joined.Name_villager!=joined.Name]

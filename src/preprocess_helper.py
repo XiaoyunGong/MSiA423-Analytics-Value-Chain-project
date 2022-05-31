@@ -26,7 +26,7 @@ def grouping(df:pd.DataFrame,
     Returns:
         pd.DataFrame: the dataframe with the new column.
     """
-    
+
     all_cols = df.columns.values.tolist()
     if grouping_column not in all_cols:
         logger.error("Can not find the column that user want to regroup.")
