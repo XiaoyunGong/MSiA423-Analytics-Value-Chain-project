@@ -197,37 +197,3 @@ class RecommendationManager:
 
         """
         self.session.close()
-
-# def create_db(engine_string: str) -> None:
-
-#     # find SQLALCHEMY_DATABASE_URI from environment and set as engine.
-#     engine_string = os.getenv("SQLALCHEMY_DATABASE_URI")
-#     logger.debug("The engine string is set to be %s", SQLALCHEMY_DATABASE_URI)
-#     if engine_string is None:
-#         logger.error("SQLALCHEMY_DATABASE_URI environment variable not set.")
-#         raise RuntimeError("SQLALCHEMY_DATABASE_URI environment variable not set; exiting")
-#     engine = sql.create_engine(engine_string)
-
-#     try:
-#         engine.connect()
-#     except sqlalchemy.exc.OperationalError as e:
-#         logger.error("Could not connect to database!")
-#         logger.debug("Database URI: %s", )
-#         raise e
-#     except sqlalchemy.exe.OperationalError as e1:
-#         logger.error("Can't connect to MySQL server.")
-#         logger.debug("It is possible that user is not connected to NU VPN.")
-#         raise e1
-
-#     # create the villagers table
-#     Base.metadata.create_all(engine)
-
-#     # create a db session
-#     Session = sessionmaker(bind=engine)
-#     session = Session()
-
-#     session.commit()
-#     logger.info("Database created with table villagers and recommendation added.")
-#     session.close()
-
-

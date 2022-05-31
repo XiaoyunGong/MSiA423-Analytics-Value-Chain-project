@@ -3,9 +3,10 @@ import sys
 from typing import List
 import joblib
 import pandas as pd
-import numpy as np
 from kmodes.kmodes import KModes
 import matplotlib.pyplot as plt
+
+from src.modeling_helper import create_rec_table
 
 logger = logging.getLogger(__name__)
 
@@ -36,7 +37,7 @@ def kmodes_modeling(filename: str,
     try:
         # read in the cleaned data
         df_all = pd.read_csv(filename)
-        logging.info("The dataset path %s is loaded and it has %i columns.", filename, df_all.shape[1])
+        logger.info("The dataset path %s is loaded and it has %i columns.", filename, df_all.shape[1])
     except FileNotFoundError:
         logger.error("Cannot find %s", filename)
         sys.exit(1)
@@ -92,15 +93,8 @@ def recommendation(filename: str,
     clusters = kmode.fit_predict(df)
     logger.debug("Kmode modeling finished!")
 
-    # making the final recommendation table. Needs to join two df's together.
-    df.insert(0, "Cluster", clusters, True)
-    joined = df.merge(df, how="outer", on="Cluster", 
-                      suffixes = ["_villager", ""])
-    joined.drop(columns=drop_list, inplace=True)
-    joined = joined[joined.Name_villager!=joined.Name]
-
-    index_str = [str(x) for x in np.arange(0,joined.shape[0])]
-    joined["Unique_id"] = index_str
+    # Create the recommendation table.
+    joined = create_rec_table(df = df, clusters = clusters, drop_list=drop_list)
 
     # export the recommendation table to a csv
     joined.to_csv(recommendation_path, index = False)

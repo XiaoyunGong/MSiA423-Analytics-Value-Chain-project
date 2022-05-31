@@ -1,5 +1,5 @@
 preprocess:
-  load_dataset:
+  drop_cols:
     features: 
       - Name 
       - Species
@@ -22,7 +22,6 @@ preprocess:
     trim_column: Birthday
     trim_by: -3
     trim_new_name: Birthday_month
-    index_column: Name
 
 modeling:
   kmodes_modeling:

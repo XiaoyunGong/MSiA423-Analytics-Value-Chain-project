@@ -4,6 +4,7 @@ the functionality to interact with S3
 """
 import logging
 import re
+import sys
 
 import boto3
 import botocore
@@ -46,6 +47,7 @@ def upload_file_to_s3(local_path, s3_path):
     except botocore.exceptions.NoCredentialsError:
         logger.error('Please provide AWS credentials via AWS_ACCESS_KEY_ID '
                      'and AWS_SECRET_ACCESS_KEY env variables.')
+        sys.exit(1)
     else:
         logger.info('Data uploaded from %s to %s', local_path, s3_path)
 

@@ -24,12 +24,12 @@ image-app-ecs:
 upload-to-S3:
 	docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py upload_file_to_s3 --local_path=${LOCAL_PATH} --s3_path=${S3_PATH}
 
-data/download/villagers.csv:
+data/raw/villagers.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py download_file_from_s3 \
 	--s3_path=${S3_PATH} --local_path=${LOCAL_DOWNLOAD_PATH}
 
 # modeling (start from downloading data)
-download-from-S3: data/download/villagers.csv
+download-from-S3: data/raw/villagers.csv
 
 data/interim/clean.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py preprocess --config=config/model_config.yaml
@@ -76,3 +76,8 @@ ecs-tag:
 	docker tag msia423-flask:latest 008395313216.dkr.ecr.us-east-1.amazonaws.com/msia423-flask:latest
 ecs-login:
 	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 008395313216.dkr.ecr.us-east-1.amazonaws.com
+
+# test
+test:
+	docker build -t animalcrossing-test -f dockerfiles/Dockerfile.test .
+	docker run animalcrossing-test

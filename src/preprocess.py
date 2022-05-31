@@ -6,10 +6,12 @@ from typing import Dict, List
 
 import pandas as pd
 
+from src.preprocess_helper import grouping, trimming
+
 logger = logging.getLogger(__name__)
 
-def load_dataset(filename: str, features: List) -> pd.DataFrame:
-    """load the dataset from the data folder, and keep only the useful features
+def load_dataset(filename: str) -> pd.DataFrame:
+    """load the dataset from the data folder
 
     Args:
         filename (str): The location of the input .csv file
@@ -23,7 +25,18 @@ def load_dataset(filename: str, features: List) -> pd.DataFrame:
         logger.info("The dataset path %s is loaded and it has %i columns.", filename, df.shape[1])
     except FileNotFoundError:
         logger.error("Cannot find %s", filename)
+    return df
 
+def drop_cols(df:pd.DataFrame, features:List) -> pd.DataFrame:
+    """This function will drop not used columns from the data frame.
+
+    Args:
+        df (pd.DataFrame): the loaded df
+        features (List): List of useful features
+
+    Returns:
+        pd.DataFrame: the data set that can be used for feature engineering.
+    """
     # check if all elements in the features list exist in the df
     all_cols = df.columns.values.tolist()
     if all(elem in all_cols for elem in features):
@@ -42,8 +55,7 @@ def feature_engineering(df: pd.DataFrame,
                         grouping_new_name: str,
                         trim_column: str,
                         trim_by: int,
-                        trim_new_name:str,
-                        index_column:str) -> pd.DataFrame:
+                        trim_new_name:str) -> pd.DataFrame:
     """This function will regroup the animal species column using the grouping dictionary
         in the configuration file. Then, the birthday column will be replaced by a month only value.
         Afterwards, the name column is set as the index.
@@ -67,22 +79,23 @@ def feature_engineering(df: pd.DataFrame,
         raise TypeError("Provided argument `df` is not a Panda's DataFrame object")
 
     # regroup the animals by species
-    for key in grouping_dict.keys():
-        lst = grouping_dict.get(key)
-        df.loc[df[grouping_column].isin(lst), grouping_new_name] = key
+    df = grouping(df = df,
+                  grouping_dict = grouping_dict,
+                  grouping_column = grouping_column,
+                  grouping_new_name = grouping_new_name)
 
     logger.info("Animals are re-grouped into %i groups (%s).", 
                 len(grouping_dict.keys()), 
                 str(grouping_dict.keys()))
 
     # get the last three characters of the birthday column and save it as birthday_month
-    df[trim_new_name] = df[trim_column].str[trim_by:]
+    df = trimming(df = df,
+                  trim_column = trim_column,
+                  trim_by = trim_by,
+                  trim_new_name = trim_new_name)
 
     logger.info("The %s column was trimmed by %i.", trim_column, trim_by)
 
-    # reset the index
-    df.set_index(index_column)
-    logger.info("The index column is set to be the %s column", index_column)
     return df
 
 def save_df(df: pd.DataFrame, output_path: str) -> None:

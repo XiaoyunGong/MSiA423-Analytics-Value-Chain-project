@@ -310,19 +310,14 @@ The web app is available at `http://msia423-1454829810.us-east-1.elb.amazonaws.c
 Run the following:
 
 ```bash
- docker build -f dockerfiles/Dockerfile.test -t pennylanetest .
+	docker build -t animalcrossing-test -f dockerfiles/Dockerfile.test .
+	docker run animalcrossing-test
 ```
 
-To run the tests, run: 
 
+To run test using make file, run
 ```bash
- docker run pennylanetest
-```
-
-The following command will be executed within the container to run the provided unit tests under `test/`:  
-
-```bash
-python -m pytest
+	make -B test
 ``` 
 
 ## Pylint

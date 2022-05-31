@@ -7,7 +7,7 @@ import yaml
 from src.animal_manager import AnimalManager, RecommendationManager, create_db
 from src.modeling import kmodes_modeling, recommendation
 from src.s3 import upload_file_to_s3, download_file_from_s3
-from src.preprocess import load_dataset, feature_engineering, save_df
+from src.preprocess import drop_cols, load_dataset, feature_engineering, save_df
 from config.flaskconfig import SQLALCHEMY_DATABASE_URI
 
 # add configuration
@@ -105,8 +105,9 @@ if __name__ == "__main__":
         with open(args.config, "r") as f:
             config = yaml.load(f, Loader=yaml.FullLoader)
             logger.info("Configuration file loaded from %s" % args.config)
-        data = load_dataset(**config["preprocess"]["load_dataset"], filename=args.raw_path)
-        data_cleaned = feature_engineering(data, **config["preprocess"]["feature_engineering"])
+        data = load_dataset(filename=args.raw_path)
+        data_dropped = drop_cols(data, **config["preprocess"]["drop_cols"])
+        data_cleaned = feature_engineering(data_dropped, **config["preprocess"]["feature_engineering"])
         save_df(data_cleaned, output_path=args.clean_path)
 
     elif sp_used == "train":
