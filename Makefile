@@ -79,6 +79,8 @@ ecs-tag:
 ecs-login:
 	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 008395313216.dkr.ecr.us-east-1.amazonaws.com
 
+ecs-all: ecs-login ecs-tag ecs-push
+
 # test
 test:
 	docker build -t animalcrossing-test -f dockerfiles/Dockerfile.test .
