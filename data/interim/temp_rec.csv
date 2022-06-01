@@ -1,0 +1,392 @@
+,Cluster,Name,Species,Gender,Personality,Hobby,Birthday,Style_1,Style_2,Color_1,Color_2,Species_group,Birthday_month
+0,9,Admiral,Bird,Male,Cranky,Nature,27-Jan,Cool,Cool,Black,Blue,other,Jan
+1,6,Agent S,Squirrel,Female,Peppy,Fitness,2-Jul,Active,Simple,Blue,Black,ground_small,Jul
+2,1,Agnes,Pig,Female,Big Sister,Play,21-Apr,Simple,Elegant,Pink,White,ground_large,Apr
+3,6,Al,Gorilla,Male,Lazy,Fitness,18-Oct,Active,Active,Red,White,ground_large,Oct
+4,0,Alfonso,Alligator,Male,Lazy,Play,9-Jun,Simple,Simple,Red,Blue,other,Jun
+5,1,Alice,Koala,Female,Normal,Education,19-Aug,Cute,Cute,Red,Pink,ground_small,Aug
+6,3,Alli,Alligator,Female,Snooty,Fashion,8-Nov,Gorgeous,Elegant,Yellow,Brown,other,Nov
+7,3,Amelia,Eagle,Female,Snooty,Music,19-Nov,Cool,Elegant,Black,White,other,Nov
+8,5,Anabelle,Anteater,Female,Peppy,Fashion,16-Feb,Cute,Simple,Green,Blue,ground_large,Feb
+9,0,Anchovy,Bird,Male,Lazy,Play,4-Mar,Simple,Simple,Colorful,Orange,other,Mar
+10,9,Angus,Bull,Male,Cranky,Fitness,30-Apr,Cool,Cool,Red,Black,ground_large,Apr
+11,3,Anicotti,Mouse,Female,Peppy,Fashion,24-Feb,Simple,Elegant,Red,Pink,ground_small,Feb
+12,3,Ankha,Cat,Female,Snooty,Nature,22-Sep,Gorgeous,Simple,Colorful,Brown,ground_small,Sep
+13,4,Annalisa,Anteater,Female,Normal,Nature,6-Feb,Elegant,Gorgeous,Red,Pink,ground_large,Feb
+14,4,Annalise,Horse,Female,Snooty,Fashion,2-Dec,Elegant,Active,Blue,Purple,ground_large,Dec
+15,6,Antonio,Anteater,Male,Jock,Fitness,20-Oct,Simple,Simple,Light blue,Blue,ground_large,Oct
+16,9,Apollo,Eagle,Male,Cranky,Music,4-Jul,Cool,Simple,Black,Black,other,Jul
+17,0,Apple,Hamster,Female,Peppy,Play,24-Sep,Cute,Simple,Colorful,Red,ground_small,Sep
+18,4,Astrid,Kangaroo,Female,Snooty,Music,8-Sep,Cool,Active,Black,Colorful,ground_large,Sep
+19,1,Audie,Wolf,Female,Peppy,Fitness,31-Aug,Cute,Active,Green,White,ground_large,Aug
+20,1,Aurora,Penguin,Female,Normal,Education,27-Jan,Cute,Elegant,Pink,Red,ground_small,Jan
+21,1,Ava,Chicken,Female,Normal,Music,28-Apr,Elegant,Cute,Red,Gray,ground_small,Apr
+22,7,Avery,Eagle,Male,Cranky,Music,22-Feb,Simple,Gorgeous,Orange,Brown,other,Feb
+23,6,Axel,Elephant,Male,Jock,Fitness,23-Mar,Active,Simple,Green,White,ground_large,Mar
+24,3,Baabara,Sheep,Female,Snooty,Fashion,28-Mar,Gorgeous,Elegant,Purple,Blue,ground_large,Mar
+25,6,Bam,Deer,Male,Jock,Play,7-Nov,Active,Simple,Green,Brown,ground_large,Nov
+26,1,Bangle,Tiger,Female,Peppy,Fashion,27-Aug,Gorgeous,Cute,Yellow,Green,ground_large,Aug
+27,0,Barold,Cub,Male,Lazy,Play,2-Mar,Simple,Cool,Yellow,Black,ground_small,Mar
+28,1,Bea,Dog,Female,Normal,Nature,15-Oct,Simple,Cool,Light blue,Green,ground_small,Oct
+29,2,Beardo,Bear,Male,Smug,Education,27-Sep,Elegant,Elegant,Brown,Blue,ground_large,Sep
+30,0,Beau,Deer,Male,Lazy,Nature,5-Apr,Simple,Cute,Beige,Orange,ground_large,Apr
+31,3,Becky,Chicken,Female,Snooty,Music,9-Dec,Gorgeous,Elegant,Purple,Pink,ground_small,Dec
+32,4,Bella,Mouse,Female,Peppy,Music,28-Dec,Cool,Active,Black,Purple,ground_small,Dec
+33,0,Benedict,Chicken,Male,Lazy,Play,10-Oct,Simple,Simple,Blue,Purple,ground_small,Oct
+34,0,Benjamin,Dog,Male,Lazy,Nature,3-Aug,Simple,Simple,Red,White,ground_small,Aug
+35,5,Bertha,Hippo,Female,Normal,Education,25-Apr,Cute,Elegant,Pink,White,ground_large,Apr
+36,1,Bettina,Mouse,Female,Normal,Education,12-Jun,Simple,Elegant,White,Red,ground_small,Jun
+37,1,Bianca,Tiger,Female,Peppy,Play,13-Dec,Cute,Cute,Pink,Orange,ground_large,Dec
+38,6,Biff,Hippo,Male,Jock,Fitness,29-Mar,Gorgeous,Active,Black,Blue,ground_large,Mar
+39,0,Big Top,Elephant,Male,Lazy,Play,3-Oct,Simple,Active,Green,Green,ground_large,Oct
+40,7,Bill,Duck,Male,Jock,Play,1-Feb,Active,Active,Blue,Purple,other,Feb
+41,7,Billy,Goat,Male,Jock,Play,25-Mar,Simple,Active,Blue,Purple,ground_large,Mar
+42,0,Biskit,Dog,Male,Lazy,Play,13-May,Gorgeous,Simple,Purple,Colorful,ground_small,May
+43,5,Bitty,Hippo,Female,Snooty,Education,6-Oct,Cute,Elegant,Pink,Orange,ground_large,Oct
+44,3,Blaire,Squirrel,Female,Snooty,Fashion,3-Jul,Gorgeous,Elegant,Orange,Brown,ground_small,Jul
+45,4,Blanche,Ostrich,Female,Snooty,Nature,21-Dec,Elegant,Gorgeous,Black,Brown,ground_small,Dec
+46,1,Bluebear,Cub,Female,Peppy,Fashion,24-Jun,Cute,Simple,White,Blue,ground_small,Jun
+47,0,Bob,Cat,Male,Lazy,Play,1-Jan,Simple,Cute,Colorful,Red,ground_small,Jan
+48,0,Bonbon,Rabbit,Female,Peppy,Play,3-Mar,Cute,Elegant,Light blue,Yellow,ground_small,Mar
+49,0,Bones,Dog,Male,Lazy,Play,4-Aug,Simple,Cute,Beige,Brown,ground_small,Aug
+50,8,Boomer,Penguin,Male,Lazy,Fitness,7-Feb,Simple,Cool,Brown,Beige,ground_small,Feb
+51,6,Boone,Gorilla,Male,Jock,Fitness,12-Sep,Elegant,Cool,Colorful,Red,ground_large,Sep
+52,7,Boots,Alligator,Male,Jock,Play,7-Aug,Gorgeous,Active,Colorful,Purple,other,Aug
+53,9,Boris,Pig,Male,Cranky,Nature,6-Nov,Cool,Gorgeous,Purple,Black,ground_large,Nov
+54,2,Boyd,Gorilla,Male,Cranky,Fitness,1-Oct,Simple,Cool,Red,Black,ground_large,Oct
+55,4,Bree,Mouse,Female,Snooty,Fashion,7-Jul,Elegant,Gorgeous,Black,Blue,ground_small,Jul
+56,0,Broccolo,Mouse,Male,Lazy,Play,30-Jun,Simple,Cute,Colorful,Yellow,ground_small,Jun
+57,3,Broffina,Chicken,Female,Snooty,Music,24-Oct,Gorgeous,Elegant,Black,Red,ground_small,Oct
+58,9,Bruce,Deer,Male,Cranky,Nature,26-May,Cool,Simple,Black,Red,ground_large,May
+59,3,Bubbles,Hippo,Female,Peppy,Fashion,18-Sep,Active,Cute,Purple,Pink,ground_large,Sep
+60,6,Buck,Horse,Male,Jock,Fitness,4-Apr,Active,Simple,Gray,Brown,ground_large,Apr
+61,6,Bud,Lion,Male,Jock,Fitness,8-Aug,Active,Simple,Green,Yellow,ground_large,Aug
+62,1,Bunnie,Rabbit,Female,Peppy,Fashion,9-May,Cute,Cute,Green,Pink,ground_small,May
+63,9,Butch,Dog,Male,Cranky,Music,1-Nov,Cool,Simple,Blue,Gray,ground_small,Nov
+64,7,Buzz,Eagle,Male,Cranky,Nature,7-Dec,Simple,Active,Yellow,Red,other,Dec
+65,1,Cally,Squirrel,Female,Normal,Nature,4-Sep,Cute,Elegant,Red,Green,ground_small,Sep
+66,7,Camofrog,Frog,Male,Cranky,Music,5-Jun,Cool,Active,Blue,White,other,Jun
+67,0,Canberra,Koala,Female,Big Sister,Play,14-May,Active,Cool,Green,Light blue,ground_small,May
+68,0,Candi,Mouse,Female,Peppy,Play,13-Apr,Simple,Cute,Light blue,Yellow,ground_small,Apr
+69,1,Carmen,Rabbit,Female,Peppy,Fashion,6-Jan,Elegant,Cute,Green,Beige,ground_small,Jan
+70,1,Caroline,Squirrel,Female,Normal,Music,15-Jul,Cute,Gorgeous,Colorful,White,ground_small,Jul
+71,1,Carrie,Kangaroo,Female,Normal,Nature,5-Dec,Cute,Cute,Red,Colorful,ground_large,Dec
+72,3,Cashmere,Sheep,Female,Snooty,Fashion,2-Apr,Gorgeous,Elegant,Purple,Beige,ground_large,Apr
+73,1,Celia,Eagle,Female,Normal,Nature,25-Mar,Elegant,Cute,Pink,Green,other,Mar
+74,9,Cesar,Gorilla,Male,Cranky,Fitness,6-Sep,Cool,Elegant,Blue,Light blue,ground_large,Sep
+75,2,Chadder,Mouse,Male,Smug,Fitness,15-Dec,Elegant,Gorgeous,Black,Gray,ground_small,Dec
+76,6,Charlise,Bear,Female,Big Sister,Fitness,17-Apr,Active,Cute,Red,Orange,ground_large,Apr
+77,1,Cheri,Cub,Female,Peppy,Fashion,17-Mar,Simple,Cute,Yellow,Light blue,ground_small,Mar
+78,3,Cherry,Dog,Female,Big Sister,Music,11-May,Cool,Elegant,Black,Purple,ground_small,May
+79,0,Chester,Cub,Male,Lazy,Play,6-Aug,Simple,Simple,Yellow,Green,ground_small,Aug
+80,5,Chevre,Goat,Female,Normal,Education,6-Mar,Cute,Elegant,Red,Pink,ground_large,Mar
+81,9,Chief,Wolf,Male,Cranky,Music,19-Dec,Cool,Simple,White,Gray,ground_large,Dec
+82,2,Chops,Pig,Male,Smug,Education,13-Oct,Gorgeous,Elegant,Red,Green,ground_large,Oct
+83,9,Chow,Bear,Male,Cranky,Fitness,22-Jul,Cool,Gorgeous,Black,White,ground_large,Jul
+84,1,Chrissy,Rabbit,Female,Peppy,Fashion,28-Aug,Cute,Cute,Pink,White,ground_small,Aug
+85,0,Claude,Rabbit,Male,Lazy,Nature,3-Dec,Simple,Simple,Black,Colorful,ground_small,Dec
+86,3,Claudia,Tiger,Female,Snooty,Music,22-Nov,Gorgeous,Elegant,Purple,White,ground_large,Nov
+87,0,Clay,Hamster,Male,Lazy,Nature,19-Oct,Elegant,Simple,Beige,Brown,ground_small,Oct
+88,5,Cleo,Horse,Female,Snooty,Education,9-Feb,Cute,Elegant,Light blue,White,ground_large,Feb
+89,0,Clyde,Horse,Male,Lazy,Play,1-May,Simple,Cute,Green,White,ground_large,May
+90,7,Coach,Bull,Male,Jock,Fitness,29-Apr,Active,Active,Blue,Red,ground_large,Apr
+91,6,Cobb,Pig,Male,Jock,Education,7-Oct,Simple,Active,White,Blue,ground_large,Oct
+92,1,Coco,Rabbit,Female,Normal,Education,1-Mar,Simple,Cute,Beige,Green,ground_small,Mar
+93,0,Cole,Rabbit,Male,Lazy,Nature,10-Aug,Simple,Cute,Orange,Colorful,ground_small,Aug
+94,2,Colton,Horse,Male,Smug,Nature,22-May,Gorgeous,Elegant,Blue,Red,ground_large,May
+95,1,Cookie,Dog,Female,Peppy,Fashion,18-Jun,Cute,Cute,Green,Light blue,ground_small,Jun
+96,7,Cousteau,Frog,Male,Jock,Fitness,17-Dec,Elegant,Gorgeous,Green,Red,other,Dec
+97,0,Cranston,Ostrich,Male,Lazy,Nature,23-Sep,Simple,Cool,Beige,Brown,ground_small,Sep
+98,8,Croque,Frog,Male,Cranky,Nature,18-Jul,Elegant,Cool,Red,Orange,other,Jul
+99,0,Cube,Penguin,Male,Lazy,Play,29-Jan,Simple,Cute,Yellow,Colorful,ground_small,Jan
+100,6,Curlos,Sheep,Male,Smug,Nature,8-May,Active,Gorgeous,Red,Green,ground_large,May
+101,7,Curly,Pig,Male,Jock,Fitness,26-Jul,Simple,Active,Yellow,Colorful,ground_large,Jul
+102,9,Curt,Bear,Male,Cranky,Nature,1-Jul,Cool,Cool,Blue,White,ground_large,Jul
+103,9,Cyd,Elephant,Male,Cranky,Music,9-Jun,Cool,Active,Black,Yellow,ground_large,Jun
+104,9,Cyrano,Anteater,Male,Cranky,Education,9-Mar,Cool,Active,Yellow,Beige,ground_large,Mar
+105,1,Daisy,Dog,Female,Normal,Education,16-Nov,Simple,Cute,Colorful,Blue,ground_small,Nov
+106,1,Deena,Duck,Female,Normal,Education,27-Jun,Simple,Cute,Colorful,Blue,other,Jun
+107,0,Deirdre,Deer,Female,Big Sister,Play,4-May,Simple,Simple,Orange,Orange,ground_large,May
+108,7,Del,Alligator,Male,Cranky,Fitness,27-May,Cool,Simple,Blue,White,other,May
+109,3,Deli,Monkey,Male,Lazy,Nature,24-May,Gorgeous,Elegant,Purple,Brown,ground_small,May
+110,0,Derwin,Duck,Male,Lazy,Play,25-May,Simple,Elegant,Yellow,Beige,other,May
+111,4,Diana,Deer,Female,Snooty,Education,4-Jan,Elegant,Gorgeous,Purple,Pink,ground_large,Jan
+112,3,Diva,Frog,Female,Big Sister,Fitness,2-Oct,Gorgeous,Elegant,Purple,Light blue,other,Oct
+113,0,Dizzy,Elephant,Male,Lazy,Play,14-Jul,Simple,Simple,Yellow,Blue,ground_large,Jul
+114,8,Dobie,Wolf,Male,Cranky,Nature,17-Feb,Simple,Cool,Brown,Beige,ground_large,Feb
+115,0,Doc,Rabbit,Male,Lazy,Education,16-Mar,Simple,Elegant,Gray,Beige,ground_small,Mar
+116,6,Dom,Sheep,Male,Jock,Play,18-Mar,Active,Cute,Red,Colorful,ground_large,Mar
+117,1,Dora,Mouse,Female,Normal,Education,18-Feb,Simple,Elegant,Blue,Light blue,ground_small,Feb
+118,1,Dotty,Rabbit,Female,Peppy,Fashion,14-Mar,Simple,Cute,Blue,Black,ground_small,Mar
+119,7,Drago,Alligator,Male,Lazy,Nature,12-Feb,Elegant,Gorgeous,Orange,Red,other,Feb
+120,0,Drake,Duck,Male,Lazy,Play,25-Jun,Cool,Simple,Brown,Red,other,Jun
+121,7,Drift,Frog,Male,Jock,Fitness,9-Oct,Simple,Active,Orange,Red,other,Oct
+122,2,Ed,Horse,Male,Smug,Nature,16-Sep,Gorgeous,Elegant,Black,Gray,ground_large,Sep
+123,0,Egbert,Chicken,Male,Lazy,Play,14-Oct,Simple,Simple,Beige,Brown,ground_small,Oct
+124,3,Elise,Monkey,Female,Snooty,Fashion,21-Mar,Elegant,Gorgeous,Purple,Red,ground_small,Mar
+125,5,Ellie,Elephant,Female,Normal,Nature,12-May,Simple,Cute,Gray,Pink,ground_large,May
+126,0,Elmer,Horse,Male,Lazy,Play,5-Oct,Simple,Cool,Blue,White,ground_large,Oct
+127,4,Eloise,Elephant,Female,Snooty,Fashion,8-Dec,Elegant,Simple,Green,Orange,ground_large,Dec
+128,9,Elvis,Lion,Male,Cranky,Education,23-Jul,Gorgeous,Elegant,Red,Black,ground_large,Jul
+129,0,Erik,Deer,Male,Lazy,Nature,27-Jul,Simple,Simple,Beige,Red,ground_large,Jul
+130,2,Eugene,Koala,Male,Smug,Music,26-Oct,Cool,Gorgeous,Black,Gray,ground_small,Oct
+131,1,Eunice,Sheep,Female,Normal,Fashion,3-Apr,Simple,Elegant,Beige,Orange,ground_large,Apr
+132,8,Fang,Wolf,Male,Cranky,Education,18-Dec,Simple,Cool,White,Light blue,ground_large,Dec
+133,1,Fauna,Deer,Female,Normal,Nature,26-Mar,Simple,Cute,Beige,White,ground_large,Mar
+134,1,Felicity,Cat,Female,Peppy,Fashion,30-Mar,Cute,Cute,Yellow,Orange,ground_small,Mar
+135,0,Filbert,Squirrel,Male,Lazy,Nature,3-Jun,Simple,Cute,Blue,White,ground_small,Jun
+136,0,Flip,Monkey,Male,Jock,Music,21-Nov,Active,Simple,Blue,Yellow,ground_small,Nov
+137,3,Flo,Penguin,Female,Big Sister,Music,2-Sep,Cool,Gorgeous,Red,Purple,ground_small,Sep
+138,1,Flora,Ostrich,Female,Peppy,Play,9-Feb,Cute,Active,Colorful,Pink,ground_small,Feb
+139,1,Flurry,Hamster,Female,Normal,Nature,30-Jan,Elegant,Cute,Red,Pink,ground_small,Jan
+140,4,Francine,Rabbit,Female,Snooty,Fashion,22-Jan,Elegant,Gorgeous,Blue,Black,ground_small,Jan
+141,8,Frank,Eagle,Male,Cranky,Education,30-Jul,Gorgeous,Cool,Brown,Yellow,other,Jul
+142,1,Freckles,Duck,Female,Peppy,Fashion,19-Feb,Simple,Cute,Green,Colorful,other,Feb
+143,4,Freya,Wolf,Female,Snooty,Fashion,14-Dec,Elegant,Cool,Green,Blue,ground_large,Dec
+144,4,Friga,Penguin,Female,Snooty,Fashion,16-Oct,Elegant,Gorgeous,Pink,Black,ground_small,Oct
+145,9,Frita,Sheep,Female,Big Sister,Music,16-Jul,Active,Cute,Yellow,Red,ground_large,Jul
+146,7,Frobert,Frog,Male,Jock,Fitness,8-Feb,Active,Simple,Blue,Colorful,other,Feb
+147,5,Fuchsia,Deer,Female,Big Sister,Music,19-Sep,Cool,Cool,Pink,Pink,ground_large,Sep
+148,1,Gabi,Rabbit,Female,Peppy,Fashion,16-Dec,Cute,Gorgeous,Brown,Red,ground_small,Dec
+149,5,Gala,Pig,Female,Normal,Education,5-Mar,Cute,Elegant,Pink,White,ground_large,Mar
+150,8,Gaston,Rabbit,Male,Cranky,Education,28-Oct,Simple,Gorgeous,Brown,Orange,ground_small,Oct
+151,1,Gayle,Alligator,Female,Normal,Nature,17-May,Cute,Cute,Pink,White,other,May
+152,0,Genji,Rabbit,Male,Jock,Fitness,21-Jan,Elegant,Simple,Green,Purple,ground_small,Jan
+153,3,Gigi,Frog,Female,Snooty,Fashion,11-Aug,Gorgeous,Elegant,Black,White,other,Aug
+154,1,Gladys,Ostrich,Female,Normal,Education,15-Jan,Elegant,Cute,Green,Pink,ground_small,Jan
+155,3,Gloria,Duck,Female,Snooty,Fashion,12-Aug,Gorgeous,Elegant,Black,Gray,other,Aug
+156,1,Goldie,Dog,Female,Normal,Nature,27-Dec,Simple,Cute,Yellow,Orange,ground_small,Dec
+157,8,Gonzo,Koala,Male,Cranky,Nature,13-Oct,Simple,Cool,Black,Green,ground_small,Oct
+158,7,Goose,Chicken,Male,Jock,Fitness,4-Oct,Simple,Active,Blue,White,ground_small,Oct
+159,8,Graham,Hamster,Male,Smug,Education,20-Jun,Simple,Cool,Green,Orange,ground_small,Jun
+160,3,Greta,Mouse,Female,Snooty,Education,5-Sep,Elegant,Simple,Pink,Purple,ground_small,Sep
+161,9,Grizzly,Bear,Male,Cranky,Education,31-Jul,Cool,Simple,Red,Black,ground_large,Jul
+162,9,Groucho,Bear,Male,Cranky,Music,23-Oct,Cool,Simple,Black,Gray,ground_large,Oct
+163,9,Gruff,Goat,Male,Cranky,Music,29-Aug,Cool,Gorgeous,Purple,Black,ground_large,Aug
+164,3,Gwen,Penguin,Female,Snooty,Fashion,23-Jan,Gorgeous,Elegant,Green,White,ground_small,Jan
+165,0,Hamlet,Hamster,Male,Jock,Play,30-May,Simple,Active,Purple,Blue,ground_small,May
+166,9,Hamphrey,Hamster,Male,Cranky,Nature,25-Feb,Cool,Simple,Gray,Beige,ground_small,Feb
+167,4,Hans,Gorilla,Male,Smug,Fitness,5-Dec,Elegant,Gorgeous,Gray,Blue,ground_large,Dec
+168,9,Harry,Hippo,Male,Cranky,Education,7-Jan,Cool,Simple,Green,Orange,ground_large,Jan
+169,0,Hazel,Squirrel,Female,Big Sister,Play,30-Aug,Active,Cute,Red,Yellow,ground_small,Aug
+170,9,Henry,Frog,Male,Smug,Music,21-Sep,Cool,Simple,Light blue,Blue,other,Sep
+171,2,Hippeux,Hippo,Male,Smug,Education,15-Oct,Elegant,Gorgeous,Brown,Green,ground_large,Oct
+172,0,Hopkins,Rabbit,Male,Lazy,Nature,11-Mar,Simple,Active,Blue,Yellow,ground_small,Mar
+173,9,Hopper,Penguin,Male,Cranky,Music,6-Apr,Cool,Simple,Yellow,Red,ground_small,Apr
+174,0,Hornsby,Rhino,Male,Lazy,Nature,20-Mar,Simple,Simple,Green,Brown,ground_large,Mar
+175,0,Huck,Frog,Male,Smug,Fitness,9-Jul,Simple,Cool,Green,Yellow,other,Jul
+176,0,Hugh,Pig,Male,Lazy,Play,30-Dec,Simple,Active,Beige,Yellow,ground_large,Dec
+177,6,Iggly,Penguin,Male,Jock,Fitness,2-Nov,Active,Simple,Red,Blue,ground_small,Nov
+178,9,Ike,Bear,Male,Cranky,Nature,16-May,Cool,Cool,Green,Blue,ground_large,May
+179,0,Jacob,Bird,Male,Lazy,Nature,24-Aug,Simple,Simple,Green,Red,other,Aug
+180,9,Jacques,Bird,Male,Smug,Music,22-Jun,Cool,Simple,Green,Black,other,Jun
+181,1,Jambette,Frog,Female,Normal,Fashion,27-Oct,Cool,Cool,Brown,Brown,other,Oct
+182,7,Jay,Bird,Male,Jock,Fitness,17-Jul,Active,Active,Blue,Light blue,other,Jul
+183,0,Jeremiah,Frog,Male,Lazy,Play,8-Jul,Simple,Simple,Orange,Yellow,other,Jul
+184,7,Jitters,Bird,Male,Jock,Fitness,2-Feb,Active,Active,Yellow,Orange,other,Feb
+185,0,Joey,Duck,Male,Lazy,Play,3-Jan,Simple,Simple,Green,Blue,other,Jan
+186,1,Judy,Cub,Female,Snooty,Music,10-Mar,Cute,Elegant,Pink,White,ground_small,Mar
+187,3,Julia,Ostrich,Female,Snooty,Education,31-Jul,Elegant,Gorgeous,Purple,Red,ground_small,Jul
+188,2,Julian,Horse,Male,Smug,Music,15-Mar,Gorgeous,Cool,Purple,Blue,ground_large,Mar
+189,1,June,Cub,Female,Normal,Nature,21-May,Cute,Simple,White,Red,ground_small,May
+190,0,Kabuki,Cat,Male,Cranky,Music,29-Nov,Simple,Simple,Purple,Red,ground_small,Nov
+191,3,Katt,Cat,Female,Big Sister,Music,27-Apr,Cool,Cool,Purple,Black,ground_small,Apr
+192,2,Keaton,Eagle,Male,Smug,Music,1-Jun,Gorgeous,Cool,Blue,White,other,Jun
+193,8,Ken,Chicken,Male,Smug,Education,23-Dec,Cool,Simple,Purple,Blue,ground_small,Dec
+194,1,Ketchup,Duck,Female,Peppy,Play,27-Jul,Cute,Cute,Light blue,White,other,Jul
+195,6,Kevin,Pig,Male,Jock,Play,26-Apr,Active,Simple,Black,Red,ground_large,Apr
+196,6,Kid Cat,Cat,Male,Jock,Fitness,1-Aug,Active,Simple,Red,Red,ground_small,Aug
+197,2,Kidd,Goat,Male,Smug,Education,28-Jun,Elegant,Cool,Gray,White,ground_large,Jun
+198,5,Kiki,Cat,Female,Normal,Education,8-Oct,Simple,Simple,Brown,Beige,ground_small,Oct
+199,5,Kitt,Kangaroo,Female,Normal,Education,11-Oct,Elegant,Simple,Purple,Red,ground_large,Oct
+200,4,Kitty,Cat,Female,Snooty,Fashion,15-Feb,Elegant,Gorgeous,Green,Gray,ground_small,Feb
+201,5,Klaus,Bear,Male,Smug,Education,31-Mar,Simple,Simple,Gray,White,ground_large,Mar
+202,8,Knox,Chicken,Male,Cranky,Education,23-Nov,Elegant,Gorgeous,Brown,Red,ground_small,Nov
+203,6,Kody,Cub,Male,Jock,Fitness,28-Sep,Active,Simple,Colorful,White,ground_small,Sep
+204,2,Kyle,Wolf,Male,Smug,Music,6-Dec,Gorgeous,Cool,Black,White,ground_large,Dec
+205,6,Leonardo,Tiger,Male,Jock,Fitness,15-May,Active,Gorgeous,Red,Blue,ground_large,May
+206,2,Leopold,Lion,Male,Smug,Education,14-Aug,Elegant,Gorgeous,Purple,Green,ground_large,Aug
+207,5,Lily,Frog,Female,Normal,Education,4-Feb,Cute,Simple,White,Yellow,other,Feb
+208,8,Limberg,Mouse,Male,Cranky,Education,17-Oct,Simple,Cool,Green,Blue,ground_small,Oct
+209,2,Lionel,Lion,Male,Smug,Music,29-Jul,Gorgeous,Active,Green,Gray,ground_large,Jul
+210,9,Lobo,Wolf,Male,Cranky,Education,5-Nov,Cool,Active,Black,Beige,ground_large,Nov
+211,5,Lolly,Cat,Female,Normal,Music,27-Mar,Simple,Simple,Gray,Pink,ground_small,Mar
+212,2,Lopez,Deer,Male,Smug,Education,20-Aug,Gorgeous,Gorgeous,Gray,Gray,ground_large,Aug
+213,6,Louie,Gorilla,Male,Jock,Fitness,26-Mar,Active,Simple,Gray,Red,ground_large,Mar
+214,2,Lucha,Bird,Male,Smug,Fitness,12-Dec,Active,Cool,Black,Gray,other,Dec
+215,0,Lucky,Dog,Male,Lazy,Play,4-Nov,Simple,Simple,Beige,White,ground_small,Nov
+216,1,Lucy,Pig,Female,Normal,Music,2-Jun,Cute,Elegant,Pink,Red,ground_large,Jun
+217,0,Lyman,Koala,Male,Jock,Play,12-Oct,Simple,Active,Light blue,Yellow,ground_small,Oct
+218,6,Mac,Dog,Male,Jock,Fitness,11-Nov,Active,Cool,Red,Black,ground_small,Nov
+219,0,Maddie,Dog,Female,Peppy,Play,11-Jan,Simple,Cute,Purple,Pink,ground_small,Jan
+220,1,Maelle,Duck,Female,Snooty,Fashion,8-Apr,Cool,Simple,Pink,White,other,Apr
+221,5,Maggie,Pig,Female,Normal,Nature,3-Sep,Cute,Elegant,Green,Yellow,ground_large,Sep
+222,4,Mallary,Duck,Female,Snooty,Fashion,17-Nov,Cool,Gorgeous,Blue,White,other,Nov
+223,1,Maple,Cub,Female,Normal,Education,15-Jun,Simple,Cute,Beige,Green,ground_small,Jun
+224,0,Marcel,Dog,Male,Lazy,Play,31-Dec,Simple,Cool,Green,Blue,ground_small,Dec
+225,5,Marcie,Kangaroo,Female,Normal,Nature,31-May,Cute,Elegant,Pink,Beige,ground_large,May
+226,5,Margie,Elephant,Female,Normal,Education,28-Jan,Elegant,Cute,Pink,Red,ground_large,Jan
+227,1,Marina,Octopus,Female,Normal,Music,26-Jun,Cute,Cute,Pink,Red,other,Jun
+228,2,Marshal,Squirrel,Male,Smug,Music,29-Sep,Elegant,Cool,Light blue,Blue,ground_small,Sep
+229,4,Mathilda,Kangaroo,Female,Snooty,Fitness,12-Nov,Cool,Gorgeous,White,Red,ground_large,Nov
+230,5,Megan,Bear,Female,Normal,Nature,13-Mar,Cute,Simple,Yellow,Light blue,ground_large,Mar
+231,1,Melba,Koala,Female,Normal,Education,12-Apr,Cute,Cute,White,Green,ground_small,Apr
+232,5,Merengue,Rhino,Female,Normal,Nature,19-Mar,Cute,Simple,White,Red,ground_large,Mar
+233,1,Merry,Cat,Female,Peppy,Fashion,29-Jun,Cute,Cute,Pink,Light blue,ground_small,Jun
+234,5,Midge,Bird,Female,Normal,Education,12-Mar,Cute,Simple,Pink,Pink,other,Mar
+235,1,Mint,Squirrel,Female,Snooty,Fashion,2-May,Gorgeous,Cute,Pink,Purple,ground_small,May
+236,6,Mira,Rabbit,Female,Big Sister,Fitness,6-Jul,Active,Cool,Red,Yellow,ground_small,Jul
+237,4,Miranda,Duck,Female,Snooty,Fashion,23-Apr,Elegant,Gorgeous,Blue,Purple,other,Apr
+238,5,Mitzi,Cat,Female,Normal,Education,25-Sep,Simple,Simple,Brown,Beige,ground_small,Sep
+239,0,Moe,Cat,Male,Lazy,Play,12-Jan,Active,Simple,Black,Gray,ground_small,Jan
+240,5,Molly,Duck,Female,Normal,Nature,7-Mar,Cute,Simple,Yellow,Pink,other,Mar
+241,3,Monique,Cat,Female,Snooty,Fashion,30-Sep,Gorgeous,Elegant,Purple,Pink,ground_small,Sep
+242,8,Monty,Monkey,Male,Cranky,Education,7-Dec,Cool,Cool,Yellow,Gray,ground_small,Dec
+243,7,Moose,Mouse,Male,Jock,Fitness,13-Sep,Cool,Gorgeous,Purple,Red,ground_small,Sep
+244,6,Mott,Lion,Male,Jock,Fitness,10-Jul,Active,Elegant,Blue,Green,ground_large,Jul
+245,2,Muffy,Sheep,Female,Big Sister,Music,14-Feb,Gorgeous,Elegant,Black,Purple,ground_large,Feb
+246,8,Murphy,Cub,Male,Cranky,Education,29-Dec,Simple,Cool,Blue,White,ground_small,Dec
+247,5,Nan,Goat,Female,Normal,Nature,24-Aug,Simple,Elegant,Orange,Yellow,ground_large,Aug
+248,1,Nana,Monkey,Female,Normal,Education,23-Aug,Cute,Cute,Pink,White,ground_small,Aug
+249,4,Naomi,Cow,Female,Snooty,Fashion,28-Feb,Elegant,Gorgeous,Colorful,Purple,ground_large,Feb
+250,0,Nate,Bear,Male,Lazy,Play,16-Aug,Simple,Simple,White,Green,ground_large,Aug
+251,1,Nibbles,Squirrel,Female,Peppy,Fashion,19-Jul,Cute,Active,Red,Yellow,ground_small,Jul
+252,5,Norma,Cow,Female,Normal,Nature,20-Sep,Cute,Simple,White,Light blue,ground_large,Sep
+253,2,O'Hare,Rabbit,Male,Smug,Nature,24-Jul,Active,Cool,Blue,Light blue,ground_small,Jul
+254,9,Octavian,Octopus,Male,Cranky,Play,20-Sep,Cool,Simple,Black,White,other,Sep
+255,2,Olaf,Anteater,Male,Smug,Education,19-May,Elegant,Gorgeous,Red,Black,ground_large,May
+256,0,Olive,Cub,Female,Normal,Nature,12-Jul,Simple,Simple,Brown,Yellow,ground_small,Jul
+257,3,Olivia,Cat,Female,Snooty,Music,3-Feb,Cool,Elegant,White,Black,ground_small,Feb
+258,4,Opal,Elephant,Female,Snooty,Fashion,20-Jan,Elegant,Cool,Black,Orange,ground_large,Jan
+259,0,Ozzie,Koala,Male,Lazy,Play,7-May,Simple,Cute,Yellow,Orange,ground_small,May
+260,4,Pancetti,Pig,Female,Snooty,Music,14-Nov,Cute,Gorgeous,Red,Yellow,ground_large,Nov
+261,4,Pango,Anteater,Female,Peppy,Fashion,9-Nov,Elegant,Cool,Orange,Purple,ground_large,Nov
+262,0,Paolo,Elephant,Male,Lazy,Nature,5-May,Simple,Elegant,Gray,Light blue,ground_large,May
+263,0,Papi,Horse,Male,Lazy,Nature,10-Jan,Simple,Simple,Orange,Light blue,ground_large,Jan
+264,4,Pashmina,Goat,Female,Big Sister,Music,26-Dec,Cool,Elegant,Red,Colorful,ground_large,Dec
+265,1,Pate,Duck,Female,Peppy,Fashion,23-Feb,Simple,Cute,Yellow,White,other,Feb
+266,1,Patty,Cow,Female,Peppy,Fashion,10-May,Simple,Cute,Orange,Red,ground_large,May
+267,5,Paula,Bear,Female,Big Sister,Fitness,22-Mar,Cute,Active,Orange,Green,ground_large,Mar
+268,5,Peaches,Horse,Female,Normal,Education,28-Nov,Cute,Simple,Colorful,Light blue,ground_large,Nov
+269,1,Peanut,Squirrel,Female,Peppy,Fashion,8-Jun,Cute,Cute,Red,Colorful,ground_small,Jun
+270,3,Pecan,Squirrel,Female,Snooty,Fashion,10-Sep,Elegant,Gorgeous,Purple,Beige,ground_small,Sep
+271,7,Peck,Bird,Male,Jock,Play,25-Jul,Simple,Active,Beige,Red,other,Jul
+272,6,Peewee,Gorilla,Male,Cranky,Fitness,11-Sep,Active,Cool,Orange,Blue,ground_large,Sep
+273,1,Peggy,Pig,Female,Peppy,Fashion,23-May,Cute,Active,Blue,Red,ground_large,May
+274,1,Pekoe,Cub,Female,Normal,Nature,18-May,Elegant,Cute,Red,Beige,ground_small,May
+275,1,Penelope,Mouse,Female,Peppy,Fashion,5-Feb,Cute,Gorgeous,Pink,Red,ground_small,Feb
+276,2,Phil,Ostrich,Male,Smug,Music,27-Nov,Elegant,Cool,Green,Red,ground_small,Nov
+277,2,Phoebe,Ostrich,Female,Big Sister,Fitness,22-Apr,Gorgeous,Cool,Black,Red,ground_small,Apr
+278,7,Pierce,Eagle,Male,Jock,Fitness,8-Jan,Elegant,Active,Orange,Yellow,other,Jan
+279,2,Pietro,Sheep,Male,Smug,Music,19-Apr,Gorgeous,Simple,Colorful,Red,ground_large,Apr
+280,5,Pinky,Bear,Female,Peppy,Fashion,9-Sep,Cute,Simple,Red,Pink,ground_large,Sep
+281,4,Piper,Bird,Female,Peppy,Play,18-Apr,Elegant,Gorgeous,Black,White,other,Apr
+282,1,Pippy,Rabbit,Female,Peppy,Fashion,14-Jun,Cute,Simple,Green,Brown,ground_small,Jun
+283,0,Plucky,Chicken,Female,Big Sister,Play,12-Oct,Cool,Simple,Light blue,Yellow,ground_small,Oct
+284,5,Pompom,Duck,Female,Peppy,Music,11-Feb,Cute,Simple,Pink,Light blue,other,Feb
+285,0,Poncho,Cub,Male,Jock,Fitness,2-Jan,Simple,Simple,Orange,Yellow,ground_small,Jan
+286,1,Poppy,Squirrel,Female,Normal,Education,5-Aug,Cute,Elegant,Green,Yellow,ground_small,Aug
+287,3,Portia,Dog,Female,Snooty,Fashion,25-Oct,Elegant,Gorgeous,Purple,Black,ground_small,Oct
+288,0,Prince,Frog,Male,Lazy,Play,21-Jul,Simple,Active,Yellow,White,other,Jul
+289,7,Puck,Penguin,Male,Lazy,Fitness,21-Feb,Active,Simple,Blue,Red,ground_small,Feb
+290,1,Puddles,Frog,Female,Peppy,Fashion,13-Jan,Cute,Gorgeous,Green,Pink,other,Jan
+291,0,Pudge,Cub,Male,Lazy,Play,11-Jun,Simple,Simple,Green,Blue,ground_small,Jun
+292,0,Punchy,Cat,Male,Lazy,Play,11-Apr,Simple,Simple,Blue,Light blue,ground_small,Apr
+293,3,Purrl,Cat,Female,Snooty,Fashion,29-May,Cool,Elegant,Gray,Blue,ground_small,May
+294,3,Queenie,Ostrich,Female,Snooty,Fashion,13-Nov,Gorgeous,Elegant,Black,Gray,ground_small,Nov
+295,2,Quillson,Duck,Male,Smug,Music,22-Dec,Elegant,Cool,Beige,Orange,other,Dec
+296,0,Raddle,Frog,Male,Lazy,Nature,6-Jun,Elegant,Simple,White,Gray,other,Jun
+297,9,Rasher,Pig,Male,Cranky,Music,7-Apr,Cool,Simple,Blue,Black,ground_large,Apr
+298,2,Raymond,Cat,Male,Smug,Nature,1-Oct,Elegant,Cool,Black,Gray,ground_small,Oct
+299,9,Renée,Rhino,Female,Big Sister,Music,28-May,Cool,Active,Purple,Yellow,ground_large,May
+300,4,Reneigh,Horse,Female,Big Sister,Play,4-Jun,Cool,Gorgeous,Black,Purple,ground_large,Jun
+301,0,Rex,Lion,Male,Lazy,Nature,24-Jul,Simple,Cute,Blue,Light blue,ground_large,Jul
+302,4,Rhonda,Rhino,Female,Normal,Music,24-Jan,Elegant,Gorgeous,Purple,Black,ground_large,Jan
+303,7,Ribbot,Frog,Male,Jock,Fitness,13-Feb,Simple,Active,Blue,Light blue,other,Feb
+304,8,Ricky,Squirrel,Male,Cranky,Education,14-Sep,Cool,Simple,Blue,Red,ground_small,Sep
+305,8,Rizzo,Mouse,Male,Cranky,Education,17-Jan,Simple,Cool,Black,Gray,ground_small,Jan
+306,6,Roald,Penguin,Male,Jock,Fitness,5-Jan,Active,Simple,Red,Yellow,ground_small,Jan
+307,4,Robin,Bird,Female,Snooty,Fashion,4-Dec,Elegant,Cool,Light blue,Purple,other,Dec
+308,8,Rocco,Hippo,Male,Cranky,Education,18-Aug,Simple,Cool,Yellow,Black,ground_large,Aug
+309,5,Rocket,Gorilla,Female,Big Sister,Fitness,14-Apr,Active,Cool,Pink,Red,ground_large,Apr
+310,6,Rod,Mouse,Male,Jock,Fitness,14-Aug,Active,Cool,Blue,Light blue,ground_small,Aug
+311,2,Rodeo,Bull,Male,Lazy,Fitness,29-Oct,Simple,Cool,Black,Red,ground_large,Oct
+312,2,Rodney,Hamster,Male,Smug,Music,10-Nov,Gorgeous,Cool,Pink,Colorful,ground_small,Nov
+313,9,Rolf,Tiger,Male,Cranky,Fitness,22-Aug,Cool,Active,Blue,Black,ground_large,Aug
+314,6,Rooney,Kangaroo,Male,Cranky,Fitness,1-Dec,Active,Active,Gray,Black,ground_large,Dec
+315,7,Rory,Lion,Male,Jock,Music,7-Aug,Simple,Active,Blue,Red,ground_large,Aug
+316,9,Roscoe,Horse,Male,Cranky,Music,16-Jun,Cool,Gorgeous,Black,Gray,ground_large,Jun
+317,1,Rosie,Cat,Female,Peppy,Music,27-Feb,Cute,Cute,Pink,Red,ground_small,Feb
+318,6,Rowan,Tiger,Male,Jock,Fitness,26-Aug,Active,Simple,Light blue,Gray,ground_large,Aug
+319,1,Ruby,Rabbit,Female,Peppy,Nature,25-Dec,Cute,Active,Light blue,Pink,ground_small,Dec
+320,0,Rudy,Cat,Male,Jock,Play,20-Dec,Active,Simple,Yellow,Beige,ground_small,Dec
+321,1,Sally,Squirrel,Female,Normal,Music,19-Jun,Simple,Elegant,White,Beige,ground_small,Jun
+322,7,Samson,Mouse,Male,Jock,Fitness,5-Jul,Simple,Active,Red,Yellow,ground_small,Jul
+323,1,Sandy,Ostrich,Female,Normal,Nature,21-Oct,Simple,Cool,Light blue,White,ground_small,Oct
+324,5,Savannah,Horse,Female,Normal,Music,25-Jan,Cool,Simple,Light blue,Blue,ground_large,Jan
+325,6,Scoot,Duck,Male,Jock,Fitness,13-Jun,Active,Simple,Beige,Blue,other,Jun
+326,1,Shari,Monkey,Female,Big Sister,Music,10-Apr,Cute,Active,Light blue,Yellow,ground_small,Apr
+327,0,Sheldon,Squirrel,Male,Jock,Play,26-Feb,Active,Cool,Green,Yellow,ground_small,Feb
+328,8,Shep,Dog,Male,Smug,Education,24-Nov,Simple,Cool,Light blue,Blue,ground_small,Nov
+329,0,Sherb,Goat,Male,Lazy,Nature,18-Jan,Simple,Cute,Gray,Blue,ground_large,Jan
+330,0,Simon,Monkey,Male,Lazy,Play,19-Jan,Simple,Active,Red,Colorful,ground_small,Jan
+331,1,Skye,Wolf,Female,Normal,Music,24-Mar,Cute,Cute,Blue,White,ground_large,Mar
+332,0,Sly,Alligator,Male,Jock,Play,15-Nov,Cool,Simple,Brown,Green,other,Nov
+333,6,Snake,Rabbit,Male,Jock,Fitness,3-Nov,Active,Simple,Black,Blue,ground_small,Nov
+334,0,Snooty,Anteater,Female,Snooty,Education,24-Oct,Simple,Simple,Green,Yellow,ground_large,Oct
+335,3,Soleil,Hamster,Female,Snooty,Education,9-Aug,Cool,Gorgeous,Red,Yellow,ground_small,Aug
+336,0,Sparro,Bird,Male,Jock,Play,20-Nov,Active,Simple,Green,Gray,other,Nov
+337,9,Spike,Rhino,Male,Cranky,Nature,17-Jun,Cool,Gorgeous,Black,Gray,ground_large,Jun
+338,0,Spork,Pig,Male,Lazy,Play,3-Sep,Simple,Active,Green,Colorful,ground_large,Sep
+339,1,Sprinkle,Penguin,Female,Peppy,Play,20-Feb,Cute,Elegant,Light blue,White,ground_small,Feb
+340,7,Sprocket,Ostrich,Male,Jock,Music,1-Dec,Simple,Active,Orange,Green,ground_small,Dec
+341,9,Static,Squirrel,Male,Cranky,Music,9-Jul,Cool,Active,Black,Yellow,ground_small,Jul
+342,5,Stella,Sheep,Female,Normal,Nature,9-Apr,Simple,Simple,Yellow,Beige,ground_large,Apr
+343,7,Sterling,Eagle,Male,Jock,Fitness,11-Dec,Simple,Elegant,Blue,Red,other,Dec
+344,6,Stinky,Cat,Male,Jock,Fitness,17-Aug,Active,Simple,Red,Blue,ground_small,Aug
+345,0,Stitches,Cub,Male,Lazy,Play,10-Feb,Simple,Cute,Colorful,White,ground_small,Feb
+346,0,Stu,Bull,Male,Lazy,Nature,20-Apr,Simple,Simple,Brown,Beige,ground_large,Apr
+347,1,Sydney,Koala,Female,Normal,Music,21-Jun,Cute,Simple,Beige,Yellow,ground_small,Jun
+348,1,Sylvana,Squirrel,Female,Normal,Nature,22-Oct,Cute,Simple,Green,Purple,ground_small,Oct
+349,4,Sylvia,Kangaroo,Female,Big Sister,Music,3-May,Simple,Gorgeous,Yellow,Green,ground_large,May
+350,9,T-Bone,Bull,Male,Cranky,Education,20-May,Cool,Simple,Blue,Black,ground_large,May
+351,2,Tabby,Cat,Female,Peppy,Music,13-Aug,Active,Cool,Black,Gray,ground_small,Aug
+352,6,Tad,Frog,Male,Jock,Play,3-Aug,Active,Simple,Yellow,Colorful,other,Aug
+353,1,Tammi,Monkey,Female,Peppy,Fashion,2-Apr,Cute,Active,Purple,Green,ground_small,Apr
+354,1,Tammy,Cub,Female,Big Sister,Play,23-Jun,Cool,Active,Red,Purple,ground_small,Jun
+355,0,Tangy,Cat,Female,Peppy,Music,17-Jun,Simple,Cute,Green,Yellow,ground_small,Jun
+356,6,Tank,Rhino,Male,Jock,Fitness,6-May,Active,Simple,Red,Green,ground_large,May
+357,4,Tasha,Squirrel,Female,Snooty,Fitness,30-Nov,Elegant,Gorgeous,Beige,Gray,ground_small,Nov
+358,6,Teddy,Bear,Male,Jock,Fitness,26-Sep,Simple,Simple,Yellow,Orange,ground_large,Sep
+359,2,Tex,Penguin,Male,Smug,Music,6-Oct,Cool,Elegant,Black,Gray,ground_small,Oct
+360,1,Tia,Elephant,Female,Normal,Nature,18-Nov,Cute,Elegant,Black,White,ground_large,Nov
+361,3,Tiffany,Rabbit,Female,Snooty,Fashion,9-Jan,Gorgeous,Cool,Black,Red,ground_small,Jan
+362,4,Timbra,Sheep,Female,Snooty,Education,21-Oct,Elegant,Gorgeous,Green,Brown,ground_large,Oct
+363,3,Tipper,Cow,Female,Snooty,Fashion,25-Aug,Gorgeous,Cute,Colorful,Pink,ground_large,Aug
+364,8,Tom,Cat,Male,Cranky,Education,10-Dec,Cool,Simple,Black,Gray,ground_small,Dec
+365,4,Truffles,Pig,Female,Peppy,Fashion,28-Jul,Cute,Gorgeous,Green,Red,ground_large,Jul
+366,6,Tucker,Elephant,Male,Lazy,Nature,7-Sep,Active,Simple,Yellow,Orange,ground_large,Sep
+367,5,Tutu,Bear,Female,Peppy,Fashion,15-Sep,Cute,Simple,Pink,Red,ground_large,Sep
+368,1,Twiggy,Bird,Female,Peppy,Fashion,13-Jul,Simple,Cute,Pink,Blue,other,Jul
+369,6,Tybalt,Tiger,Male,Jock,Play,19-Aug,Active,Simple,Blue,Purple,ground_large,Aug
+370,0,Ursala,Bear,Female,Big Sister,Music,16-Jan,Simple,Cute,Red,Orange,ground_large,Jan
+371,4,Velma,Goat,Female,Snooty,Education,14-Jan,Elegant,Gorgeous,Light blue,Purple,ground_large,Jan
+372,1,Vesta,Sheep,Female,Normal,Fashion,16-Apr,Simple,Cute,Orange,Red,ground_large,Apr
+373,6,Vic,Bull,Male,Cranky,Fitness,29-Dec,Cool,Active,Light blue,Blue,ground_large,Dec
+374,6,Victoria,Horse,Female,Peppy,Fitness,11-Jul,Active,Simple,Yellow,Orange,ground_large,Jul
+375,3,Violet,Gorilla,Female,Snooty,Fitness,1-Sep,Gorgeous,Cool,Purple,Pink,ground_large,Sep
+376,3,Vivian,Wolf,Female,Snooty,Education,26-Jan,Gorgeous,Elegant,Gray,Purple,ground_large,Jan
+377,8,Vladimir,Cub,Male,Cranky,Play,2-Aug,Simple,Cool,Yellow,Colorful,ground_small,Aug
+378,0,Wade,Penguin,Male,Lazy,Nature,30-Oct,Simple,Gorgeous,Light blue,Blue,ground_small,Oct
+379,0,Walker,Dog,Male,Lazy,Play,10-Jun,Simple,Simple,Orange,Red,ground_small,Jun
+380,2,Walt,Kangaroo,Male,Cranky,Fitness,24-Apr,Cool,Cool,Black,Gray,ground_large,Apr
+381,7,Wart Jr.,Frog,Male,Cranky,Education,21-Aug,Simple,Simple,Blue,Purple,other,Aug
+382,9,Weber,Duck,Male,Lazy,Nature,30-Jun,Cool,Simple,Blue,Black,other,Jun
+383,4,Wendy,Sheep,Female,Peppy,Fashion,15-Aug,Cool,Gorgeous,Red,Green,ground_large,Aug
+384,4,Whitney,Wolf,Female,Snooty,Fashion,17-Sep,Elegant,Cool,Blue,Light blue,ground_large,Sep
+385,4,Willow,Sheep,Female,Snooty,Fashion,26-Nov,Cute,Gorgeous,White,Pink,ground_large,Nov
+386,4,Winnie,Horse,Female,Peppy,Fashion,31-Jan,Cool,Simple,White,Gray,ground_large,Jan
+387,9,Wolfgang,Wolf,Male,Cranky,Education,25-Nov,Cool,Active,Black,Green,ground_large,Nov
+388,3,Yuka,Koala,Female,Snooty,Fashion,20-Jul,Cool,Elegant,Orange,Yellow,ground_small,Jul
+389,2,Zell,Deer,Male,Smug,Music,7-Jun,Cool,Gorgeous,Purple,Gray,ground_large,Jun
+390,0,Zucker,Octopus,Male,Lazy,Nature,8-Mar,Simple,Cute,Blue,Yellow,other,Mar

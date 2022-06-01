@@ -1,8 +1,19 @@
-EXAMPLE_PATH=data/
 S3_PATH = s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv
-LOCAL_PATH = data/raw/villagers.csv
-LOCAL_DOWNLOAD_PATH = data/download/villagers.csv
+LOCAL_PATH = data/external/villagers.csv
+LOCAL_DOWNLOAD_PATH = data/raw/villagers.csv
 
+# for developing: clean up everything for make
+cleanup:
+	rm data/raw/villagers.csv
+	rm data/final/recommendation.csv
+	rm data/interim/clean.csv
+	rm figures/cost_plot_kmodes.png
+	rm models/kmodes.joblib
+	rm data/interim/for_model.csv
+	rm deliverables/kmodes_result.csv
+	rm data/animalcrossing.db
+
+# docker images
 image-run:
 	docker build -f dockerfiles/Dockerfile.run -t animalcrossing .
 
@@ -15,38 +26,43 @@ image-app-ecs:
 upload-to-S3:
 	docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py upload_file_to_s3 --local_path=${LOCAL_PATH} --s3_path=${S3_PATH}
 
-data/download/villagers.csv:
+data/raw/villagers.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY animalcrossing run.py download_file_from_s3 \
 	--s3_path=${S3_PATH} --local_path=${LOCAL_DOWNLOAD_PATH}
 
-download-from-S3: data/download/villagers.csv
+# modeling (start from downloading data)
+download-from-S3: data/raw/villagers.csv
 
 data/interim/clean.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py preprocess --config=config/model_config.yaml
 
 preprocess: data/interim/clean.csv
 
-models/kmodes.joblib:
+models/kmodes.joblib figures/cost_plot_kmodes.png data/interim/for_model.csv deliverables/kmodes_result.csv &:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py train --config=config/model_config.yaml --model_path=models/kmodes.joblib
 
-train: models/kmodes.joblib
+train: models/kmodes.joblib figures/cost_plot_kmodes.png data/interim/for_model.csv deliverables/kmodes_result.csv
 
 data/final/recommendation.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ animalcrossing run.py recommendation --config=config/model_config.yaml
 
-recommendation: data/final/recommendation.csv
+recommendation: data/final/recommendation.csv data/final/recommendation.csv models/kmodes.joblib figures/cost_plot_kmodes.png 
 
-model-all: preprocess train recommendation
+model-all: download-from-S3 preprocess train recommendation
 
+# to RDS (run only once)
 create_db:
-	docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py create_db
+	docker run -e SQLALCHEMY_DATABASE_URI --mount type=bind,source="$(shell pwd)"/data,target=/app/data/ animalcrossing run.py create_db
 
 ingest_raw:
-	docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py ingest_raw
+	docker run -e SQLALCHEMY_DATABASE_URI --mount type=bind,source="$(shell pwd)"/data,target=/app/data/ animalcrossing run.py ingest_raw
 
 ingest_rec:
-	docker run -e SQLALCHEMY_DATABASE_URI animalcrossing run.py ingest_rec
+	docker run -e SQLALCHEMY_DATABASE_URI --mount type=bind,source="$(shell pwd)"/data,target=/app/data/ animalcrossing run.py ingest_rec
 
+check:
+	docker run --platform linux/x86_64  -it --rm  mysql:5.7.33 mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}
+# launch the app locally
 launch:
 	docker run -e SQLALCHEMY_DATABASE_URI --name test-app --mount type=bind,source="$(shell pwd)"/data,target=/app/data/ -p 5001:5000 animalcrossingapp
 
@@ -55,5 +71,17 @@ rm:
 
 relaunch: rm launch
 
+# launch the app via ECS (for developing purposes)
 ecs-push:
 	docker push 008395313216.dkr.ecr.us-east-1.amazonaws.com/msia423-flask:latest
+ecs-tag:
+	docker tag msia423-flask:latest 008395313216.dkr.ecr.us-east-1.amazonaws.com/msia423-flask:latest
+ecs-login:
+	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 008395313216.dkr.ecr.us-east-1.amazonaws.com
+
+ecs-all: ecs-login ecs-tag ecs-push
+
+# test
+test:
+	docker build -t animalcrossing-test -f dockerfiles/Dockerfile.test .
+	docker run animalcrossing-test

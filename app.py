@@ -21,7 +21,7 @@ logger = logging.getLogger(app.config["APP_NAME"])
 logger.debug(
     'Web app should be viewable at %s:%s if docker run command maps local '
     'port to the same port as configured for the Docker container '
-    'in config/flaskconfig.py (e.g. `-p 5000:5000`). Otherwise, go to the '
+    'in config/flaskconfig.py (e.g. `-p 5001:5000`). Otherwise, go to the '
     'port defined on the left side of the port mapping '
     '(`i.e. -p THISPORT:5000`). If you are running from a Windows machine, '
     'go to 127.0.0.1 instead of 0.0.0.0.', app.config["HOST"]
@@ -29,8 +29,7 @@ logger.debug(
 
 # Initialize the database session
 recommendation_manager = RecommendationManager(app)
-#logger.info('The database dialect is %s', app.config['SQLALCHEMY_DATABASE_URI'].split(':')[0])
-logger.info('The database dialect is %s', app.config['SQLALCHEMY_DATABASE_URI'])
+logger.debug('The database dialect is %s', app.config['SQLALCHEMY_DATABASE_URI'])
 
 @app.route('/')
 def index():
