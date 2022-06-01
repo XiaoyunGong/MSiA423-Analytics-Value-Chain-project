@@ -63,30 +63,30 @@ From a business perspective, the number of visits to the app and retention rate 
 ├── app
 │   ├── static								<- Folder that contains the basic.css file
 │   └── templates							<- Folder that contains the app templates
-├── app.py									<- Flask wrapper for running the web app
-├── config									<- Directory that keep the configuration files
-│   ├── flaskconfig.py						<- Configuration of flask API
+├── app.py								<- Flask wrapper for running the web app
+├── config								<- Directory that keep the configuration files
+│   ├── flaskconfig.py							<- Configuration of flask API
 │   ├── local								<- Local environment variables *not sync to github*
 │   ├── logging								<- Configuration of python loggers
-│   └── model_config.yaml					<- Configuration for the modeling processes
-├── data									<- Folder that contains data used or generated.
+│   └── model_config.yaml						<- Configuration for the modeling processes
+├── data								<- Folder that contains data used or generated.
 │   ├── external							<- External data sources, usually reference data, will be synced with git
 │   ├── final								<- Final dataset send to RDS, will be synced with git
 │   ├── interim								<- Internal stage data output during development, will be synced with git
-│   └── raw									<- Raw data used for code development and testing, will be synced with git
+│   └── raw								<- Raw data used for code development and testing, will be synced with git
 ├── deliverables							<- Presentation powerpoints saved as pdf and the kmodes result file live here
-├── dockerfiles/                     		<- Directory for all project-related Dockerfiles 
-│   ├── Dockerfile.app                		<- Dockerfile for building image to run web app
-│   ├── Dockerfile.run                		<- Dockerfile for building image to execute run.py  
-│   ├── Dockerfile.test              		<- Dockerfile for building image to run unit tests
-├── figures									<- Figures generated during development and EDA live here		
-├── models									<- Final model lives here
+├── dockerfiles/                     					<- Directory for all project-related Dockerfiles 
+│   ├── Dockerfile.app                					<- Dockerfile for building image to run web app
+│   ├── Dockerfile.run                					<- Dockerfile for building image to execute run.py  
+│   ├── Dockerfile.test              					<- Dockerfile for building image to run unit tests
+├── figures								<- Figures generated during development and EDA live here		
+├── models								<- Final model lives here
 ├── notebooks								<- Notebooks used in developing live here
 ├── references								<- References for this project
-├── requirements.txt						<- Package requirements
-├── run.py									<- Simplifies the execution of one or more of the src scripts  
-├── src										<- Source script for the project 
-└── test									<- unit tests for this project
+├── requirements.txt							<- Package requirements
+├── run.py								<- Simplifies the execution of one or more of the src scripts  
+├── src									<- Source script for the project 
+└── test								<- unit tests for this project
 ```
 
 ## Setup
