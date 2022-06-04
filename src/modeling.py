@@ -74,7 +74,7 @@ def form_final_model(final_n_cluster: int,
                      init: str,
                      n_init: int,
                      random_state: int,
-                     model_path: str):
+                     model_path: str) -> None:
     """this function will export the final model
 
     Args:
@@ -127,3 +127,30 @@ def recommendation(filename_model: str,
     # export the recommendation table to a csv
     joined.to_csv(recommendation_path, index = False)
     logger.info("The table with clustering information is written to %s", recommendation_path)
+
+def get_metric(filename_model: str,
+               final_n_cluster: int,
+               model_path: str,
+               metric_path: str)->None:
+    """This function will create the a file to save the cost metric.
+
+    Args:
+        filename_model (str): input csv file path
+        final_n_cluster (int): final number of cluster
+        model_path (str): the path to load the model
+        metric_path (str): the path to save the metric
+    """
+    # read in the csv file
+    try:
+        df_model = pd.read_csv(filename_model)
+        logger.info("The dataset path %s is loaded and it has %i columns.", filename_model, df_model.shape[1])
+    except FileNotFoundError:
+        logger.error("Cannot find %s", filename_model)
+    
+    # fit the final model
+    kmode_final = joblib.load(model_path)
+    kmode_final.fit_predict(df_model)
+    logger.info("Kmode modeling finished! The cost is %i", kmode_final.cost_)
+
+    result_table = pd.DataFrame({"K": [final_n_cluster], "cost": [kmode_final.cost_]})
+    result_table.to_csv(metric_path, index=False)
