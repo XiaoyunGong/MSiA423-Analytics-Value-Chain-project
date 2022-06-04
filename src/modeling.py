@@ -146,7 +146,7 @@ def get_metric(filename_model: str,
         logger.info("The dataset path %s is loaded and it has %i columns.", filename_model, df_model.shape[1])
     except FileNotFoundError:
         logger.error("Cannot find %s", filename_model)
-    
+
     # fit the final model
     kmode_final = joblib.load(model_path)
     kmode_final.fit_predict(df_model)

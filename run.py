@@ -75,7 +75,7 @@ if __name__ == "__main__":
     sp_recommendation.add_argument("--config",
                         default="config/model_config.yaml",
                         help="Path to configuration file")
-    
+
     # Sub-parser for generating the metric
     sp_get_metric = subparsers.add_parser("get_metric", help="generate the recommendation result")
     sp_get_metric.add_argument("--df_model_path", default="data/interim/for_model.csv",
