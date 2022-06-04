@@ -12,6 +12,7 @@ cleanup:
 	rm data/interim/for_model.csv
 	rm deliverables/kmodes_result.csv
 	rm data/animalcrossing.db
+	rm deliverables/metric.csv
 
 # docker images
 image-run:
@@ -46,9 +47,14 @@ train: models/kmodes.joblib figures/cost_plot_kmodes.png data/interim/for_model.
 data/final/recommendation.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ final-project run.py recommendation --config=config/model_config.yaml
 
-recommendation: data/final/recommendation.csv data/final/recommendation.csv models/kmodes.joblib figures/cost_plot_kmodes.png 
+recommendation: data/final/recommendation.csv 
 
-model-all: download-from-S3 preprocess train recommendation
+deliverables/metric.csv:
+	docker run --mount type=bind,source="$(shell pwd)",target=/app/ final-project run.py get_metric --config=config/model_config.yaml
+
+get_metric: deliverables/metric.csv
+
+model-all: download-from-S3 preprocess train recommendation get_metric
 
 # to RDS (run only once)
 create_db:
@@ -59,6 +65,8 @@ ingest_raw:
 
 ingest_rec:
 	docker run -e SQLALCHEMY_DATABASE_URI --mount type=bind,source="$(shell pwd)"/data,target=/app/data/ final-project run.py ingest_rec
+
+ingest-all: ingest_raw ingest_rec
 
 check:
 	docker run --platform linux/x86_64  -it --rm  mysql:5.7.33 mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}
@@ -83,5 +91,5 @@ ecs-all: ecs-login ecs-tag ecs-push
 
 # test
 test:
-	docker build -f dockerfiles/Dockerfile.test -t final-project-test .
-	docker run final-project-test
+	docker build -f dockerfiles/Dockerfile.test -t final-project-tests .
+	docker run final-project-tests

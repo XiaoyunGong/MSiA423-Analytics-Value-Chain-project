@@ -27,6 +27,7 @@ Author: Xiaoyun Gong
 			- [Step 2: Preprocess the data](#step-2-preprocess-the-data)
 			- [Step 3: Train model](#step-3-train-model)
 			- [Step 4: Generate recommendation results](#step-4-generate-recommendation-results)
+			- [Step 5 (optional): write the metric to a file](#step-5-optional-write-the-metric-to-a-file)
 	- [Database storing](#database-storing)
 	- [Launch the App](#launch-the-app)
 		- [Launch the App locally](#launch-the-app-locally)
@@ -176,7 +177,7 @@ The final result is going to be saved in `data/final/recommendations.csv`.
 ### Create the recommendation results step by step
 
 #### Step 1: Download raw data from S3
-Although stored in local in `data\external\villagers.csv`, data can be downloaded from S3. The following command will download the data to `data/raw/villagers.csv` (by default).
+Although stored in local in `data/external/villagers.csv`, data can be downloaded from S3. The following command will download the data to `data/raw/villagers.csv` (by default).
 ```bash
 make download-from-S3
 ```
@@ -208,7 +209,12 @@ With the model ready to go, the user can now generate the recommendations by run
 ```bash
 make recommendation
 ```
+#### Step 5 (optional): write the metric to a file
+To write the evaluation metric (cost) to the `deliverbales/metric.csv` run
 
+```bash
+make get_metric
+```
 
 ## Database storing
 At this point, the user should have a csv file that saved the recommendation results. Now, it's time to create a database using that. 

@@ -4,7 +4,7 @@ import argparse
 import logging.config
 import yaml
 from src.animal_manager import AnimalManager, RecommendationManager, create_db
-from src.modeling import form_final_model, kmodes_modeling, recommendation
+from src.modeling import form_final_model, get_metric, kmodes_modeling, recommendation
 from src.s3 import upload_file_to_s3, download_file_from_s3
 from src.preprocess import drop_cols, load_dataset, feature_engineering, save_df
 from config.flaskconfig import SQLALCHEMY_DATABASE_URI
@@ -75,6 +75,18 @@ if __name__ == "__main__":
     sp_recommendation.add_argument("--config",
                         default="config/model_config.yaml",
                         help="Path to configuration file")
+    
+    # Sub-parser for generating the metric
+    sp_get_metric = subparsers.add_parser("get_metric", help="generate the recommendation result")
+    sp_get_metric.add_argument("--df_model_path", default="data/interim/for_model.csv",
+                          help="the input path for the data used for modeling.")
+    sp_get_metric.add_argument("--model_path", default="models/kmodes.joblib",
+                          help="the input path for the final model.")
+    sp_get_metric.add_argument("--metric_path", default="deliverables/metric.csv",
+                          help="the output path for the metric.")
+    sp_get_metric.add_argument("--config",
+                        default="config/model_config.yaml",
+                        help="Path to configuration file")
 
     # Sub-parser for creating a database
     sp_create = subparsers.add_parser("create_db",
@@ -139,6 +151,14 @@ if __name__ == "__main__":
                        filename_clean=args.clean_path,
                        model_path=args.model_path,
                        recommendation_path=args.rec_path)
+    elif sp_used =="get_metric":
+        with open(args.config, "r") as f:
+            config = yaml.load(f, Loader=yaml.FullLoader)
+            logger.info("Configuration file loaded from %s", args.config)
+        get_metric(**config["modeling"]["get_metric"],
+                       filename_model=args.df_model_path,
+                       model_path=args.model_path,
+                       metric_path=args.metric_path)
 
     elif sp_used == "create_db":
         create_db(args.engine_string)

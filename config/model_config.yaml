@@ -56,3 +56,6 @@ modeling:
       - Birthday_month_villager
       - Species_group
       - Birthday_month
+    
+  get_metric:
+    final_n_cluster: 10
