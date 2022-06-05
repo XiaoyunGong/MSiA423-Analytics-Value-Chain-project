@@ -289,5 +289,5 @@ make ecs-all
 ## Testing
 To perform unit tests, run
 ```bash
-make -B test
+make test
 ``` 

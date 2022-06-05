@@ -150,7 +150,8 @@ def get_metric(filename_model: str,
     # fit the final model
     kmode_final = joblib.load(model_path)
     kmode_final.fit_predict(df_model)
-    logger.info("Kmode modeling finished! The cost is %i", kmode_final.cost_)
+    logger.info("Reffiting the model to get the metric. The cost is %i", kmode_final.cost_)
 
     result_table = pd.DataFrame({"K": [final_n_cluster], "cost": [kmode_final.cost_]})
     result_table.to_csv(metric_path, index=False)
+    logger.info("The performance metric is written to %s", metric_path)
