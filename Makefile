@@ -15,28 +15,28 @@ cleanup:
 	rm deliverables/metric.csv
 
 # docker images
-image-run:
+image-run: dockerfiles/Dockerfile.run
 	docker build -f dockerfiles/Dockerfile.run -t final-project .
 
-image-app:
+image-app: dockerfiles/Dockerfile.app
 	docker build -f dockerfiles/Dockerfile.app -t final-project-app .
 
-image-app-ecs:
+image-app-ecs: dockerfiles/Dockerfile.app
 	docker build --platform linux/x86_64 -f dockerfiles/Dockerfile.app -t msia423-flask . 
 
 upload-to-S3:
 	docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY final-project run.py upload_file_to_s3 --local_path=${LOCAL_PATH} --s3_path=${S3_PATH}
 
 # modeling (start from downloading data)
-.PHONY: download-from-S3 data/raw/villagers.csv
-data/raw/villagers.csv:
+#.PHONY: download-from-S3 data/raw/villagers.csv
+data/raw/villagers.csv: 
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY final-project run.py download_file_from_s3 \
 	--s3_path=${S3_PATH} --local_path=${LOCAL_DOWNLOAD_PATH}
 
 download-from-S3: data/raw/villagers.csv
 
 .PHONY: preprocess data/interim/clean.csv
-data/interim/clean.csv:
+data/interim/clean.csv: config/model_config.yaml data/raw/villagers.csv
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ final-project run.py preprocess --config=config/model_config.yaml
 
 preprocess: data/interim/clean.csv
@@ -48,13 +48,13 @@ models/kmodes.joblib figures/cost_plot_kmodes.png data/interim/for_model.csv del
 train: models/kmodes.joblib figures/cost_plot_kmodes.png data/interim/for_model.csv deliverables/kmodes_result.csv
 
 .PHONY: recommendation data/final/recommendation.csv
-data/final/recommendation.csv:
+data/final/recommendation.csv: data/interim/for_model.csv data/interim/clean.csv models/kmodes.joblib config/model_config.yaml
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ final-project run.py recommendation --config=config/model_config.yaml
 
 recommendation: data/final/recommendation.csv 
 
-.PHONY: get_metric deliverables/metric.csv
-deliverables/metric.csv:
+.PHONY: get_metric deliverables/metric.csv 
+deliverables/metric.csv: config/model_config.yaml data/interim/for_model.csv models/kmodes.joblib
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ final-project run.py get_metric --config=config/model_config.yaml
 
 get_metric: deliverables/metric.csv

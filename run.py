@@ -25,7 +25,7 @@ if __name__ == "__main__":
     sp_upload.add_argument("--s3_path",
                            default="s3://2022-msia423-gong-xiaoyun/data/external/villagers.csv",
                            help="S3 data path to the data")
-    sp_upload.add_argument("--local_path", default="data/raw/villagers.csv",
+    sp_upload.add_argument("--local_path", default="data/external/villagers.csv",
                            help="local path to the data")
 
     # Sub-parser for downloading data from s3 (optional)
@@ -33,7 +33,7 @@ if __name__ == "__main__":
     sp_download.add_argument("--s3_path",
                              default="s3://2022-msia423-gong-xiaoyun/data/raw/villagers.csv",
                              help="S3 data path to the data")
-    sp_download.add_argument("--local_path", default="data/download/villagers.csv",
+    sp_download.add_argument("--local_path", default="data/raw/villagers.csv",
                            help="local path to the data")
 
     # Sub-parser for preprocess the data
