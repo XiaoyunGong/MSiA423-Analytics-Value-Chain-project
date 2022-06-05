@@ -27,28 +27,33 @@ image-app-ecs:
 upload-to-S3:
 	docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY final-project run.py upload_file_to_s3 --local_path=${LOCAL_PATH} --s3_path=${S3_PATH}
 
+# modeling (start from downloading data)
+.PHONY: download-from-S3 data/raw/villagers.csv
 data/raw/villagers.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY final-project run.py download_file_from_s3 \
 	--s3_path=${S3_PATH} --local_path=${LOCAL_DOWNLOAD_PATH}
 
-# modeling (start from downloading data)
 download-from-S3: data/raw/villagers.csv
 
+.PHONY: preprocess data/interim/clean.csv
 data/interim/clean.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ final-project run.py preprocess --config=config/model_config.yaml
 
 preprocess: data/interim/clean.csv
 
+.PHONY: train models/kmodes.joblib
 models/kmodes.joblib figures/cost_plot_kmodes.png data/interim/for_model.csv deliverables/kmodes_result.csv &:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ final-project run.py train --config=config/model_config.yaml --model_path=models/kmodes.joblib
 
 train: models/kmodes.joblib figures/cost_plot_kmodes.png data/interim/for_model.csv deliverables/kmodes_result.csv
 
+.PHONY: recommendation data/final/recommendation.csv
 data/final/recommendation.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ final-project run.py recommendation --config=config/model_config.yaml
 
 recommendation: data/final/recommendation.csv 
 
+.PHONY: get_metric deliverables/metric.csv
 deliverables/metric.csv:
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ final-project run.py get_metric --config=config/model_config.yaml
 
@@ -90,6 +95,7 @@ ecs-login:
 ecs-all: ecs-login ecs-tag ecs-push
 
 # test
+.PHONY: test
 test:
 	docker build -f dockerfiles/Dockerfile.test -t final-project-tests .
 	docker run final-project-tests
