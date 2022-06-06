@@ -16,7 +16,7 @@ cleanup:
 
 # docker images
 image-run: dockerfiles/Dockerfile.run
-	docker build -f dockerfiles/Dockerfile.run -t final-project .
+	docker build -f dockerfiles/Dockerfile -t final-project .
 
 image-app: dockerfiles/Dockerfile.app
 	docker build -f dockerfiles/Dockerfile.app -t final-project-app .
@@ -28,7 +28,7 @@ upload-to-S3:
 	docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY final-project run.py upload_file_to_s3 --local_path=${LOCAL_PATH} --s3_path=${S3_PATH}
 
 # modeling (start from downloading data)
-#.PHONY: download-from-S3 data/raw/villagers.csv
+.PHONY: download-from-S3 data/raw/villagers.csv
 data/raw/villagers.csv: 
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY final-project run.py download_file_from_s3 \
 	--s3_path=${S3_PATH} --local_path=${LOCAL_DOWNLOAD_PATH}
@@ -48,13 +48,13 @@ models/kmodes.joblib figures/cost_plot_kmodes.png data/interim/for_model.csv del
 train: models/kmodes.joblib figures/cost_plot_kmodes.png data/interim/for_model.csv deliverables/kmodes_result.csv
 
 .PHONY: recommendation data/final/recommendation.csv
-data/final/recommendation.csv: data/interim/for_model.csv data/interim/clean.csv models/kmodes.joblib config/model_config.yaml
+data/final/recommendation.csv: config/model_config.yaml
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ final-project run.py recommendation --config=config/model_config.yaml
 
 recommendation: data/final/recommendation.csv 
 
 .PHONY: get_metric deliverables/metric.csv 
-deliverables/metric.csv: config/model_config.yaml data/interim/for_model.csv models/kmodes.joblib
+deliverables/metric.csv: config/model_config.yaml
 	docker run --mount type=bind,source="$(shell pwd)",target=/app/ final-project run.py get_metric --config=config/model_config.yaml
 
 get_metric: deliverables/metric.csv
@@ -62,6 +62,7 @@ get_metric: deliverables/metric.csv
 model-all: download-from-S3 preprocess train recommendation get_metric
 
 # to RDS (run only once)
+.PHONY: create_db ingest_raw ingest_rec ingest-all
 create_db:
 	docker run -e SQLALCHEMY_DATABASE_URI --mount type=bind,source="$(shell pwd)"/data,target=/app/data/ final-project run.py create_db
 
